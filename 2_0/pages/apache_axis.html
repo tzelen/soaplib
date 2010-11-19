@@ -1,0 +1,161 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Axis Interoperability &mdash; soaplib v2.0.0beta documentation</title>
+    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="soaplib v2.0.0beta documentation" href="../index.html" />
+    <link rel="next" title="Model API" href="model_api.html" />
+    <link rel="prev" title="Hooks" href="hooks.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="model_api.html" title="Model API"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="hooks.html" title="Hooks"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Axis Interoperability</a><ul>
+<li><a class="reference internal" href="#how-to-run-the-test">How to run the test</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="hooks.html"
+                        title="previous chapter">Hooks</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="model_api.html"
+                        title="next chapter">Model API</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/pages/apache_axis.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="axis-interoperability">
+<h1>Axis Interoperability<a class="headerlink" href="#axis-interoperability" title="Permalink to this headline">¶</a></h1>
+<p>The Apache Axis project is one of the most popular SOAP implementations around,
+so it was very important for soaplib to easily work with it. As a subproject of
+soaplib the axis_soaplib test suite was created to make sure soaplib and Axis
+can understand each other. This test uses Apache Ant to run the tests and
+generates the client-side java classes using the wsdl2java command.</p>
+<div class="section" id="how-to-run-the-test">
+<h2>How to run the test<a class="headerlink" href="#how-to-run-the-test" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<ul>
+<li><p class="first">Start the soaplib interop service from the soaplib directory</p>
+<blockquote>
+<p>% python tests/interop_service.py</p>
+</blockquote>
+</li>
+<li><p class="first">Modify the build.xml in axis_soaplib to reflect the correct url and path to the axis library</p>
+</li>
+<li><p class="first">run the tests</p>
+<p>% ant
+Buildfile: build.xml</p>
+<p>wsdl2java:</p>
+<dl class="docutils">
+<dt>compile:</dt>
+<dd><p class="first last">[javac] Compiling 9 source files
+[javac] Note: Some input files use unchecked or unsafe operations.
+[javac] Note: Recompile with -Xlint:unchecked for details.</p>
+</dd>
+<dt>test:</dt>
+<dd><p class="first last">[java] Results &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-
+[java]         Total Tests 16
+[java]         Failures 0</p>
+</dd>
+</dl>
+<p>BUILD SUCCESSFUL
+Total time: 7 seconds</p>
+</li>
+</ul>
+</blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="model_api.html" title="Model API"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="hooks.html" title="Hooks"
+             >previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Aaron Bickell.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
+    </div>
+  </body>
+</html>

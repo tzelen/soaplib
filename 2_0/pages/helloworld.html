@@ -1,0 +1,217 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Hello World &mdash; soaplib v2.0.0beta documentation</title>
+    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="soaplib v2.0.0beta documentation" href="../index.html" />
+    <link rel="next" title="User Manager" href="usermanager.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="changelog.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="usermanager.html" title="User Manager"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="changelog.html" title="&lt;no title&gt;"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Hello World</a><ul>
+<li><a class="reference internal" href="#declaring-a-soaplib-service">Declaring a Soaplib Service</a></li>
+<li><a class="reference internal" href="#deploying-the-service">Deploying the service</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="changelog.html"
+                        title="previous chapter">&lt;no title&gt;</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="usermanager.html"
+                        title="next chapter">User Manager</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/pages/helloworld.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="hello-world">
+<h1>Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h1>
+<p>This example uses the simple wsgi webserver included with soaplib to deploy this service.</p>
+<div class="section" id="declaring-a-soaplib-service">
+<h2>Declaring a Soaplib Service<a class="headerlink" href="#declaring-a-soaplib-service" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib.service</span> <span class="kn">import</span> <span class="n">DefinitionBase</span>
+<span class="kn">from</span> <span class="nn">soaplib.service</span> <span class="kn">import</span> <span class="n">rpc</span><span class="p">,</span>
+<span class="kn">from</span> <span class="nn">soaplib.model.primitive</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span>
+<span class="kn">from</span> <span class="nn">soaplib.model.clazz</span> <span class="kn">import</span> <span class="n">Array</span>
+<span class="kn">from</span> <span class="nn">soaplib.server.wsgi</span> <span class="kn">import</span> <span class="n">Application</span>
+
+
+<span class="k">class</span> <span class="nc">HelloWorldService</span><span class="p">(</span><span class="n">SimpleWSGISoapApp</span><span class="p">):</span>
+    <span class="nd">@rpc</span><span class="p">(</span><span class="n">String</span><span class="p">,</span><span class="n">Integer</span><span class="p">,</span><span class="n">_returns</span><span class="o">=</span><span class="n">Array</span><span class="p">(</span><span class="n">String</span><span class="p">))</span>
+    <span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">times</span><span class="p">):</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">times</span><span class="p">):</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;Hello, </span><span class="si">%s</span><span class="s">&#39;</span><span class="o">%</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">results</span>
+
+<span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">wsgiref.simple_server</span> <span class="kn">import</span> <span class="n">make_server</span>
+        <span class="n">server</span> <span class="o">=</span> <span class="n">make_server</span><span class="p">(</span><span class="s">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">7789</span><span class="p">,</span> <span class="n">Application</span><span class="p">([</span><span class="n">HelloWorldService</span><span class="p">],</span> <span class="s">&#39;tns&#39;</span><span class="p">))</span>
+        <span class="n">server</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&quot;Error: example server code requires Python &gt;= 2.5&quot;</span>
+</pre></div>
+</div>
+<p>Dissecting this example: DefinitionBase is the base class for all soap services.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib.service</span> <span class="kn">import</span> <span class="n">DefinitionBase</span>
+</pre></div>
+</div>
+<p>The rpc decorator exposes methods as soap method and declares the
+data types it accepts and returns.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib.service</span> <span class="kn">import</span> <span class="n">rpc</span>
+</pre></div>
+</div>
+<p>Import the type for this method (more on type later):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib.model.primitive</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span>
+<span class="kn">from</span> <span class="nn">soaplib.model.clazz</span> <span class="kn">import</span> <span class="n">Array</span>
+</pre></div>
+</div>
+<p>Extending DefinitionBase is an easy way to create a soap service that can
+be deployed as a WSGI application.:</p>
+<div class="highlight-python"><pre>class HelloWorldService(DefinitionBase):</pre>
+</div>
+<p>The rpc decorator flags each method as a soap method, and defines
+the types and order of the soap parameters, as well as the return value.
+This method takes in a String, an Integer and returns an
+Array of Strings -&gt; Array(String).:</p>
+<div class="highlight-python"><pre>@rpc(String,Integer,_returns=Array(String))</pre>
+</div>
+<p>The method itself has nothing special about it whatsoever. All input
+variables and return types are standard python objects:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">times</span><span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">times</span><span class="p">):</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;Hello, </span><span class="si">%s</span><span class="s">&#39;</span><span class="o">%</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deploying-the-service">
+<h2>Deploying the service<a class="headerlink" href="#deploying-the-service" title="Permalink to this headline">¶</a></h2>
+<p>soaplib has been tested with several other web servers, This example uses the
+simple wsgi web server; any WSGI-compliant server <em>should</em> work.:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">wsgiref.simple_server</span> <span class="kn">import</span> <span class="n">make_server</span>
+        <span class="n">server</span> <span class="o">=</span> <span class="n">make_server</span><span class="p">(</span><span class="s">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">7789</span><span class="p">,</span> <span class="n">Application</span><span class="p">([</span><span class="n">HelloWorldService</span><span class="p">],</span> <span class="s">&#39;tns&#39;</span><span class="p">))</span>
+        <span class="n">server</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&quot;Error: example server code requires Python &gt;= 2.5&quot;</span>
+</pre></div>
+</div>
+<p>Calling this service</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">suds.client</span> <span class="kn">import</span> <span class="n">Client</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hello_client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="s">&#39;http://localhost:7789/?wsdl&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">hello_client</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">say_hello</span><span class="p">(</span><span class="s">&quot;Dave&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">result</span>
+
+<span class="go">(stringArray){</span>
+<span class="go">   string[] =</span>
+<span class="go">      &quot;Hello, Dave&quot;,</span>
+<span class="go">      &quot;Hello, Dave&quot;,</span>
+<span class="go">      &quot;Hello, Dave&quot;,</span>
+<span class="go">      &quot;Hello, Dave&quot;,</span>
+<span class="go">      &quot;Hello, Dave&quot;,</span>
+<span class="go"> }</span>
+</pre></div>
+</div>
+<p>suds is a separate project for building lightweight soap clients in python to learn more
+visit the project&#8217;s page <a class="reference external" href="https://fedorahosted.org/suds/">https://fedorahosted.org/suds/</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="usermanager.html" title="User Manager"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="changelog.html" title="&lt;no title&gt;"
+             >previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Aaron Bickell.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
+    </div>
+  </body>
+</html>

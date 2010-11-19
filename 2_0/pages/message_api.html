@@ -1,0 +1,144 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Message API &mdash; soaplib v2.0.0beta documentation</title>
+    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="soaplib v2.0.0beta documentation" href="../index.html" />
+    <link rel="next" title="Hooks" href="hooks.html" />
+    <link rel="prev" title="Binary Files" href="binaryfiles.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="hooks.html" title="Hooks"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="binaryfiles.html" title="Binary Files"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="binaryfiles.html"
+                        title="previous chapter">Binary Files</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="hooks.html"
+                        title="next chapter">Hooks</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/pages/message_api.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="message-api">
+<h1>Message API<a class="headerlink" href="#message-api" title="Permalink to this headline">¶</a></h1>
+<p>In addition to the WSGI Service API, soaplib provides a general purpose Message
+API, which allows you to create the xml portions of SOAP message
+programatically. The Message object follows the to_parent_element/from_xml usage pattern as
+the type.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.soap</span> <span class="kn">import</span> <span class="n">Message</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.model.primitive</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">Float</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">cElementTree</span> <span class="kn">as</span> <span class="nn">et</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">message</span> <span class="o">=</span> <span class="n">Message</span><span class="p">(</span><span class="s">&#39;myFunction&#39;</span><span class="p">,[(</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="n">String</span><span class="p">),(</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="n">Integer</span><span class="p">),(</span><span class="s">&#39;c&#39;</span><span class="p">,</span><span class="n">Float</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">et</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">to_parent_element</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mf">3.14</span><span class="p">))</span>
+<span class="go">&lt;myFunction&gt;&lt;a xmlns=&quot;&quot; xsi:type=&quot;xs:string&quot;&gt;a&lt;/a&gt;&lt;b xmlns=&quot;&quot; xsi:type=&quot;xs:int&quot;&gt;13&lt;/b&gt;&lt;c xmlns=&quot;&quot; xsi:type=&quot;xs:float&quot;&gt;3.14&lt;/c&gt;&lt;/myFunction&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>Messages can be combined with the MethodDescriptor object to represent both
+input and output messages of a SOAP method call. The method descriptor does not
+do much more than simply hold the method name, input and output messages, but it
+can be used with the SimpleSoapClient? to make remote SOAP service calls. The
+Axis stock quote Client example can be written:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">in_message</span> <span class="o">=</span> <span class="n">Message</span><span class="p">(</span><span class="s">&#39;getPrice&#39;</span><span class="p">,[(</span><span class="s">&#39;symbol&#39;</span><span class="p">,</span><span class="n">String</span><span class="p">)],</span><span class="n">ns</span><span class="o">=</span><span class="s">&#39;http://quickstart.samples/xsd&#39;</span><span class="p">)</span>
+<span class="n">out_message</span> <span class="o">=</span> <span class="n">Message</span><span class="p">(</span><span class="s">&#39;getPriceResponse&#39;</span><span class="p">,[(</span><span class="s">&#39;return&#39;</span><span class="p">,</span><span class="n">Float</span><span class="p">)],</span><span class="n">ns</span><span class="o">=</span><span class="s">&#39;http://quickstart.samples/xsd&#39;</span><span class="p">)</span>
+
+<span class="n">method</span> <span class="o">=</span> <span class="n">MethodDescriptor</span><span class="p">(</span><span class="s">&#39;getPrice&#39;</span><span class="p">,</span><span class="n">in_message</span><span class="p">,</span><span class="n">out_message</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">SimpleSoapClient</span><span class="p">(</span><span class="s">&#39;localhost:8080&#39;</span><span class="p">,</span><span class="s">&#39;/axis2/services/StockQuoteService&#39;</span><span class="p">,</span><span class="n">method</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">client</span><span class="p">(</span><span class="s">&#39;IBM&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Message names can also be specified in the ElementTree? QName syntax (ex
+&#8220;{<a class="reference external" href="http://quickstart.samples/xsd">http://quickstart.samples/xsd</a>}getPrice&#8221;), and an optional &#8216;typ&#8217; keyword can be
+specified for the message, which is used durring wsdl generation.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="hooks.html" title="Hooks"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="binaryfiles.html" title="Binary Files"
+             >previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Aaron Bickell.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
+    </div>
+  </body>
+</html>

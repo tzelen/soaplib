@@ -1,0 +1,221 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Hooks &mdash; soaplib v2.0.0beta documentation</title>
+    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="soaplib v2.0.0beta documentation" href="../index.html" />
+    <link rel="next" title="Axis Interoperability" href="apache_axis.html" />
+    <link rel="prev" title="Message API" href="message_api.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="apache_axis.html" title="Axis Interoperability"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="message_api.html" title="Message API"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="message_api.html"
+                        title="previous chapter">Message API</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="apache_axis.html"
+                        title="next chapter">Axis Interoperability</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/pages/hooks.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="hooks">
+<h1>Hooks<a class="headerlink" href="#hooks" title="Permalink to this headline">¶</a></h1>
+<p>This example is an enhanced version of the HelloWorld example that uses service
+&#8216;hooks&#8217; to apply cross-cutting behavior to the service. In this example, the
+service hooks are used to gather performance information on both the method
+execution as well as the duration of the entire call, including serialization
+and deserialization. The available hooks are:</p>
+<blockquote>
+<ul>
+<li><p class="first">on_call</p>
+<blockquote>
+<p>This is the first thing called in the service</p>
+</blockquote>
+</li>
+<li><p class="first">on_wsdl</p>
+<blockquote>
+<p>Called before the wsdl is requested</p>
+</blockquote>
+</li>
+<li><p class="first">on_wsdl_exception</p>
+<blockquote>
+<p>Called after an exception was thrown when generating the wsdl (shouldn&#8217;t happen very much)</p>
+</blockquote>
+</li>
+<li><p class="first">on_method_call</p>
+<blockquote>
+<p>Called right before the service method is executed</p>
+</blockquote>
+</li>
+<li><p class="first">on_method_return</p>
+<blockquote>
+<p>Called right after the service method is executed</p>
+</blockquote>
+</li>
+<li><p class="first">on_method_exception_object</p>
+<blockquote>
+<p>Called when an exception occurred in a service method before the exception is serialized.</p>
+</blockquote>
+</li>
+<li><p class="first">on_method_exception_xml</p>
+<blockquote>
+<p>Called after an exception occurred in either the service method or in serialization</p>
+</blockquote>
+</li>
+<li><p class="first">on_return</p>
+<blockquote>
+<p>This is the very last thing called before the wsgi app exits</p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<p>These method can be used to easily apply cross-cutting functionality accross all
+methods in the service to do things like database transaction management,
+logging and measuring performance. This example also employs the threadlocal
+request (soaplib.wsgi_soap.request) object to hold the data points for this
+request.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib.service</span> <span class="kn">import</span> <span class="n">rpc</span><span class="p">,</span> <span class="n">DefinitionBase</span>
+<span class="kn">from</span> <span class="nn">soaplib.model.primitive</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span>
+<span class="kn">from</span> <span class="nn">soaplib.model.clazz</span> <span class="kn">import</span> <span class="n">Array</span>
+
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+
+<span class="k">class</span> <span class="nc">HelloWorldService</span><span class="p">(</span><span class="n">DefinitionBase</span><span class="p">):</span>
+
+    <span class="nd">@rpc</span><span class="p">(</span><span class="n">String</span><span class="p">,</span><span class="n">Integer</span><span class="p">,</span><span class="n">_returns</span><span class="o">=</span><span class="n">Array</span><span class="p">(</span><span class="n">String</span><span class="p">))</span>
+    <span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">times</span><span class="p">):</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">times</span><span class="p">):</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;Hello, </span><span class="si">%s</span><span class="s">&#39;</span><span class="o">%</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">results</span>
+
+    <span class="k">def</span> <span class="nf">on_call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">environ</span><span class="p">):</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">additional</span><span class="p">[</span><span class="s">&#39;call_start&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">on_method_exec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">environ</span><span class="p">,</span><span class="n">body</span><span class="p">,</span><span class="n">py_params</span><span class="p">,</span><span class="n">soap_params</span><span class="p">):</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">additional</span><span class="p">[</span><span class="s">&#39;method_start&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">on_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">environ</span><span class="p">,</span><span class="n">py_results</span><span class="p">,</span><span class="n">soap_results</span><span class="p">,</span><span class="n">http_headers</span><span class="p">):</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">additional</span><span class="p">[</span><span class="s">&#39;method_end&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">on_return</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">environ</span><span class="p">,</span><span class="n">returnString</span><span class="p">):</span>
+        <span class="n">call_start</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">additional</span><span class="p">[</span><span class="s">&#39;call_start&#39;</span><span class="p">]</span>
+        <span class="n">call_end</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+        <span class="n">method_start</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">additional</span><span class="p">[</span><span class="s">&#39;method_start&#39;</span><span class="p">]</span>
+        <span class="n">method_end</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">additional</span><span class="p">[</span><span class="s">&#39;method_end&#39;</span><span class="p">]</span>
+
+        <span class="k">print</span> <span class="s">&#39;Method took [</span><span class="si">%s</span><span class="s">] - total execution time[</span><span class="si">%s</span><span class="s">]&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">method_end</span><span class="o">-</span><span class="n">method_start</span><span class="p">,</span><span class="n">call_end</span><span class="o">-</span><span class="n">call_start</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">wsgiref.simple_server</span> <span class="kn">import</span> <span class="n">make_server</span>
+    <span class="n">server</span> <span class="o">=</span> <span class="n">make_server</span><span class="p">(</span><span class="s">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">7789</span><span class="p">,</span> <span class="n">Application</span><span class="p">([</span><span class="n">HelloWorldService</span><span class="p">]))</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Running this produces:</p>
+<p>Method took [0.000195980072021] - total execution time[0.00652194023132]
+Method took [0.000250101089478] - total execution time[0.00567507743835]
+Method took [0.000144004821777] - total execution time[0.00521206855774]
+Method took [0.000141859054565] - total execution time[0.00512409210205]
+Method took [0.00377607345581] - total execution time[0.00511980056763]
+Method took [0.00118803977966] - total execution time[0.00673604011536]
+Method took [0.000146150588989] - total execution time[0.00157499313354]
+Method took [0.0231170654297] - total execution time[0.0245010852814]
+Method took [0.000166893005371] - total execution time[0.01802110672]</p>
+<p>These may be helpful in finding bottlenecks in process, but this technique can
+also be used to commit/rollback transactions or do setup/teardown operations for
+all methods in a service.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="apache_axis.html" title="Axis Interoperability"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="message_api.html" title="Message API"
+             >previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Aaron Bickell.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
+    </div>
+  </body>
+</html>

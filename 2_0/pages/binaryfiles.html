@@ -1,0 +1,189 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Binary Files &mdash; soaplib v2.0.0beta documentation</title>
+    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="soaplib v2.0.0beta documentation" href="../index.html" />
+    <link rel="next" title="Message API" href="message_api.html" />
+    <link rel="prev" title="User Manager" href="usermanager.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="message_api.html" title="Message API"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="usermanager.html" title="User Manager"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="usermanager.html"
+                        title="previous chapter">User Manager</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="message_api.html"
+                        title="next chapter">Message API</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/pages/binaryfiles.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="binary-files">
+<h1>Binary Files<a class="headerlink" href="#binary-files" title="Permalink to this headline">¶</a></h1>
+<p>In SOAP, the most common way to represent binary data is as a base64-encoded
+string. Soaplib uses the &#8216;Attachment&#8217; serializer to handle all encoding and
+decoding of the binary data, and provieds some useful methods for dealing with
+both in-memory and on-disk binary data.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.model.binary</span> <span class="kn">import</span> <span class="n">Attachment</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span> <span class="k">as</span> <span class="n">et</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Attachment</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s">&quot;this is my binary data&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">et</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">Attachment</span><span class="o">.</span><span class="n">to_parent_element</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="go">&lt;ns0:retval xmlns:ns0=&quot;tns&quot;&gt;bXkgYmluYXJ5IGRhdGE=</span>
+<span class="go">&lt;/ns0:retval&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>If you want to return file with binary data, simply:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.model.binary</span> <span class="kn">import</span> <span class="n">Attachment</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span> <span class="k">as</span> <span class="n">et</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Attachment</span><span class="p">(</span><span class="n">fileName</span><span class="o">=</span><span class="s">&quot;mydata&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">et</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">Attachment</span><span class="o">.</span><span class="n">to_parent_element</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="go">&lt;ns0:retval xmlns=&quot;&quot;&gt;dGhpcyBpcyBteSBiaW5hcnkgZGF0YQ==</span>
+<span class="go">&lt;/ns0:retval&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>An example service for archiving documents:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib.service</span> <span class="kn">import</span> <span class="n">rpc</span><span class="p">,</span> <span class="n">DefinitionBase</span>
+<span class="kn">from</span> <span class="nn">soaplib.model.primitive</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span>
+<span class="kn">from</span> <span class="nn">soaplib.model.clazz</span> <span class="kn">import</span> <span class="n">Array</span>
+<span class="kn">from</span> <span class="nn">soaplib.model.binary</span> <span class="kn">import</span> <span class="n">Attachment</span>
+<span class="kn">from</span> <span class="nn">soaplib.server.wsgi</span> <span class="kn">import</span> <span class="n">Application</span>
+
+<span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">mkstemp</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">class</span> <span class="nc">DocumentArchiver</span><span class="p">(</span><span class="n">DefinitionBase</span><span class="p">):</span>
+
+    <span class="nd">@rpc</span><span class="p">(</span><span class="n">Attachment</span><span class="p">,</span><span class="n">_returns</span><span class="o">=</span><span class="n">String</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">archive_document</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">document</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This method accepts an Attachment object, and returns the filename of the</span>
+<span class="sd">        archived file</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">fd</span><span class="p">,</span><span class="n">fname</span> <span class="o">=</span> <span class="n">mkstemp</span><span class="p">()</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span>
+
+        <span class="n">document</span><span class="o">.</span><span class="n">fileName</span> <span class="o">=</span> <span class="n">fname</span>
+        <span class="n">document</span><span class="o">.</span><span class="n">save_to_file</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">fname</span>
+
+    <span class="nd">@rpc</span><span class="p">(</span><span class="n">String</span><span class="p">,</span><span class="n">_returns</span><span class="o">=</span><span class="n">Attachment</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get_archived_document</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">file_path</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This method loads a document from the specified file path</span>
+<span class="sd">        and returns it.  If the path isn&#39;t found, an exception is</span>
+<span class="sd">        raised.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&quot;File [</span><span class="si">%s</span><span class="s">] not found&quot;</span><span class="o">%</span><span class="n">file_path</span><span class="p">)</span>
+
+        <span class="n">document</span> <span class="o">=</span> <span class="n">Attachment</span><span class="p">(</span><span class="n">fileName</span><span class="o">=</span><span class="n">file_path</span><span class="p">)</span>
+        <span class="c"># the service automatically loads the data from the file.</span>
+        <span class="c"># alternatively, The data could be manually loaded into memory</span>
+        <span class="c"># and loaded into the Attachment like:</span>
+        <span class="c">#   document = Attachment(data=data_from_file)</span>
+        <span class="k">return</span> <span class="n">document</span>
+
+
+
+<span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">wsgiref.simple_server</span> <span class="kn">import</span> <span class="n">make_server</span>
+    <span class="n">server</span> <span class="o">=</span> <span class="n">make_server</span><span class="p">(</span><span class="s">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">7789</span><span class="p">,</span> <span class="n">Application</span><span class="p">([</span><span class="n">DocumentArchiver</span><span class="p">],</span> <span class="s">&#39;tns&#39;</span><span class="p">))</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="message_api.html" title="Message API"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="usermanager.html" title="User Manager"
+             >previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Aaron Bickell.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
+    </div>
+  </body>
+</html>

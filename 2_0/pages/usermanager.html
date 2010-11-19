@@ -1,0 +1,189 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>User Manager &mdash; soaplib v2.0.0beta documentation</title>
+    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="soaplib v2.0.0beta documentation" href="../index.html" />
+    <link rel="next" title="Binary Files" href="binaryfiles.html" />
+    <link rel="prev" title="Hello World" href="helloworld.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="binaryfiles.html" title="Binary Files"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="helloworld.html" title="Hello World"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="helloworld.html"
+                        title="previous chapter">Hello World</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="binaryfiles.html"
+                        title="next chapter">Binary Files</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/pages/usermanager.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="user-manager">
+<h1>User Manager<a class="headerlink" href="#user-manager" title="Permalink to this headline">¶</a></h1>
+<p>Lets try a more complicated example than just strings and integers!
+The following is an extremely simple example using complex, nested data.:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib.server.wsgi</span> <span class="kn">import</span> <span class="n">Application</span>
+<span class="kn">from</span> <span class="nn">soaplib.service</span> <span class="kn">import</span> <span class="n">rpc</span>
+<span class="kn">from</span> <span class="nn">soaplib.service</span> <span class="kn">import</span> <span class="n">DefinitionBase</span>
+<span class="kn">from</span> <span class="nn">soaplib.model.primitive</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span>
+<span class="kn">from</span> <span class="nn">soaplib.model.clazz</span> <span class="kn">import</span> <span class="n">ClassSerializer</span><span class="p">,</span> <span class="n">Array</span>
+
+<span class="n">user_database</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">userid_seq</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">class</span> <span class="nc">Permission</span><span class="p">(</span><span class="n">ClassSerializer</span><span class="p">):</span>
+        <span class="n">application</span> <span class="o">=</span> <span class="n">String</span>
+        <span class="n">feature</span> <span class="o">=</span> <span class="n">String</span>
+
+<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">ClassSerializer</span><span class="p">):</span>
+        <span class="n">userid</span> <span class="o">=</span> <span class="n">Integer</span>
+        <span class="n">username</span> <span class="o">=</span> <span class="n">String</span>
+        <span class="n">firstname</span> <span class="o">=</span> <span class="n">String</span>
+        <span class="n">lastname</span> <span class="o">=</span> <span class="n">String</span>
+        <span class="n">permissions</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="n">Permission</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">UserManager</span><span class="p">(</span><span class="n">DefinitionBase</span><span class="p">):</span>
+        <span class="nd">@rpc</span><span class="p">(</span><span class="n">User</span><span class="p">,</span><span class="n">_returns</span><span class="o">=</span><span class="n">Integer</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">add_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">user</span><span class="p">):</span>
+                <span class="k">global</span> <span class="n">user_database</span>
+                <span class="k">global</span> <span class="n">userid_seq</span>
+                <span class="n">user</span><span class="o">.</span><span class="n">userid</span> <span class="o">=</span> <span class="n">userid_seq</span>
+                <span class="n">userid_seq</span> <span class="o">=</span> <span class="n">userid_seq</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="n">user_database</span><span class="p">[</span><span class="n">user</span><span class="o">.</span><span class="n">userid</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span>
+                <span class="k">return</span> <span class="n">user</span><span class="o">.</span><span class="n">userid</span>
+
+        <span class="nd">@rpc</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span><span class="n">_returns</span><span class="o">=</span><span class="n">User</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">get_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">userid</span><span class="p">):</span>
+                <span class="k">global</span> <span class="n">user_database</span>
+                <span class="k">return</span> <span class="n">user_database</span><span class="p">[</span><span class="n">userid</span><span class="p">]</span>
+
+        <span class="nd">@rpc</span><span class="p">(</span><span class="n">User</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">modify_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">user</span><span class="p">):</span>
+                <span class="k">global</span> <span class="n">user_database</span>
+                <span class="n">user_database</span><span class="p">[</span><span class="n">user</span><span class="o">.</span><span class="n">userid</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span>
+
+        <span class="nd">@rpc</span><span class="p">(</span><span class="n">Integer</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">delete_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">userid</span><span class="p">):</span>
+                <span class="k">global</span> <span class="n">user_database</span>
+                <span class="k">del</span> <span class="n">user_database</span><span class="p">[</span><span class="n">userid</span><span class="p">]</span>
+
+        <span class="nd">@rpc</span><span class="p">(</span><span class="n">_returns</span><span class="o">=</span><span class="n">Array</span><span class="p">(</span><span class="n">User</span><span class="p">))</span>
+        <span class="k">def</span> <span class="nf">list_users</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">global</span> <span class="n">user_database</span>
+                <span class="k">return</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">user_database</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+
+<span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">wsgiref.simple_server</span> <span class="kn">import</span> <span class="n">make_server</span>
+        <span class="n">server</span> <span class="o">=</span> <span class="n">make_server</span><span class="p">(</span><span class="s">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">7789</span><span class="p">,</span> <span class="n">Application</span><span class="p">([</span><span class="n">UserManager</span><span class="p">],</span> <span class="s">&#39;tns&#39;</span><span class="p">))</span>
+        <span class="n">server</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Jumping into what&#8217;s new.:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Permission</span><span class="p">(</span><span class="n">ClassSerializer</span><span class="p">):</span>
+        <span class="n">application</span> <span class="o">=</span> <span class="n">String</span>
+        <span class="n">feature</span> <span class="o">=</span> <span class="n">String</span>
+
+<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">ClassSerializer</span><span class="p">):</span>
+        <span class="n">userid</span> <span class="o">=</span> <span class="n">Integer</span>
+        <span class="n">username</span> <span class="o">=</span> <span class="n">String</span>
+        <span class="n">firstname</span> <span class="o">=</span> <span class="n">String</span>
+        <span class="n">lastname</span> <span class="o">=</span> <span class="n">String</span>
+        <span class="n">permissions</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="n">Permission</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <cite>Permission</cite> and <cite>User</cite> structures in the example are standard python
+objects that extend <cite>ClassSerializer</cite>.  Soaplib uses <cite>ClassSerializer</cite> as a general type that when
+extended will produce complex serializable types that can be used in a soap service.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="binaryfiles.html" title="Binary Files"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="helloworld.html" title="Hello World"
+             >previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Aaron Bickell.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,2203 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Serializer API &mdash; soaplib v1.0.0beta documentation</title>
+    <link rel="stylesheet" href="../static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.0beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="soaplib v1.0.0beta documentation" href="../index.html" />
+    <link rel="next" title="SOAP API" href="soap.html" />
+    <link rel="prev" title="Axis Interoperability" href="apache_axis.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="soap.html" title="SOAP API"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="apache_axis.html" title="Axis Interoperability"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">soaplib v1.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="serializer-api">
+<h1>Serializer API<a class="headerlink" href="#serializer-api" title="Permalink to this headline">¶</a></h1>
+<p>In soaplib, the type are the components responsible for converting indivdual parameters to and from xml, as well
+as supply the information necessary to build the wsdl. Soaplib has many built-in type that give you most of the
+common datatypes generally needed.</p>
+<div class="section" id="module-soaplib.model.base">
+<span id="base"></span><h2>Base<a class="headerlink" href="#module-soaplib.model.base" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="soaplib.model.base.Base">
+<em class="property">class </em><tt class="descclassname">soaplib.model.base.</tt><tt class="descname">Base</tt><a class="headerlink" href="#soaplib.model.base.Base" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="class">
+<dt id="soaplib.model.base.Base.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.base.Base.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.base.Base.Attributes">
+<em class="property">class </em><tt class="descclassname">Base.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.base.Base.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.base.Base.Empty">
+<em class="property">class </em><tt class="descclassname">Base.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.base.Base.Empty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.Base.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">Base.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.base.Base.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add this type to the wsdl.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.Base.customize">
+<em class="property">classmethod </em><tt class="descclassname">Base.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.base.Base.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.Base.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">Base.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.base.Base.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.Base.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">Base.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.base.Base.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.Base.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">Base.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.base.Base.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.Base.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">Base.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.base.Base.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.Base.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">Base.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.base.Base.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.base.Base.is_default">
+<em class="property">static </em><tt class="descclassname">Base.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.base.Base.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.base.Base.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">Base.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.base.Base.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.Base.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">Base.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.base.Base.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.base.Null">
+<em class="property">class </em><tt class="descclassname">soaplib.model.base.</tt><tt class="descname">Null</tt><a class="headerlink" href="#soaplib.model.base.Null" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="class">
+<dt id="soaplib.model.base.Null.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.base.Null.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.base.Null.Attributes">
+<em class="property">class </em><tt class="descclassname">Null.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.base.Null.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.base.Null.Empty">
+<em class="property">class </em><tt class="descclassname">Null.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.base.Null.Empty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.Null.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">Null.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.base.Null.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add this type to the wsdl.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.Null.customize">
+<em class="property">classmethod </em><tt class="descclassname">Null.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.base.Null.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.Null.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">Null.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.base.Null.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.Null.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">Null.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.base.Null.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.Null.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">Null.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.base.Null.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.Null.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">Null.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.base.Null.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.Null.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">Null.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.base.Null.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.base.Null.is_default">
+<em class="property">static </em><tt class="descclassname">Null.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.base.Null.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.base.Null.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">Null.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.base.Null.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.Null.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">Null.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>name='retval'</em><big>)</big><a class="headerlink" href="#soaplib.model.base.Null.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.base.SimpleType">
+<em class="property">class </em><tt class="descclassname">soaplib.model.base.</tt><tt class="descname">SimpleType</tt><a class="headerlink" href="#soaplib.model.base.SimpleType" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="class">
+<dt id="soaplib.model.base.SimpleType.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.base.SimpleType.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.base.SimpleType.Attributes">
+<em class="property">class </em><tt class="descclassname">SimpleType.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.base.SimpleType.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.base.SimpleType.Empty">
+<em class="property">class </em><tt class="descclassname">SimpleType.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.base.SimpleType.Empty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.SimpleType.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">SimpleType.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.base.SimpleType.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.SimpleType.customize">
+<em class="property">classmethod </em><tt class="descclassname">SimpleType.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.base.SimpleType.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.SimpleType.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">SimpleType.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.base.SimpleType.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.SimpleType.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">SimpleType.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.base.SimpleType.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.SimpleType.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">SimpleType.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.base.SimpleType.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.SimpleType.get_restriction_tag">
+<em class="property">classmethod </em><tt class="descclassname">SimpleType.</tt><tt class="descname">get_restriction_tag</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.base.SimpleType.get_restriction_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.SimpleType.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">SimpleType.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.base.SimpleType.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.SimpleType.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">SimpleType.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.base.SimpleType.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.base.SimpleType.is_default">
+<em class="property">static </em><tt class="descclassname">SimpleType.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.base.SimpleType.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.base.SimpleType.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">SimpleType.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.base.SimpleType.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.base.SimpleType.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">SimpleType.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.base.SimpleType.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="soaplib.model.base.nillable_element">
+<tt class="descclassname">soaplib.model.base.</tt><tt class="descname">nillable_element</tt><big>(</big><em>func</em><big>)</big><a class="headerlink" href="#soaplib.model.base.nillable_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="soaplib.model.base.nillable_string">
+<tt class="descclassname">soaplib.model.base.</tt><tt class="descname">nillable_string</tt><big>(</big><em>func</em><big>)</big><a class="headerlink" href="#soaplib.model.base.nillable_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="soaplib.model.base.nillable_value">
+<tt class="descclassname">soaplib.model.base.</tt><tt class="descname">nillable_value</tt><big>(</big><em>func</em><big>)</big><a class="headerlink" href="#soaplib.model.base.nillable_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-soaplib.model.binary">
+<span id="binary"></span><h2>Binary<a class="headerlink" href="#module-soaplib.model.binary" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="soaplib.model.binary.Attachment">
+<em class="property">class </em><tt class="descclassname">soaplib.model.binary.</tt><tt class="descname">Attachment</tt><big>(</big><em>data=None</em>, <em>file_name=None</em><big>)</big><a class="headerlink" href="#soaplib.model.binary.Attachment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#soaplib.model.base.Base" title="soaplib.model.base.Base"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.Base</span></tt></a></p>
+<dl class="class">
+<dt id="soaplib.model.binary.Attachment.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.binary.Attachment.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.binary.Attachment.Attributes">
+<em class="property">class </em><tt class="descclassname">Attachment.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.binary.Attachment.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.binary.Attachment.Empty">
+<em class="property">class </em><tt class="descclassname">Attachment.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.binary.Attachment.Empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.binary.Attachment.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">Attachment.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.binary.Attachment.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add this type to the wsdl.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.binary.Attachment.customize">
+<em class="property">classmethod </em><tt class="descclassname">Attachment.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.binary.Attachment.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.binary.Attachment.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">Attachment.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.binary.Attachment.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.binary.Attachment.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">Attachment.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.binary.Attachment.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.binary.Attachment.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">Attachment.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.binary.Attachment.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.binary.Attachment.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">Attachment.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.binary.Attachment.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.binary.Attachment.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">Attachment.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.binary.Attachment.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.binary.Attachment.is_default">
+<em class="property">static </em><tt class="descclassname">Attachment.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.binary.Attachment.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="soaplib.model.binary.Attachment.load_from_file">
+<tt class="descclassname">Attachment.</tt><tt class="descname">load_from_file</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.binary.Attachment.load_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method loads the data from the specified file, and does
+no encoding/decoding of the data</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.binary.Attachment.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">Attachment.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.binary.Attachment.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="soaplib.model.binary.Attachment.save_to_file">
+<tt class="descclassname">Attachment.</tt><tt class="descname">save_to_file</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.binary.Attachment.save_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method writes the data to the specified file.  This method
+assumes that the file_name is the full path to the file to be written.
+This method also assumes that self.data is the base64 decoded data,
+and will do no additional transformations on it, simply write it to
+disk.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.binary.Attachment.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">Attachment.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.binary.Attachment.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-soaplib.model.clazz">
+<span id="clazz"></span><h2>Clazz<a class="headerlink" href="#module-soaplib.model.clazz" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="soaplib.model.clazz.Array">
+<em class="property">class </em><tt class="descclassname">soaplib.model.clazz.</tt><tt class="descname">Array</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.Array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#soaplib.model.clazz.ClassSerializer" title="soaplib.model.clazz.ClassSerializer"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.clazz.ClassSerializer</span></tt></a></p>
+<dl class="class">
+<dt id="soaplib.model.clazz.Array.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.clazz.Array.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.clazz.Array.Attributes">
+<em class="property">class </em><tt class="descclassname">Array.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.clazz.Array.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.clazz.Array.Empty">
+<em class="property">class </em><tt class="descclassname">Array.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.clazz.Array.Empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.Array.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">Array.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.Array.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.Array.customize">
+<em class="property">classmethod </em><tt class="descclassname">Array.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.Array.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.Array.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">Array.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.Array.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.Array.get_deserialization_instance">
+<em class="property">classmethod </em><tt class="descclassname">Array.</tt><tt class="descname">get_deserialization_instance</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.clazz.Array.get_deserialization_instance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.Array.get_members">
+<em class="property">classmethod </em><tt class="descclassname">Array.</tt><tt class="descname">get_members</tt><big>(</big><em>inst</em>, <em>parent</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.Array.get_members" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.Array.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">Array.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.clazz.Array.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.Array.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">Array.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.Array.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.Array.get_serialization_instance">
+<em class="property">classmethod </em><tt class="descclassname">Array.</tt><tt class="descname">get_serialization_instance</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.Array.get_serialization_instance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.Array.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">Array.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.clazz.Array.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.Array.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">Array.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.Array.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.clazz.Array.is_default">
+<em class="property">static </em><tt class="descclassname">Array.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.clazz.Array.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.clazz.Array.produce">
+<em class="property">static </em><tt class="descclassname">Array.</tt><tt class="descname">produce</tt><big>(</big><em>namespace</em>, <em>type_name</em>, <em>members</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.Array.produce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lets you create a class programmatically.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.clazz.Array.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">Array.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.Array.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.Array.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">Array.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.Array.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.clazz.ClassSerializer">
+<em class="property">class </em><tt class="descclassname">soaplib.model.clazz.</tt><tt class="descname">ClassSerializer</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#soaplib.model.clazz.ClassSerializerBase" title="soaplib.model.clazz.ClassSerializerBase"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.clazz.ClassSerializerBase</span></tt></a></p>
+<p>The general complexType factory. The __call__ method of this class will
+return instances, contrary to primivites where the same call will result in
+customized duplicates of the original class definition.
+Those who&#8217;d like to customize the class should use the customize method.
+(see soaplib.model.base.Base)</p>
+<dl class="class">
+<dt id="soaplib.model.clazz.ClassSerializer.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.clazz.ClassSerializer.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.clazz.ClassSerializer.Attributes">
+<em class="property">class </em><tt class="descclassname">ClassSerializer.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.clazz.ClassSerializer.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.clazz.ClassSerializer.Empty">
+<em class="property">class </em><tt class="descclassname">ClassSerializer.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.clazz.ClassSerializer.Empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.ClassSerializer.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">ClassSerializer.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializer.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.ClassSerializer.customize">
+<em class="property">classmethod </em><tt class="descclassname">ClassSerializer.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializer.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.ClassSerializer.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">ClassSerializer.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializer.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.ClassSerializer.get_deserialization_instance">
+<em class="property">classmethod </em><tt class="descclassname">ClassSerializer.</tt><tt class="descname">get_deserialization_instance</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializer.get_deserialization_instance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.ClassSerializer.get_members">
+<em class="property">classmethod </em><tt class="descclassname">ClassSerializer.</tt><tt class="descname">get_members</tt><big>(</big><em>inst</em>, <em>parent</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializer.get_members" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.ClassSerializer.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">ClassSerializer.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializer.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.ClassSerializer.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">ClassSerializer.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializer.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.ClassSerializer.get_serialization_instance">
+<em class="property">classmethod </em><tt class="descclassname">ClassSerializer.</tt><tt class="descname">get_serialization_instance</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializer.get_serialization_instance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.ClassSerializer.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">ClassSerializer.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializer.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.ClassSerializer.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">ClassSerializer.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializer.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.clazz.ClassSerializer.is_default">
+<em class="property">static </em><tt class="descclassname">ClassSerializer.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializer.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.clazz.ClassSerializer.produce">
+<em class="property">static </em><tt class="descclassname">ClassSerializer.</tt><tt class="descname">produce</tt><big>(</big><em>namespace</em>, <em>type_name</em>, <em>members</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializer.produce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lets you create a class programmatically.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.clazz.ClassSerializer.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">ClassSerializer.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializer.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.ClassSerializer.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">ClassSerializer.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializer.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.clazz.ClassSerializerBase">
+<em class="property">class </em><tt class="descclassname">soaplib.model.clazz.</tt><tt class="descname">ClassSerializerBase</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializerBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#soaplib.model.base.Base" title="soaplib.model.base.Base"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.Base</span></tt></a></p>
+<p>If you want to make a better class type, this is what you should
+inherit from</p>
+<dl class="class">
+<dt id="soaplib.model.clazz.ClassSerializerBase.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.clazz.ClassSerializerBase.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.clazz.ClassSerializerBase.Attributes">
+<em class="property">class </em><tt class="descclassname">ClassSerializerBase.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.clazz.ClassSerializerBase.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.clazz.ClassSerializerBase.Empty">
+<em class="property">class </em><tt class="descclassname">ClassSerializerBase.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.clazz.ClassSerializerBase.Empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.ClassSerializerBase.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">ClassSerializerBase.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializerBase.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.ClassSerializerBase.customize">
+<em class="property">classmethod </em><tt class="descclassname">ClassSerializerBase.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializerBase.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.ClassSerializerBase.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">ClassSerializerBase.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializerBase.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.ClassSerializerBase.get_deserialization_instance">
+<em class="property">classmethod </em><tt class="descclassname">ClassSerializerBase.</tt><tt class="descname">get_deserialization_instance</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializerBase.get_deserialization_instance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.ClassSerializerBase.get_members">
+<em class="property">classmethod </em><tt class="descclassname">ClassSerializerBase.</tt><tt class="descname">get_members</tt><big>(</big><em>inst</em>, <em>parent</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializerBase.get_members" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.ClassSerializerBase.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">ClassSerializerBase.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializerBase.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.ClassSerializerBase.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">ClassSerializerBase.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializerBase.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.ClassSerializerBase.get_serialization_instance">
+<em class="property">classmethod </em><tt class="descclassname">ClassSerializerBase.</tt><tt class="descname">get_serialization_instance</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializerBase.get_serialization_instance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.ClassSerializerBase.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">ClassSerializerBase.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializerBase.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.ClassSerializerBase.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">ClassSerializerBase.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializerBase.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.clazz.ClassSerializerBase.is_default">
+<em class="property">static </em><tt class="descclassname">ClassSerializerBase.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializerBase.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.clazz.ClassSerializerBase.produce">
+<em class="property">static </em><tt class="descclassname">ClassSerializerBase.</tt><tt class="descname">produce</tt><big>(</big><em>namespace</em>, <em>type_name</em>, <em>members</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializerBase.produce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lets you create a class programmatically.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.clazz.ClassSerializerBase.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">ClassSerializerBase.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializerBase.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.clazz.ClassSerializerBase.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">ClassSerializerBase.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.clazz.ClassSerializerBase.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.clazz.ClassSerializerMeta">
+<em class="property">class </em><tt class="descclassname">soaplib.model.clazz.</tt><tt class="descname">ClassSerializerMeta</tt><a class="headerlink" href="#soaplib.model.clazz.ClassSerializerMeta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">type</span></tt></p>
+<p>This is the metaclass that populates ClassSerializer instances with
+the appropriate datatypes for (de)serialization.</p>
+<dl class="attribute">
+<dt id="soaplib.model.clazz.ClassSerializerMeta.mro">
+<tt class="descname">mro</tt><a class="headerlink" href="#soaplib.model.clazz.ClassSerializerMeta.mro" title="Permalink to this definition">¶</a></dt>
+<dd><p>mro() -&gt; list
+return a type&#8217;s method resolution order</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-soaplib.model.enum">
+<span id="enum"></span><h2>Enum<a class="headerlink" href="#module-soaplib.model.enum" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="soaplib.model.enum.Enum">
+<tt class="descclassname">soaplib.model.enum.</tt><tt class="descname">Enum</tt><big>(</big><em>*values</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.enum.Enum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.enum.EnumBase">
+<em class="property">class </em><tt class="descclassname">soaplib.model.enum.</tt><tt class="descname">EnumBase</tt><a class="headerlink" href="#soaplib.model.enum.EnumBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#soaplib.model.base.SimpleType" title="soaplib.model.base.SimpleType"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.SimpleType</span></tt></a></p>
+<dl class="class">
+<dt id="soaplib.model.enum.EnumBase.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.enum.EnumBase.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.enum.EnumBase.Attributes">
+<em class="property">class </em><tt class="descclassname">EnumBase.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.enum.EnumBase.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.Attributes</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.enum.EnumBase.Empty">
+<em class="property">class </em><tt class="descclassname">EnumBase.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.enum.EnumBase.Empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.enum.EnumBase.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">EnumBase.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.enum.EnumBase.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.enum.EnumBase.customize">
+<em class="property">classmethod </em><tt class="descclassname">EnumBase.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.enum.EnumBase.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.enum.EnumBase.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">EnumBase.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.enum.EnumBase.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.enum.EnumBase.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">EnumBase.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.enum.EnumBase.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.enum.EnumBase.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">EnumBase.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.enum.EnumBase.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.enum.EnumBase.get_restriction_tag">
+<em class="property">classmethod </em><tt class="descclassname">EnumBase.</tt><tt class="descname">get_restriction_tag</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.enum.EnumBase.get_restriction_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.enum.EnumBase.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">EnumBase.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.enum.EnumBase.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.enum.EnumBase.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">EnumBase.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.enum.EnumBase.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.enum.EnumBase.is_default">
+<em class="property">static </em><tt class="descclassname">EnumBase.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.enum.EnumBase.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.enum.EnumBase.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">EnumBase.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.enum.EnumBase.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.enum.EnumBase.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">EnumBase.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.enum.EnumBase.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-soaplib.model.exception">
+<span id="exception"></span><h2>Exception<a class="headerlink" href="#module-soaplib.model.exception" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="soaplib.model.exception.Fault">
+<em class="property">exception </em><tt class="descclassname">soaplib.model.exception.</tt><tt class="descname">Fault</tt><big>(</big><em>faultcode='Server'</em>, <em>faultstring=''</em>, <em>faultactor=''</em>, <em>detail=None</em><big>)</big><a class="headerlink" href="#soaplib.model.exception.Fault" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></tt>, <a class="reference internal" href="#soaplib.model.base.Base" title="soaplib.model.base.Base"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.Base</span></tt></a></p>
+<dl class="class">
+<dt id="soaplib.model.exception.Fault.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.exception.Fault.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.exception.Fault.Attributes">
+<em class="property">class </em><tt class="descclassname">Fault.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.exception.Fault.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.exception.Fault.Empty">
+<em class="property">class </em><tt class="descclassname">Fault.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.exception.Fault.Empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.exception.Fault.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">Fault.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_dict</em><big>)</big><a class="headerlink" href="#soaplib.model.exception.Fault.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="soaplib.model.exception.Fault.args">
+<tt class="descclassname">Fault.</tt><tt class="descname">args</tt><a class="headerlink" href="#soaplib.model.exception.Fault.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.exception.Fault.customize">
+<em class="property">classmethod </em><tt class="descclassname">Fault.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.exception.Fault.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.exception.Fault.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">Fault.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.exception.Fault.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.exception.Fault.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">Fault.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.exception.Fault.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.exception.Fault.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">Fault.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.exception.Fault.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.exception.Fault.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">Fault.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.exception.Fault.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.exception.Fault.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">Fault.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.exception.Fault.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.exception.Fault.is_default">
+<em class="property">static </em><tt class="descclassname">Fault.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.exception.Fault.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="soaplib.model.exception.Fault.message">
+<tt class="descclassname">Fault.</tt><tt class="descname">message</tt><a class="headerlink" href="#soaplib.model.exception.Fault.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.exception.Fault.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">Fault.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.exception.Fault.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.exception.Fault.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">Fault.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>name=None</em><big>)</big><a class="headerlink" href="#soaplib.model.exception.Fault.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-soaplib.model.primitive">
+<span id="primitive"></span><h2>Primitive<a class="headerlink" href="#module-soaplib.model.primitive" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="soaplib.model.primitive.Any">
+<em class="property">class </em><tt class="descclassname">soaplib.model.primitive.</tt><tt class="descname">Any</tt><a class="headerlink" href="#soaplib.model.primitive.Any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#soaplib.model.base.SimpleType" title="soaplib.model.base.SimpleType"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.SimpleType</span></tt></a></p>
+<dl class="class">
+<dt id="soaplib.model.primitive.Any.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.primitive.Any.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Any.Attributes">
+<em class="property">class </em><tt class="descclassname">Any.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.primitive.Any.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.Attributes</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Any.Empty">
+<em class="property">class </em><tt class="descclassname">Any.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.primitive.Any.Empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Any.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">Any.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Any.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Any.customize">
+<em class="property">classmethod </em><tt class="descclassname">Any.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Any.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Any.from_string">
+<em class="property">classmethod </em><tt class="descclassname">Any.</tt><tt class="descname">from_string</tt><big>(</big><em>string</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Any.from_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Any.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">Any.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Any.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Any.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">Any.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Any.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Any.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">Any.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Any.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Any.get_restriction_tag">
+<em class="property">classmethod </em><tt class="descclassname">Any.</tt><tt class="descname">get_restriction_tag</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Any.get_restriction_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Any.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">Any.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Any.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Any.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">Any.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Any.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.Any.is_default">
+<em class="property">static </em><tt class="descclassname">Any.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Any.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.Any.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">Any.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Any.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Any.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">Any.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Any.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.AnyAsDict">
+<em class="property">class </em><tt class="descclassname">soaplib.model.primitive.</tt><tt class="descname">AnyAsDict</tt><a class="headerlink" href="#soaplib.model.primitive.AnyAsDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#soaplib.model.primitive.Any" title="soaplib.model.primitive.Any"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.primitive.Any</span></tt></a></p>
+<dl class="class">
+<dt id="soaplib.model.primitive.AnyAsDict.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.primitive.AnyAsDict.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.AnyAsDict.Attributes">
+<em class="property">class </em><tt class="descclassname">AnyAsDict.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.primitive.AnyAsDict.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.Attributes</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.AnyAsDict.Empty">
+<em class="property">class </em><tt class="descclassname">AnyAsDict.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.primitive.AnyAsDict.Empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.AnyAsDict.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">AnyAsDict.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyAsDict.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.AnyAsDict.customize">
+<em class="property">classmethod </em><tt class="descclassname">AnyAsDict.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyAsDict.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.AnyAsDict.from_string">
+<em class="property">classmethod </em><tt class="descclassname">AnyAsDict.</tt><tt class="descname">from_string</tt><big>(</big><em>string</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyAsDict.from_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.AnyAsDict.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">AnyAsDict.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyAsDict.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.AnyAsDict.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">AnyAsDict.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyAsDict.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.AnyAsDict.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">AnyAsDict.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyAsDict.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.AnyAsDict.get_restriction_tag">
+<em class="property">classmethod </em><tt class="descclassname">AnyAsDict.</tt><tt class="descname">get_restriction_tag</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyAsDict.get_restriction_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.AnyAsDict.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">AnyAsDict.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyAsDict.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.AnyAsDict.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">AnyAsDict.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyAsDict.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.AnyAsDict.is_default">
+<em class="property">static </em><tt class="descclassname">AnyAsDict.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyAsDict.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.AnyAsDict.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">AnyAsDict.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyAsDict.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.AnyAsDict.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">AnyAsDict.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyAsDict.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.AnyUri">
+<em class="property">class </em><tt class="descclassname">soaplib.model.primitive.</tt><tt class="descname">AnyUri</tt><a class="headerlink" href="#soaplib.model.primitive.AnyUri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#soaplib.model.primitive.String" title="soaplib.model.primitive.String"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.primitive.String</span></tt></a></p>
+<dl class="class">
+<dt id="soaplib.model.primitive.AnyUri.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.primitive.AnyUri.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.AnyUri.Attributes">
+<em class="property">class </em><tt class="descclassname">AnyUri.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.primitive.AnyUri.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.Attributes</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.AnyUri.Empty">
+<em class="property">class </em><tt class="descclassname">AnyUri.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.primitive.AnyUri.Empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.AnyUri.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">AnyUri.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyUri.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.AnyUri.customize">
+<em class="property">classmethod </em><tt class="descclassname">AnyUri.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyUri.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.AnyUri.from_string">
+<em class="property">classmethod </em><tt class="descclassname">AnyUri.</tt><tt class="descname">from_string</tt><big>(</big><em>string</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyUri.from_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.AnyUri.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">AnyUri.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyUri.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.AnyUri.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">AnyUri.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyUri.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.AnyUri.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">AnyUri.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyUri.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.AnyUri.get_restriction_tag">
+<em class="property">classmethod </em><tt class="descclassname">AnyUri.</tt><tt class="descname">get_restriction_tag</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyUri.get_restriction_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.AnyUri.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">AnyUri.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyUri.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.AnyUri.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">AnyUri.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyUri.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.AnyUri.is_default">
+<em class="property">static </em><tt class="descclassname">AnyUri.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyUri.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.AnyUri.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">AnyUri.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyUri.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.AnyUri.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">AnyUri.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.AnyUri.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Boolean">
+<em class="property">class </em><tt class="descclassname">soaplib.model.primitive.</tt><tt class="descname">Boolean</tt><a class="headerlink" href="#soaplib.model.primitive.Boolean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#soaplib.model.base.SimpleType" title="soaplib.model.base.SimpleType"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.SimpleType</span></tt></a></p>
+<dl class="class">
+<dt id="soaplib.model.primitive.Boolean.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.primitive.Boolean.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Boolean.Attributes">
+<em class="property">class </em><tt class="descclassname">Boolean.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.primitive.Boolean.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.Attributes</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Boolean.Empty">
+<em class="property">class </em><tt class="descclassname">Boolean.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.primitive.Boolean.Empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Boolean.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">Boolean.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Boolean.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Boolean.customize">
+<em class="property">classmethod </em><tt class="descclassname">Boolean.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Boolean.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Boolean.from_string">
+<em class="property">classmethod </em><tt class="descclassname">Boolean.</tt><tt class="descname">from_string</tt><big>(</big><em>string</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Boolean.from_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Boolean.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">Boolean.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Boolean.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Boolean.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">Boolean.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Boolean.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Boolean.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">Boolean.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Boolean.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Boolean.get_restriction_tag">
+<em class="property">classmethod </em><tt class="descclassname">Boolean.</tt><tt class="descname">get_restriction_tag</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Boolean.get_restriction_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Boolean.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">Boolean.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Boolean.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Boolean.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">Boolean.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Boolean.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.Boolean.is_default">
+<em class="property">static </em><tt class="descclassname">Boolean.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Boolean.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.Boolean.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">Boolean.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Boolean.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Boolean.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">Boolean.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Boolean.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Date">
+<em class="property">class </em><tt class="descclassname">soaplib.model.primitive.</tt><tt class="descname">Date</tt><a class="headerlink" href="#soaplib.model.primitive.Date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#soaplib.model.base.SimpleType" title="soaplib.model.base.SimpleType"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.SimpleType</span></tt></a></p>
+<dl class="class">
+<dt id="soaplib.model.primitive.Date.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.primitive.Date.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Date.Attributes">
+<em class="property">class </em><tt class="descclassname">Date.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.primitive.Date.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.Attributes</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Date.Empty">
+<em class="property">class </em><tt class="descclassname">Date.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.primitive.Date.Empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Date.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">Date.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Date.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Date.customize">
+<em class="property">classmethod </em><tt class="descclassname">Date.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Date.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Date.from_string">
+<em class="property">classmethod </em><tt class="descclassname">Date.</tt><tt class="descname">from_string</tt><big>(</big><em>string</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Date.from_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Date.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">Date.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Date.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Date.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">Date.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Date.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Date.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">Date.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Date.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Date.get_restriction_tag">
+<em class="property">classmethod </em><tt class="descclassname">Date.</tt><tt class="descname">get_restriction_tag</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Date.get_restriction_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Date.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">Date.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Date.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Date.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">Date.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Date.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.Date.is_default">
+<em class="property">static </em><tt class="descclassname">Date.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Date.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.Date.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">Date.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Date.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Date.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">Date.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Date.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.DateTime">
+<em class="property">class </em><tt class="descclassname">soaplib.model.primitive.</tt><tt class="descname">DateTime</tt><a class="headerlink" href="#soaplib.model.primitive.DateTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#soaplib.model.base.SimpleType" title="soaplib.model.base.SimpleType"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.SimpleType</span></tt></a></p>
+<dl class="class">
+<dt id="soaplib.model.primitive.DateTime.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.primitive.DateTime.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.DateTime.Attributes">
+<em class="property">class </em><tt class="descclassname">DateTime.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.primitive.DateTime.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.Attributes</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.DateTime.Empty">
+<em class="property">class </em><tt class="descclassname">DateTime.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.primitive.DateTime.Empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.DateTime.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">DateTime.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.DateTime.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.DateTime.customize">
+<em class="property">classmethod </em><tt class="descclassname">DateTime.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.DateTime.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.DateTime.from_string">
+<em class="property">classmethod </em><tt class="descclassname">DateTime.</tt><tt class="descname">from_string</tt><big>(</big><em>string</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.DateTime.from_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.DateTime.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">DateTime.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.DateTime.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.DateTime.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">DateTime.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.DateTime.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.DateTime.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">DateTime.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.DateTime.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.DateTime.get_restriction_tag">
+<em class="property">classmethod </em><tt class="descclassname">DateTime.</tt><tt class="descname">get_restriction_tag</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.DateTime.get_restriction_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.DateTime.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">DateTime.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.DateTime.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.DateTime.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">DateTime.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.DateTime.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.DateTime.is_default">
+<em class="property">static </em><tt class="descclassname">DateTime.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.DateTime.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.DateTime.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">DateTime.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.DateTime.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.DateTime.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">DateTime.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.DateTime.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Decimal">
+<em class="property">class </em><tt class="descclassname">soaplib.model.primitive.</tt><tt class="descname">Decimal</tt><a class="headerlink" href="#soaplib.model.primitive.Decimal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#soaplib.model.base.SimpleType" title="soaplib.model.base.SimpleType"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.SimpleType</span></tt></a></p>
+<dl class="class">
+<dt id="soaplib.model.primitive.Decimal.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.primitive.Decimal.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Decimal.Attributes">
+<em class="property">class </em><tt class="descclassname">Decimal.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.primitive.Decimal.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.Attributes</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Decimal.Empty">
+<em class="property">class </em><tt class="descclassname">Decimal.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.primitive.Decimal.Empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Decimal.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">Decimal.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Decimal.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Decimal.customize">
+<em class="property">classmethod </em><tt class="descclassname">Decimal.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Decimal.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Decimal.from_string">
+<em class="property">classmethod </em><tt class="descclassname">Decimal.</tt><tt class="descname">from_string</tt><big>(</big><em>string</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Decimal.from_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Decimal.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">Decimal.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Decimal.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Decimal.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">Decimal.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Decimal.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Decimal.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">Decimal.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Decimal.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Decimal.get_restriction_tag">
+<em class="property">classmethod </em><tt class="descclassname">Decimal.</tt><tt class="descname">get_restriction_tag</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Decimal.get_restriction_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Decimal.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">Decimal.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Decimal.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Decimal.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">Decimal.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Decimal.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.Decimal.is_default">
+<em class="property">static </em><tt class="descclassname">Decimal.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Decimal.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.Decimal.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">Decimal.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Decimal.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Decimal.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">Decimal.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Decimal.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Double">
+<em class="property">class </em><tt class="descclassname">soaplib.model.primitive.</tt><tt class="descname">Double</tt><a class="headerlink" href="#soaplib.model.primitive.Double" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#soaplib.model.base.SimpleType" title="soaplib.model.base.SimpleType"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.SimpleType</span></tt></a></p>
+<dl class="class">
+<dt id="soaplib.model.primitive.Double.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.primitive.Double.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Double.Attributes">
+<em class="property">class </em><tt class="descclassname">Double.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.primitive.Double.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.Attributes</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Double.Empty">
+<em class="property">class </em><tt class="descclassname">Double.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.primitive.Double.Empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Double.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">Double.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Double.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Double.customize">
+<em class="property">classmethod </em><tt class="descclassname">Double.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Double.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Double.from_string">
+<em class="property">classmethod </em><tt class="descclassname">Double.</tt><tt class="descname">from_string</tt><big>(</big><em>string</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Double.from_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Double.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">Double.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Double.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Double.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">Double.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Double.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Double.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">Double.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Double.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Double.get_restriction_tag">
+<em class="property">classmethod </em><tt class="descclassname">Double.</tt><tt class="descname">get_restriction_tag</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Double.get_restriction_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Double.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">Double.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Double.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Double.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">Double.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Double.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.Double.is_default">
+<em class="property">static </em><tt class="descclassname">Double.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Double.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.Double.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">Double.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Double.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Double.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">Double.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Double.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Duration">
+<em class="property">class </em><tt class="descclassname">soaplib.model.primitive.</tt><tt class="descname">Duration</tt><a class="headerlink" href="#soaplib.model.primitive.Duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#soaplib.model.base.SimpleType" title="soaplib.model.base.SimpleType"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.SimpleType</span></tt></a></p>
+<dl class="class">
+<dt id="soaplib.model.primitive.Duration.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.primitive.Duration.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Duration.Attributes">
+<em class="property">class </em><tt class="descclassname">Duration.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.primitive.Duration.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.Attributes</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Duration.Empty">
+<em class="property">class </em><tt class="descclassname">Duration.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.primitive.Duration.Empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Duration.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">Duration.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Duration.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Duration.customize">
+<em class="property">classmethod </em><tt class="descclassname">Duration.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Duration.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Duration.from_string">
+<em class="property">classmethod </em><tt class="descclassname">Duration.</tt><tt class="descname">from_string</tt><big>(</big><em>string</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Duration.from_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Duration.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">Duration.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Duration.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Duration.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">Duration.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Duration.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Duration.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">Duration.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Duration.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Duration.get_restriction_tag">
+<em class="property">classmethod </em><tt class="descclassname">Duration.</tt><tt class="descname">get_restriction_tag</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Duration.get_restriction_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Duration.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">Duration.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Duration.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Duration.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">Duration.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Duration.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.Duration.is_default">
+<em class="property">static </em><tt class="descclassname">Duration.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Duration.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.Duration.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">Duration.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Duration.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Duration.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">Duration.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Duration.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Float">
+<em class="property">class </em><tt class="descclassname">soaplib.model.primitive.</tt><tt class="descname">Float</tt><a class="headerlink" href="#soaplib.model.primitive.Float" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#soaplib.model.primitive.Double" title="soaplib.model.primitive.Double"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.primitive.Double</span></tt></a></p>
+<dl class="class">
+<dt id="soaplib.model.primitive.Float.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.primitive.Float.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Float.Attributes">
+<em class="property">class </em><tt class="descclassname">Float.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.primitive.Float.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.Attributes</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Float.Empty">
+<em class="property">class </em><tt class="descclassname">Float.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.primitive.Float.Empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Float.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">Float.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Float.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Float.customize">
+<em class="property">classmethod </em><tt class="descclassname">Float.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Float.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Float.from_string">
+<em class="property">classmethod </em><tt class="descclassname">Float.</tt><tt class="descname">from_string</tt><big>(</big><em>string</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Float.from_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Float.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">Float.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Float.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Float.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">Float.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Float.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Float.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">Float.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Float.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Float.get_restriction_tag">
+<em class="property">classmethod </em><tt class="descclassname">Float.</tt><tt class="descname">get_restriction_tag</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Float.get_restriction_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Float.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">Float.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Float.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Float.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">Float.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Float.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.Float.is_default">
+<em class="property">static </em><tt class="descclassname">Float.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Float.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.Float.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">Float.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Float.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Float.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">Float.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Float.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Integer">
+<em class="property">class </em><tt class="descclassname">soaplib.model.primitive.</tt><tt class="descname">Integer</tt><a class="headerlink" href="#soaplib.model.primitive.Integer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#soaplib.model.primitive.Decimal" title="soaplib.model.primitive.Decimal"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.primitive.Decimal</span></tt></a></p>
+<dl class="class">
+<dt id="soaplib.model.primitive.Integer.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.primitive.Integer.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Integer.Attributes">
+<em class="property">class </em><tt class="descclassname">Integer.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.primitive.Integer.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.Attributes</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Integer.Empty">
+<em class="property">class </em><tt class="descclassname">Integer.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.primitive.Integer.Empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Integer.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">Integer.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Integer.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Integer.customize">
+<em class="property">classmethod </em><tt class="descclassname">Integer.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Integer.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Integer.from_string">
+<em class="property">classmethod </em><tt class="descclassname">Integer.</tt><tt class="descname">from_string</tt><big>(</big><em>string</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Integer.from_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Integer.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">Integer.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Integer.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Integer.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">Integer.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Integer.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Integer.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">Integer.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Integer.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Integer.get_restriction_tag">
+<em class="property">classmethod </em><tt class="descclassname">Integer.</tt><tt class="descname">get_restriction_tag</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Integer.get_restriction_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Integer.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">Integer.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Integer.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Integer.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">Integer.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Integer.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.Integer.is_default">
+<em class="property">static </em><tt class="descclassname">Integer.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Integer.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.Integer.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">Integer.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Integer.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Integer.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">Integer.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Integer.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Mandatory">
+<em class="property">class </em><tt class="descclassname">soaplib.model.primitive.</tt><tt class="descname">Mandatory</tt><a class="headerlink" href="#soaplib.model.primitive.Mandatory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dl class="class">
+<dt id="soaplib.model.primitive.Mandatory.Integer">
+<em class="property">class </em><tt class="descname">Integer</tt><a class="headerlink" href="#soaplib.model.primitive.Mandatory.Integer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#soaplib.model.primitive.Decimal" title="soaplib.model.primitive.Decimal"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.primitive.Decimal</span></tt></a></p>
+<dl class="class">
+<dt id="soaplib.model.primitive.Mandatory.Integer.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.primitive.Mandatory.Integer.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.Annotations</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Mandatory.Integer.Attributes">
+<em class="property">class </em><tt class="descclassname">Mandatory.Integer.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.primitive.Mandatory.Integer.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.Attributes</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Mandatory.Integer.Empty">
+<em class="property">class </em><tt class="descclassname">Mandatory.Integer.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.primitive.Mandatory.Integer.Empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Mandatory.Integer.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">Mandatory.Integer.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.Integer.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Mandatory.Integer.customize">
+<em class="property">classmethod </em><tt class="descclassname">Mandatory.Integer.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.Integer.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Mandatory.Integer.from_string">
+<em class="property">classmethod </em><tt class="descclassname">Mandatory.Integer.</tt><tt class="descname">from_string</tt><big>(</big><em>string</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.Integer.from_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Mandatory.Integer.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">Mandatory.Integer.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.Integer.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Mandatory.Integer.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">Mandatory.Integer.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.Integer.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Mandatory.Integer.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">Mandatory.Integer.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.Integer.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Mandatory.Integer.get_restriction_tag">
+<em class="property">classmethod </em><tt class="descclassname">Mandatory.Integer.</tt><tt class="descname">get_restriction_tag</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.Integer.get_restriction_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Mandatory.Integer.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">Mandatory.Integer.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.Integer.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Mandatory.Integer.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">Mandatory.Integer.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.Integer.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.Mandatory.Integer.is_default">
+<em class="property">static </em><tt class="descclassname">Mandatory.Integer.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.Integer.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.Mandatory.Integer.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">Mandatory.Integer.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.Integer.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Mandatory.Integer.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">Mandatory.Integer.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.Integer.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Mandatory.String">
+<em class="property">class </em><tt class="descclassname">Mandatory.</tt><tt class="descname">String</tt><a class="headerlink" href="#soaplib.model.primitive.Mandatory.String" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#soaplib.model.base.SimpleType" title="soaplib.model.base.SimpleType"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.SimpleType</span></tt></a></p>
+<dl class="class">
+<dt id="soaplib.model.primitive.Mandatory.String.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.primitive.Mandatory.String.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.Annotations</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Mandatory.String.Attributes">
+<em class="property">class </em><tt class="descclassname">Mandatory.String.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.primitive.Mandatory.String.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.primitive.Attributes</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.Mandatory.String.Empty">
+<em class="property">class </em><tt class="descclassname">Mandatory.String.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.primitive.Mandatory.String.Empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Mandatory.String.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">Mandatory.String.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.String.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Mandatory.String.customize">
+<em class="property">classmethod </em><tt class="descclassname">Mandatory.String.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.String.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Mandatory.String.from_string">
+<em class="property">classmethod </em><tt class="descclassname">Mandatory.String.</tt><tt class="descname">from_string</tt><big>(</big><em>string</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.String.from_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Mandatory.String.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">Mandatory.String.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.String.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Mandatory.String.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">Mandatory.String.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.String.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Mandatory.String.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">Mandatory.String.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.String.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Mandatory.String.get_restriction_tag">
+<em class="property">classmethod </em><tt class="descclassname">Mandatory.String.</tt><tt class="descname">get_restriction_tag</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.String.get_restriction_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Mandatory.String.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">Mandatory.String.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.String.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Mandatory.String.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">Mandatory.String.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.String.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.Mandatory.String.is_default">
+<em class="property">static </em><tt class="descclassname">Mandatory.String.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.String.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.Mandatory.String.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">Mandatory.String.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.String.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.Mandatory.String.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">Mandatory.String.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.Mandatory.String.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.String">
+<em class="property">class </em><tt class="descclassname">soaplib.model.primitive.</tt><tt class="descname">String</tt><a class="headerlink" href="#soaplib.model.primitive.String" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#soaplib.model.base.SimpleType" title="soaplib.model.base.SimpleType"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.SimpleType</span></tt></a></p>
+<dl class="class">
+<dt id="soaplib.model.primitive.String.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.model.primitive.String.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.String.Attributes">
+<em class="property">class </em><tt class="descclassname">String.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.model.primitive.String.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.base.Attributes</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="soaplib.model.primitive.String.Empty">
+<em class="property">class </em><tt class="descclassname">String.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.model.primitive.String.Empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.String.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">String.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.String.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.String.customize">
+<em class="property">classmethod </em><tt class="descclassname">String.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.String.customize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function duplicates and customizes the class it belongs to. The
+original class remains unchanged. This is an ugly hack. If you know
+better, let us know.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.String.from_string">
+<em class="property">classmethod </em><tt class="descclassname">String.</tt><tt class="descname">from_string</tt><big>(</big><em>string</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.String.from_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.String.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">String.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.String.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.String.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">String.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.String.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.String.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">String.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.String.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.String.get_restriction_tag">
+<em class="property">classmethod </em><tt class="descclassname">String.</tt><tt class="descname">get_restriction_tag</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.String.get_restriction_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.String.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">String.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.String.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.String.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">String.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.String.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.String.is_default">
+<em class="property">static </em><tt class="descclassname">String.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.model.primitive.String.is_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="soaplib.model.primitive.String.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">String.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.String.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.model.primitive.String.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">String.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.model.primitive.String.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="table">
+<h2>Table<a class="headerlink" href="#table" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Serializer API</a><ul>
+<li><a class="reference internal" href="#module-soaplib.model.base">Base</a></li>
+<li><a class="reference internal" href="#module-soaplib.model.binary">Binary</a></li>
+<li><a class="reference internal" href="#module-soaplib.model.clazz">Clazz</a></li>
+<li><a class="reference internal" href="#module-soaplib.model.enum">Enum</a></li>
+<li><a class="reference internal" href="#module-soaplib.model.exception">Exception</a></li>
+<li><a class="reference internal" href="#module-soaplib.model.primitive">Primitive</a></li>
+<li><a class="reference internal" href="#table">Table</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="apache_axis.html"
+                        title="previous chapter">Axis Interoperability</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="soap.html"
+                        title="next chapter">SOAP API</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/pages/serializer_api.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="soap.html" title="SOAP API"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="apache_axis.html" title="Axis Interoperability"
+             >previous</a> |</li>
+        <li><a href="../index.html">soaplib v1.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Aaron Bickell.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
+    </div>
+  </body>
+</html>

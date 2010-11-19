@@ -1,0 +1,262 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Service &mdash; soaplib v2.0.0beta documentation</title>
+    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="soaplib v2.0.0beta documentation" href="../index.html" />
+    <link rel="next" title="Indices and tables" href="indices_and_tables.html" />
+    <link rel="prev" title="WSGI API" href="wsgi.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="indices_and_tables.html" title="Indices and tables"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="wsgi.html" title="WSGI API"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Service</a><ul>
+<li><a class="reference internal" href="#id1">service</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="wsgi.html"
+                        title="previous chapter">WSGI API</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="indices_and_tables.html"
+                        title="next chapter">Indices and tables</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/pages/service.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="service">
+<h1>Service<a class="headerlink" href="#service" title="Permalink to this headline">¶</a></h1>
+<p>The service module provides the methods and classes for producing the soap service</p>
+<div class="section" id="id1">
+<h2>service<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-soaplib.service"></span><dl class="class">
+<dt id="soaplib.service.DefinitionBase">
+<em class="property">class </em><tt class="descclassname">soaplib.service.</tt><tt class="descname">DefinitionBase</tt><big>(</big><em>environ=None</em><big>)</big><a class="headerlink" href="#soaplib.service.DefinitionBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class serves as the base for all soap services.  Subclasses of this
+class will use the rpc decorator to flag methods to be exposed via soap.
+This class is responsible for generating the wsdl for this service
+definition.</p>
+<p>It is a natural abstract base class, because it&#8217;s of no use without any
+method definitions, hence the &#8216;Base&#8217; suffix in the name.</p>
+<dl class="method">
+<dt id="soaplib.service.DefinitionBase.add_bindings_for_methods">
+<tt class="descname">add_bindings_for_methods</tt><big>(</big><em>app</em>, <em>root</em>, <em>service_name</em>, <em>types</em>, <em>url</em>, <em>binding</em>, <em>transport</em>, <em>cb_binding=None</em><big>)</big><a class="headerlink" href="#soaplib.service.DefinitionBase.add_bindings_for_methods" title="Permalink to this definition">¶</a></dt>
+<dd><p>A private method for adding bindings to the wsdl</p>
+<p>&#64;param the root element of the wsdl
+&#64;param the name of this service</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.service.DefinitionBase.add_messages_for_methods">
+<tt class="descname">add_messages_for_methods</tt><big>(</big><em>app</em>, <em>root</em>, <em>messages</em><big>)</big><a class="headerlink" href="#soaplib.service.DefinitionBase.add_messages_for_methods" title="Permalink to this definition">¶</a></dt>
+<dd><p>A private method for adding message elements to the wsdl
+&#64;param the the root element of the wsdl</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.service.DefinitionBase.add_port_type">
+<tt class="descname">add_port_type</tt><big>(</big><em>app</em>, <em>root</em>, <em>service_name</em>, <em>types</em>, <em>url</em>, <em>port_type</em><big>)</big><a class="headerlink" href="#soaplib.service.DefinitionBase.add_port_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="soaplib.service.DefinitionBase.add_schema">
+<tt class="descname">add_schema</tt><big>(</big><em>schema_entries</em><big>)</big><a class="headerlink" href="#soaplib.service.DefinitionBase.add_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>A method for adding the appropriate entries
+to the schema for the types in the specified methods.</p>
+<dl class="docutils">
+<dt>&#64;param the schema node to add the schema elements to. if it is None,</dt>
+<dd>the schema nodes are returned inside a dictionary</dd>
+<dt>&#64;param the schema node dictinary, where keys are prefixes of the schema</dt>
+<dd>stored schema node</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.service.DefinitionBase.build_public_methods">
+<tt class="descname">build_public_methods</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.service.DefinitionBase.build_public_methods" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of method descriptors for this object</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.service.DefinitionBase.call_wrapper">
+<tt class="descname">call_wrapper</tt><big>(</big><em>call</em>, <em>params</em><big>)</big><a class="headerlink" href="#soaplib.service.DefinitionBase.call_wrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called in place of the original method call.</p>
+<p>&#64;param the original method call
+&#64;param the arguments to the call</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.service.DefinitionBase.get_method">
+<tt class="descname">get_method</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#soaplib.service.DefinitionBase.get_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the metod descriptor based on element name or soap action.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.service.DefinitionBase.get_service_names">
+<tt class="descname">get_service_names</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.service.DefinitionBase.get_service_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the service name(s) for this service. If this
+object has callbacks, then a second service is declared in
+the wsdl for those callbacks.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="soaplib.service.DefinitionBase.get_tns">
+<em class="property">classmethod </em><tt class="descname">get_tns</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.service.DefinitionBase.get_tns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="soaplib.service.DefinitionBase.header_objects">
+<tt class="descname">header_objects</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.service.DefinitionBase.header_objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="soaplib.service.DefinitionBase.on_method_call">
+<tt class="descname">on_method_call</tt><big>(</big><em>method_name</em>, <em>py_params</em>, <em>soap_params</em><big>)</big><a class="headerlink" href="#soaplib.service.DefinitionBase.on_method_call" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called BEFORE the service implementing the functionality is called</p>
+<p>&#64;param the method name
+&#64;param the tuple of python params being passed to the method
+&#64;param the soap elements for each argument</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.service.DefinitionBase.on_method_exception_object">
+<tt class="descname">on_method_exception_object</tt><big>(</big><em>exc</em><big>)</big><a class="headerlink" href="#soaplib.service.DefinitionBase.on_method_exception_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called BEFORE the exception is serialized, when an error occurs
+during execution.</p>
+<p>&#64;param the exception object</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.service.DefinitionBase.on_method_exception_xml">
+<tt class="descname">on_method_exception_xml</tt><big>(</big><em>fault_xml</em><big>)</big><a class="headerlink" href="#soaplib.service.DefinitionBase.on_method_exception_xml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called AFTER the exception is serialized, when an error occurs
+during execution.</p>
+<p>&#64;param the xml element containing the exception object serialized to a
+soap fault</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.service.DefinitionBase.on_method_return_object">
+<tt class="descname">on_method_return_object</tt><big>(</big><em>py_results</em><big>)</big><a class="headerlink" href="#soaplib.service.DefinitionBase.on_method_return_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called AFTER the service implementing the functionality is called,
+with native return object as argument</p>
+<p>&#64;param the python results from the method</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.service.DefinitionBase.on_method_return_xml">
+<tt class="descname">on_method_return_xml</tt><big>(</big><em>soap_results</em><big>)</big><a class="headerlink" href="#soaplib.service.DefinitionBase.on_method_return_xml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called AFTER the service implementing the functionality is called,
+with native return object serialized to Element objects as argument.</p>
+<p>&#64;param the xml element containing the return value(s) from the method</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="soaplib.service.rpc">
+<tt class="descclassname">soaplib.service.</tt><tt class="descname">rpc</tt><big>(</big><em>*params</em>, <em>**kparams</em><big>)</big><a class="headerlink" href="#soaplib.service.rpc" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a method decorator to flag a method as a remote procedure call.  It
+will behave like a normal python method on a class, and will only behave
+differently when the keyword &#8216;_method_descriptor&#8217; is passed in, returning a
+&#8216;MethodDescriptor&#8217; object.  This decorator does none of the soap/xml
+serialization, only flags a method as a soap method.  This decorator should
+only be used on member methods of an instance of ServiceBase.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="indices_and_tables.html" title="Indices and tables"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="wsgi.html" title="WSGI API"
+             >previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Aaron Bickell.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
+    </div>
+  </body>
+</html>

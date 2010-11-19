@@ -1,0 +1,279 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Serializers &mdash; soaplib v2.0.0beta documentation</title>
+    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="soaplib v2.0.0beta documentation" href="../index.html" />
+    <link rel="next" title="Binary Files" href="binaryfiles.html" />
+    <link rel="prev" title="User Manager" href="usermanager.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="binaryfiles.html" title="Binary Files"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="usermanager.html" title="User Manager"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Serializers</a><ul>
+<li><a class="reference internal" href="#primitives">Primitives</a></li>
+<li><a class="reference internal" href="#arrays">Arrays</a></li>
+<li><a class="reference internal" href="#class">Class</a></li>
+<li><a class="reference internal" href="#attachment">Attachment</a></li>
+<li><a class="reference internal" href="#any">Any</a></li>
+<li><a class="reference internal" href="#anyasdict">AnyAsDict</a></li>
+<li><a class="reference internal" href="#custom">Custom</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="usermanager.html"
+                        title="previous chapter">User Manager</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="binaryfiles.html"
+                        title="next chapter">Binary Files</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/pages/serializers.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="serializers">
+<h1>Serializers<a class="headerlink" href="#serializers" title="Permalink to this headline">¶</a></h1>
+<p>In soaplib, the type are the components responsible for converting
+indivdual parameters to and from xml, as well as supply the information
+necessary to build the wsdl. Soaplib has many built-in type that give you
+most of the common datatypes generally needed.</p>
+<div class="section" id="primitives">
+<h2>Primitives<a class="headerlink" href="#primitives" title="Permalink to this headline">¶</a></h2>
+<p>The basic primitive types are <tt class="xref py py-class docutils literal"><span class="pre">String</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">Integer</span></tt>,
+<tt class="xref py py-class docutils literal"><span class="pre">DateTime</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">Null</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">Float</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">Boolean</span></tt>.
+These are some of the most basic blocks within soaplib.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.model.primitive</span> <span class="kn">import</span> <span class="n">String</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parent</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s">&quot;parent&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">String</span><span class="o">.</span><span class="n">to_parent_element</span><span class="p">(</span><span class="s">&quot;abcd&quot;</span><span class="p">,</span> <span class="s">&quot;tns&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">string_element</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">getchildren</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">string_element</span><span class="p">)</span>
+<span class="go">&lt;ns0:retval xmlns:ns0=&quot;tns&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:type=&quot;xs:string&quot;&gt;abcd&lt;/ns0:retval&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">String</span><span class="o">.</span><span class="n">from_xml</span><span class="p">(</span><span class="n">string_element</span><span class="p">)</span>
+<span class="go">abcd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">String</span><span class="o">.</span><span class="n">get_type_name</span><span class="p">()</span>
+<span class="go">&#39;string&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">String</span><span class="o">.</span><span class="n">get_type_name_ns</span><span class="p">()</span>
+<span class="go">&#39;xs:string&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="arrays">
+<h2>Arrays<a class="headerlink" href="#arrays" title="Permalink to this headline">¶</a></h2>
+<p>The lone collection type available in soaplib is the <tt class="xref py py-class docutils literal"><span class="pre">Array</span></tt> type.
+Unlike the primitive type, Arrays need to be instantiated with
+the proper internal type so they can properly (de)serialize the data. Arrays
+are homogeneous, meaning that the data they hold are all of the same
+type. For mixed typing or more dynamic data, use the Any type.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.model.clazz</span> <span class="kn">import</span> <span class="n">Array</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.model.primitive</span> <span class="kn">import</span> <span class="n">String</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parent</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s">&quot;parent&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">array_serializer</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">array_serializer</span><span class="o">.</span><span class="n">to_parent_element</span><span class="p">([</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="s">&#39;c&#39;</span><span class="p">,</span><span class="s">&#39;d&#39;</span><span class="p">],</span> <span class="s">&#39;tns&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+<span class="go">&lt;ns0:stringArray xmlns:ns0=&quot;tns&quot;&gt;&lt;ns1:string xmlns:ns1=&quot;None&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:type=&quot;xs:string&quot;&gt;a&lt;/ns1:string&gt;</span>
+<span class="go">&lt;ns2:string xmlns:ns2=&quot;None&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:type=&quot;xs:string&quot;&gt;b&lt;/ns2:string&gt;</span>
+<span class="go">&lt;ns3:string xmlns:ns3=&quot;None&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:type=&quot;xs:string&quot;&gt;c&lt;/ns3:string&gt;</span>
+<span class="go">&lt;ns4:string xmlns:ns4=&quot;None&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:type=&quot;xs:string&quot;&gt;d&lt;/ns4:string&gt;&lt;/ns0:stringArray&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">array_serializer</span><span class="o">.</span><span class="n">from_xml</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+<span class="go">[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="class">
+<h2>Class<a class="headerlink" href="#class" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="xref py py-class docutils literal"><span class="pre">ClassSerializer</span></tt> type is used to define and serialize complex,
+nested structures.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.model.primitive</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.model.clazz</span> <span class="kn">import</span> <span class="n">ClassSerializer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Permission</span><span class="p">(</span><span class="n">ClassSerializer</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="n">__namespace__</span> <span class="o">=</span> <span class="s">&quot;permission&quot;</span>
+<span class="gp">... </span>            <span class="n">application</span> <span class="o">=</span> <span class="n">String</span>
+<span class="gp">... </span>            <span class="n">feature</span> <span class="o">=</span> <span class="n">String</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">ClassSerializer</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">__namespace__</span> <span class="o">=</span> <span class="s">&quot;user&quot;</span>
+<span class="gp">... </span>            <span class="n">userid</span> <span class="o">=</span> <span class="n">Integer</span>
+<span class="gp">... </span>            <span class="n">username</span> <span class="o">=</span> <span class="n">String</span>
+<span class="gp">... </span>            <span class="n">firstname</span> <span class="o">=</span> <span class="n">String</span>
+<span class="gp">... </span>            <span class="n">lastname</span> <span class="o">=</span> <span class="n">String</span>
+<span class="gp">... </span>            <span class="n">permissions</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="n">Permission</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span> <span class="o">=</span> <span class="n">User</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="s">&#39;bill&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">permissions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Permission</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">application</span> <span class="o">=</span> <span class="s">&#39;email&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">feature</span> <span class="o">=</span> <span class="s">&#39;send&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">permissions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parent</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s">&#39;parenet&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">User</span><span class="o">.</span><span class="n">to_parent_element</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="s">&#39;tns&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">element</span> <span class="o">=</span> <span class="n">parent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+<span class="go">&#39;&lt;ns0:User xmlns:ns0=&quot;tns&quot;&gt;</span>
+<span class="go">&lt;ns1:username xmlns:ns1=&quot;None&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:type=&quot;xs:string&quot;&gt;bill&lt;/ns1:username&gt;</span>
+<span class="go">&lt;ns2:firstname xmlns:ns2=&quot;None&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:nil=&quot;true&quot;/&gt;</span>
+<span class="go">&lt;ns3:lastname xmlns:ns3=&quot;None&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:nil=&quot;true&quot;/&gt;</span>
+<span class="go">&lt;ns4:userid xmlns:ns4=&quot;None&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:nil=&quot;true&quot;/&gt;</span>
+<span class="go">&lt;ns5:permissions xmlns:ns5=&quot;None&quot;&gt;&lt;ns5:Permission&gt;&lt;ns5:application xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:type=&quot;xs:string&quot;&gt;email&lt;/ns5:application&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">User</span><span class="o">.</span><span class="n">from_xml</span><span class="p">(</span><span class="n">element</span><span class="p">)</span><span class="o">.</span><span class="n">username</span>
+<span class="go">&#39;bill&#39;</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="attachment">
+<h2>Attachment<a class="headerlink" href="#attachment" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="xref py py-class docutils literal"><span class="pre">Attachment</span></tt> serializer is used for transmitting binary data as
+base64 encoded strings. Data in Attachment objects can be loaded manually,
+or read from file.  All encoding of the binary data is done just prior to the
+data being sent, and decoding immediately upon receipt of the Attachment.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.model.binary</span> <span class="kn">import</span> <span class="n">Attachment</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Attachment</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s">&#39;my binary data&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parent</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s">&#39;parent&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Attachment</span><span class="o">.</span><span class="n">to_parent_element</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">element</span> <span class="o">=</span> <span class="n">parent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+<span class="go">&lt;ns0:retval xmlns:ns0=&quot;tns&quot;&gt;bXkgYmluYXJ5IGRhdGE=</span>
+<span class="go">&lt;/ns0:retval&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">Attachment</span><span class="o">.</span><span class="n">from_xml</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+<span class="go">&lt;soaplib.model.binary.Attachment object at 0x5c6d90&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">Attachment</span><span class="o">.</span><span class="n">from_xml</span><span class="p">(</span><span class="n">element</span><span class="p">)</span><span class="o">.</span><span class="n">data</span>
+<span class="go">my binary data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span> <span class="o">=</span> <span class="n">Attachment</span><span class="p">(</span><span class="n">fileName</span><span class="o">=</span><span class="s">&#39;test.data&#39;</span><span class="p">)</span> <span class="c"># load from file</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="any">
+<h2>Any<a class="headerlink" href="#any" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="xref py py-class docutils literal"><span class="pre">Any</span></tt> type is a serializer used to transmit unstructured XML data.
+Any types are very useful for handling dynamic data, and provide a very
+Pythonic way for passing data using soaplib. The Any serializer does not
+perform any useful task because the data passed in and returned are Element
+objects. The Any type&#8217;s main purpose is to declare its presence in the WSDL.</p>
+</div>
+<div class="section" id="anyasdict">
+<h2>AnyAsDict<a class="headerlink" href="#anyasdict" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="xref py py-class docutils literal"><span class="pre">AnyAsDict</span></tt> type does the same thing as the <tt class="xref py py-class docutils literal"><span class="pre">Any</span></tt> type,
+except it serializes to/from dicts with lists instead of raw
+<tt class="xref py py-class docutils literal"><span class="pre">lxml.etree._Element</span></tt> objects.</p>
+</div>
+<div class="section" id="custom">
+<h2>Custom<a class="headerlink" href="#custom" title="Permalink to this headline">¶</a></h2>
+<p>Soaplib provides a very simple interface for writing custom type. Just
+inherit from soaplib.model.base.Base and override the <tt class="xref py py-meth docutils literal"><span class="pre">from_xml()</span></tt>,
+<tt class="xref py py-meth docutils literal"><span class="pre">to_parent_element()</span></tt> and <tt class="xref py py-meth docutils literal"><span class="pre">add_to_schema()</span></tt> classmethods.:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib.model.base</span> <span class="kn">import</span> <span class="n">Base</span>
+
+<span class="k">class</span> <span class="nc">MySerializer</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">to_parent_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">value</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;retval&#39;</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_xml</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">element</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">add_to_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">added_params</span><span class="p">):</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="binaryfiles.html" title="Binary Files"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="usermanager.html" title="User Manager"
+             >previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Aaron Bickell.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
+    </div>
+  </body>
+</html>
