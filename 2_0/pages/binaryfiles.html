@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../static/doctools.js"></script>
     <link rel="top" title="soaplib v2.0.0beta documentation" href="../index.html" />
     <link rel="next" title="Message API" href="message_api.html" />
-    <link rel="prev" title="User Manager" href="usermanager.html" /> 
+    <link rel="prev" title="Models" href="serializers.html" /> 
   </head>
   <body>
     <div class="related">
@@ -40,7 +40,7 @@
           <a href="message_api.html" title="Message API"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="usermanager.html" title="User Manager"
+          <a href="serializers.html" title="Models"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
       </ul>
@@ -48,8 +48,8 @@
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="usermanager.html"
-                        title="previous chapter">User Manager</a></p>
+  <p class="topless"><a href="serializers.html"
+                        title="previous chapter">Models</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="message_api.html"
                         title="next chapter">Message API</a></p>
@@ -109,7 +109,7 @@ both in-memory and on-disk binary data.</p>
 <span class="kn">from</span> <span class="nn">soaplib.model.primitive</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span>
 <span class="kn">from</span> <span class="nn">soaplib.model.clazz</span> <span class="kn">import</span> <span class="n">Array</span>
 <span class="kn">from</span> <span class="nn">soaplib.model.binary</span> <span class="kn">import</span> <span class="n">Attachment</span>
-<span class="kn">from</span> <span class="nn">soaplib.server.wsgi</span> <span class="kn">import</span> <span class="n">Application</span>
+<span class="kn">from</span> <span class="nn">soaplib.server</span> <span class="kn">import</span> <span class="n">wsgi</span>
 
 <span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">mkstemp</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -151,7 +151,9 @@ both in-memory and on-disk binary data.</p>
 
 <span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">wsgiref.simple_server</span> <span class="kn">import</span> <span class="n">make_server</span>
-    <span class="n">server</span> <span class="o">=</span> <span class="n">make_server</span><span class="p">(</span><span class="s">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">7789</span><span class="p">,</span> <span class="n">Application</span><span class="p">([</span><span class="n">DocumentArchiver</span><span class="p">],</span> <span class="s">&#39;tns&#39;</span><span class="p">))</span>
+    <span class="n">soap_app</span> <span class="o">=</span> <span class="n">soaplib</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span><span class="n">DocumentArchiver</span><span class="p">],</span> <span class="s">&#39;tns&#39;</span><span class="p">)</span>
+    <span class="n">wsgi_app</span> <span class="o">=</span> <span class="n">wsgi</span><span class="o">.</span><span class="n">Application</span><span class="p">(</span><span class="n">soap_app</span><span class="p">)</span>
+    <span class="n">server</span> <span class="o">=</span> <span class="n">make_server</span><span class="p">(</span><span class="s">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">7789</span><span class="p">,</span> <span class="n">wsgi_app</span><span class="p">)</span>
     <span class="n">server</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -176,7 +178,7 @@ both in-memory and on-disk binary data.</p>
           <a href="message_api.html" title="Message API"
              >next</a> |</li>
         <li class="right" >
-          <a href="usermanager.html" title="User Manager"
+          <a href="serializers.html" title="Models"
              >previous</a> |</li>
         <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
       </ul>
