@@ -145,17 +145,17 @@ type. For mixed typing or more dynamic data, use the Any type.</p>
 </div>
 <div class="section" id="class">
 <h2>Class<a class="headerlink" href="#class" title="Permalink to this headline">¶</a></h2>
-<p>The <tt class="xref py py-class docutils literal"><span class="pre">ClassSerializer</span></tt> type is used to define and serialize complex,
+<p>The <tt class="xref py py-class docutils literal"><span class="pre">ClassModel</span></tt> type is used to define and serialize complex,
 nested structures.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.model.primitive</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.model.clazz</span> <span class="kn">import</span> <span class="n">ClassSerializer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.model.clazz</span> <span class="kn">import</span> <span class="n">ClassModel</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Permission</span><span class="p">(</span><span class="n">ClassSerializer</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Permission</span><span class="p">(</span><span class="n">ClassModel</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="n">__namespace__</span> <span class="o">=</span> <span class="s">&quot;permission&quot;</span>
 <span class="gp">... </span>            <span class="n">application</span> <span class="o">=</span> <span class="n">String</span>
 <span class="gp">... </span>            <span class="n">feature</span> <span class="o">=</span> <span class="n">String</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">ClassSerializer</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">ClassModel</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">__namespace__</span> <span class="o">=</span> <span class="s">&quot;user&quot;</span>
 <span class="gp">... </span>            <span class="n">userid</span> <span class="o">=</span> <span class="n">Integer</span>
 <span class="gp">... </span>            <span class="n">username</span> <span class="o">=</span> <span class="n">String</span>

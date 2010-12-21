@@ -1,8 +1,10 @@
 Model API
 ==============
-In soaplib, the type are the components responsible for converting indivdual parameters to and from xml, as well
-as supply the information necessary to build the wsdl. Soaplib has many built-in type that give you most of the
-common datatypes generally needed.
+In soaplib, the Models are the components responsible for converting individual
+parameters to and from xml, as well as supply the information necessary to
+build the wsdl. Soaplib has many built-in Models that give you most of the
+common data-types generally needed.
+
 
 
 Base
@@ -10,7 +12,7 @@ Base
 .. automodule:: soaplib.model.base
     :members:
     :undoc-members:
-    :inherited-members:
+
 
 
 Binary

@@ -8,15 +8,15 @@ Declaring a Soaplib Service
 
 ::
 
-    from soaplib.service import DefinitionBase
-    from soaplib.service import rpc,
+    import soaplib
+    from soaplib.service import rpc, DefinitionBase
     from soaplib.model.primitive import String, Integer
+    from soaplib.server import wsgi
     from soaplib.model.clazz import Array
-    from soaplib.server.wsgi import Application
 
 
-    class HelloWorldService(SimpleWSGISoapApp):
-        @rpc(String,Integer,_returns=Array(String))
+    class HelloWorldService(DefinitionBase):
+        @soap(String,Integer,_returns=Array(String))
         def say_hello(self,name,times):
             results = []
             for i in range(0,times):
@@ -26,7 +26,9 @@ Declaring a Soaplib Service
     if __name__=='__main__':
         try:
             from wsgiref.simple_server import make_server
-            server = make_server('localhost', 7789, Application([HelloWorldService], 'tns'))
+            soap_application = soaplib.Application([HelloWorldService], 'tns')
+            wsgi_application = wsgi.Application(soap_application)
+            server = make_server('localhost', 7789, wsgi_application)
             server.serve_forever()
         except ImportError:
             print "Error: example server code requires Python >= 2.5"
@@ -40,7 +42,7 @@ data types it accepts and returns. ::
 
     from soaplib.service import rpc
 
-Import the type for this method (more on type later)::
+Import the model for this method (more on models later)::
 
     from soaplib.model.primitive import String, Integer
     from soaplib.model.clazz import Array
@@ -55,7 +57,7 @@ the types and order of the soap parameters, as well as the return value.
 This method takes in a String, an Integer and returns an
 Array of Strings -> Array(String).::
 
-    @rpc(String,Integer,_returns=Array(String))
+    @soap(String,Integer,_returns=Array(String))
 
 The method itself has nothing special about it whatsoever. All input
 variables and return types are standard python objects::
@@ -75,7 +77,9 @@ simple wsgi web server; any WSGI-compliant server *should* work.::
     if __name__=='__main__':
         try:
             from wsgiref.simple_server import make_server
-            server = make_server('localhost', 7789, Application([HelloWorldService], 'tns'))
+            soap_application = soaplib.Application([HelloWorldService], 'tns')
+            wsgi_application = wsgi.Application(soap_application)
+            server = make_server('localhost', 7789, wsgi_application)
             server.serve_forever()
         except ImportError:
             print "Error: example server code requires Python >= 2.5"

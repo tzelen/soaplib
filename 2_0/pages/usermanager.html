@@ -88,16 +88,16 @@ The following is an extremely simple example using complex, nested data.:</p>
 <span class="kn">from</span> <span class="nn">soaplib.service</span> <span class="kn">import</span> <span class="n">rpc</span>
 <span class="kn">from</span> <span class="nn">soaplib.service</span> <span class="kn">import</span> <span class="n">DefinitionBase</span>
 <span class="kn">from</span> <span class="nn">soaplib.model.primitive</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span>
-<span class="kn">from</span> <span class="nn">soaplib.model.clazz</span> <span class="kn">import</span> <span class="n">ClassSerializer</span><span class="p">,</span> <span class="n">Array</span>
+<span class="kn">from</span> <span class="nn">soaplib.model.clazz</span> <span class="kn">import</span> <span class="n">ClassModel</span><span class="p">,</span> <span class="n">Array</span>
 
 <span class="n">user_database</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="n">userid_seq</span> <span class="o">=</span> <span class="mi">1</span>
 
-<span class="k">class</span> <span class="nc">Permission</span><span class="p">(</span><span class="n">ClassSerializer</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Permission</span><span class="p">(</span><span class="n">ClassModel</span><span class="p">):</span>
         <span class="n">application</span> <span class="o">=</span> <span class="n">String</span>
         <span class="n">feature</span> <span class="o">=</span> <span class="n">String</span>
 
-<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">ClassSerializer</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">ClassModel</span><span class="p">):</span>
         <span class="n">userid</span> <span class="o">=</span> <span class="n">Integer</span>
         <span class="n">username</span> <span class="o">=</span> <span class="n">String</span>
         <span class="n">firstname</span> <span class="o">=</span> <span class="n">String</span>
@@ -105,7 +105,7 @@ The following is an extremely simple example using complex, nested data.:</p>
         <span class="n">permissions</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="n">Permission</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">UserManager</span><span class="p">(</span><span class="n">DefinitionBase</span><span class="p">):</span>
-        <span class="nd">@rpc</span><span class="p">(</span><span class="n">User</span><span class="p">,</span><span class="n">_returns</span><span class="o">=</span><span class="n">Integer</span><span class="p">)</span>
+        <span class="nd">@soap</span><span class="p">(</span><span class="n">User</span><span class="p">,</span><span class="n">_returns</span><span class="o">=</span><span class="n">Integer</span><span class="p">)</span>
         <span class="k">def</span> <span class="nf">add_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">user</span><span class="p">):</span>
                 <span class="k">global</span> <span class="n">user_database</span>
                 <span class="k">global</span> <span class="n">userid_seq</span>
@@ -114,22 +114,22 @@ The following is an extremely simple example using complex, nested data.:</p>
                 <span class="n">user_database</span><span class="p">[</span><span class="n">user</span><span class="o">.</span><span class="n">userid</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span>
                 <span class="k">return</span> <span class="n">user</span><span class="o">.</span><span class="n">userid</span>
 
-        <span class="nd">@rpc</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span><span class="n">_returns</span><span class="o">=</span><span class="n">User</span><span class="p">)</span>
+        <span class="nd">@soap</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span><span class="n">_returns</span><span class="o">=</span><span class="n">User</span><span class="p">)</span>
         <span class="k">def</span> <span class="nf">get_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">userid</span><span class="p">):</span>
                 <span class="k">global</span> <span class="n">user_database</span>
                 <span class="k">return</span> <span class="n">user_database</span><span class="p">[</span><span class="n">userid</span><span class="p">]</span>
 
-        <span class="nd">@rpc</span><span class="p">(</span><span class="n">User</span><span class="p">)</span>
+        <span class="nd">@soap</span><span class="p">(</span><span class="n">User</span><span class="p">)</span>
         <span class="k">def</span> <span class="nf">modify_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">user</span><span class="p">):</span>
                 <span class="k">global</span> <span class="n">user_database</span>
                 <span class="n">user_database</span><span class="p">[</span><span class="n">user</span><span class="o">.</span><span class="n">userid</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span>
 
-        <span class="nd">@rpc</span><span class="p">(</span><span class="n">Integer</span><span class="p">)</span>
+        <span class="nd">@soap</span><span class="p">(</span><span class="n">Integer</span><span class="p">)</span>
         <span class="k">def</span> <span class="nf">delete_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">userid</span><span class="p">):</span>
                 <span class="k">global</span> <span class="n">user_database</span>
                 <span class="k">del</span> <span class="n">user_database</span><span class="p">[</span><span class="n">userid</span><span class="p">]</span>
 
-        <span class="nd">@rpc</span><span class="p">(</span><span class="n">_returns</span><span class="o">=</span><span class="n">Array</span><span class="p">(</span><span class="n">User</span><span class="p">))</span>
+        <span class="nd">@soap</span><span class="p">(</span><span class="n">_returns</span><span class="o">=</span><span class="n">Array</span><span class="p">(</span><span class="n">User</span><span class="p">))</span>
         <span class="k">def</span> <span class="nf">list_users</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
                 <span class="k">global</span> <span class="n">user_database</span>
                 <span class="k">return</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">user_database</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
@@ -144,11 +144,11 @@ The following is an extremely simple example using complex, nested data.:</p>
 </pre></div>
 </div>
 <p>Jumping into what&#8217;s new.:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Permission</span><span class="p">(</span><span class="n">ClassSerializer</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Permission</span><span class="p">(</span><span class="n">ClassModel</span><span class="p">):</span>
         <span class="n">application</span> <span class="o">=</span> <span class="n">String</span>
         <span class="n">feature</span> <span class="o">=</span> <span class="n">String</span>
 
-<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">ClassSerializer</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">ClassModel</span><span class="p">):</span>
         <span class="n">userid</span> <span class="o">=</span> <span class="n">Integer</span>
         <span class="n">username</span> <span class="o">=</span> <span class="n">String</span>
         <span class="n">firstname</span> <span class="o">=</span> <span class="n">String</span>
@@ -157,7 +157,7 @@ The following is an extremely simple example using complex, nested data.:</p>
 </pre></div>
 </div>
 <p>The <cite>Permission</cite> and <cite>User</cite> structures in the example are standard python
-objects that extend <cite>ClassSerializer</cite>.  Soaplib uses <cite>ClassSerializer</cite> as a general type that when
+objects that extend <cite>ClassModel</cite>.  Soaplib uses <cite>ClassModel</cite> as a general type that when
 extended will produce complex serializable types that can be used in a soap service.</p>
 </div>
 

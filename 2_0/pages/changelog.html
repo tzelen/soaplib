@@ -47,6 +47,21 @@
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Change Log</a><ul>
+<li><a class="reference internal" href="#soaplib-2-0">soaplib-2.0</a></li>
+<li><a class="reference internal" href="#soaplib-1-0">soaplib-1.0</a></li>
+<li><a class="reference internal" href="#soaplib-0-9-4">soaplib-0.9.4</a></li>
+<li><a class="reference internal" href="#soaplib-0-9-3">soaplib-0.9.3</a></li>
+<li><a class="reference internal" href="#soaplib-0-9-2">soaplib-0.9.2</a></li>
+<li><a class="reference internal" href="#soaplib-0-9-1">soaplib-0.9.1</a></li>
+<li><a class="reference internal" href="#soaplib-0-9">soaplib-0.9</a></li>
+<li><a class="reference internal" href="#soaplib-0-8">soaplib-0.8</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="../index.html"
                         title="previous chapter">soaplib</a></p>
@@ -81,20 +96,76 @@
             
   <div class="section" id="change-log">
 <h1>Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h1>
-<p>3.0
-renamed -&gt; rpclib</p>
-<p>2.0
-* Serializers renamed to Models
-* ValidiatingApplication added.
-* Annotations added for primitive types
-* Client added.
-* 0mq support added.
-* Hard dependency on WSGI removed
-* Per model stand alone XSD generation added</p>
-<p>1.0</p>
-<p>0.9</p>
-<p>0.8</p>
-<p>0.7</p>
+<div class="section" id="soaplib-2-0">
+<h2>soaplib-2.0<a class="headerlink" href="#soaplib-2-0" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Serializers renamed to Models</li>
+<li>Annotations added for primitive types</li>
+<li>Client added.</li>
+<li>0mq support added.</li>
+<li>Hard dependency on WSGI removed</li>
+<li>Per model stand alone XSD generation added</li>
+<li>&#64;soap() added to be more SOAP specific.</li>
+<li>&#64;doc() added to support document literal style/use.</li>
+<li>&#64;rpc() modified to default to rpc literal style/use.</li>
+<li>Standalone WSDL added.</li>
+</ul>
+</div>
+<div class="section" id="soaplib-1-0">
+<h2>soaplib-1.0<a class="headerlink" href="#soaplib-1-0" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Standards-compliant Soap Faults</li>
+<li>Allow multiplre return values and return types</li>
+</ul>
+</div>
+<div class="section" id="soaplib-0-9-4">
+<h2>soaplib-0.9.4<a class="headerlink" href="#soaplib-0-9-4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>pritimitive.Array -&gt; clazz.Array</li>
+<li>Support for SimpleType restrictions (pattern, length, etc.)</li>
+</ul>
+</div>
+<div class="section" id="soaplib-0-9-3">
+<h2>soaplib-0.9.3<a class="headerlink" href="#soaplib-0-9-3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Soap header support</li>
+<li>Tried the WS-I Test first time. Many bug fixes.</li>
+</ul>
+</div>
+<div class="section" id="soaplib-0-9-2">
+<h2>soaplib-0.9.2<a class="headerlink" href="#soaplib-0-9-2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Support for inheritance.</li>
+</ul>
+</div>
+<div class="section" id="soaplib-0-9-1">
+<h2>soaplib-0.9.1<a class="headerlink" href="#soaplib-0-9-1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>ValidiatingApplication added.</li>
+<li>Support for publishing multiple service classes</li>
+</ul>
+</div>
+<div class="section" id="soaplib-0-9">
+<h2>soaplib-0.9<a class="headerlink" href="#soaplib-0-9" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Soap server logic almost completely rewritten.</li>
+<li>Soap client removed in favor of suds.</li>
+<li>Object definition api no longer needs a class types: under class definition.</li>
+<li>XML Schema validation is supported.</li>
+<li>Support for publishing multiple namespaces. (multiple &lt;schema&gt; tags in the wsdl)</li>
+<li>Support for enumerations.</li>
+<li>Application and Service Definition are separated. Application is instantiated on server start, and Service Definition is instantiated for each new request.</li>
+<li>&#64;soapmethod -&gt; &#64;rpc</li>
+</ul>
+</div>
+<div class="section" id="soaplib-0-8">
+<h2>soaplib-0.8<a class="headerlink" href="#soaplib-0-8" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Switched to lxml for proper xml namespace support.</li>
+<li>In this version, soaplib is a stable soap server not without its glitches</li>
+</ul>
+<p>and quirks</p>
+</div>
 </div>
 
 

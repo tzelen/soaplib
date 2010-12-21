@@ -143,7 +143,7 @@ request.</p>
 
 <span class="k">class</span> <span class="nc">HelloWorldService</span><span class="p">(</span><span class="n">DefinitionBase</span><span class="p">):</span>
 
-    <span class="nd">@rpc</span><span class="p">(</span><span class="n">String</span><span class="p">,</span><span class="n">Integer</span><span class="p">,</span><span class="n">_returns</span><span class="o">=</span><span class="n">Array</span><span class="p">(</span><span class="n">String</span><span class="p">))</span>
+    <span class="nd">@soap</span><span class="p">(</span><span class="n">String</span><span class="p">,</span><span class="n">Integer</span><span class="p">,</span><span class="n">_returns</span><span class="o">=</span><span class="n">Array</span><span class="p">(</span><span class="n">String</span><span class="p">))</span>
     <span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">times</span><span class="p">):</span>
         <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">times</span><span class="p">):</span>

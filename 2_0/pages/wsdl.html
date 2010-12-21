@@ -1,0 +1,151 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>WSDL API &mdash; soaplib v2.0.0beta documentation</title>
+    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="soaplib v2.0.0beta documentation" href="../index.html" />
+    <link rel="next" title="Server" href="server.html" />
+    <link rel="prev" title="Model API" href="model_api.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="server.html" title="Server"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="model_api.html" title="Model API"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">WSDL API</a><ul>
+<li><a class="reference internal" href="#module-soaplib.wsdl">WSDL</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="model_api.html"
+                        title="previous chapter">Model API</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="server.html"
+                        title="next chapter">Server</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/pages/wsdl.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="wsdl-api">
+<h1>WSDL API<a class="headerlink" href="#wsdl-api" title="Permalink to this headline">¶</a></h1>
+<p>The wsdl module provides an interface into dynamic WSDL generation.</p>
+<div class="section" id="module-soaplib.wsdl">
+<span id="wsdl"></span><h2>WSDL<a class="headerlink" href="#module-soaplib.wsdl" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="soaplib.wsdl.WSDL">
+<em class="property">class </em><tt class="descclassname">soaplib.wsdl.</tt><tt class="descname">WSDL</tt><big>(</big><em>soap_application</em>, <em>ns_tns</em>, <em>url</em>, <em>with_partner_link=False</em><big>)</big><a class="headerlink" href="#soaplib.wsdl.WSDL" title="Permalink to this definition">¶</a></dt>
+<dd><p>A standalone wsdl</p>
+<dl class="method">
+<dt id="soaplib.wsdl.WSDL.build_messages">
+<tt class="descname">build_messages</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.wsdl.WSDL.build_messages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds the wsdl:message elements</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.wsdl.WSDL.build_wsdl">
+<tt class="descname">build_wsdl</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.wsdl.WSDL.build_wsdl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct the elements for the wsdl.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.wsdl.WSDL.to_string">
+<tt class="descname">to_string</tt><big>(</big><em>pretty_print=False</em>, <em>xml_declaration=True</em>, <em>encoding='UTF-8'</em><big>)</big><a class="headerlink" href="#soaplib.wsdl.WSDL.to_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a string reprensation of the  wsdl as fornatted xml.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="server.html" title="Server"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="model_api.html" title="Model API"
+             >previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Aaron Bickell.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
+    </div>
+  </body>
+</html>
