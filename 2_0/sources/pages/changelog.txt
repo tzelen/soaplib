@@ -19,12 +19,12 @@ soaplib-2.0
 soaplib-1.0
 ===========
 * Standards-compliant Soap Faults
-* Allow multiplre return values and return types
+* Allow multiple return values and return types
 
 soaplib-0.9.4
 ===============
 
-* pritimitive.Array -> clazz.Array
+* primitive.Array -> clazz.Array
 * Support for SimpleType restrictions (pattern, length, etc.)
 
 soaplib-0.9.3
