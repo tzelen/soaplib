@@ -103,8 +103,8 @@ most of the common datatypes generally needed.</p>
 <h2>Primitives<a class="headerlink" href="#primitives" title="Permalink to this headline">¶</a></h2>
 <p>The basic primitive types are <tt class="xref py py-class docutils literal"><span class="pre">String</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">Integer</span></tt>,
 <tt class="xref py py-class docutils literal"><span class="pre">DateTime</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">Null</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">Float</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">Boolean</span></tt>.
-These are some of the most basic blocks within soaplib.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.model.primitive</span> <span class="kn">import</span> <span class="n">String</span>
+These are some of the most basic blocks within soaplib.core.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.core.model.primitive</span> <span class="kn">import</span> <span class="n">String</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">parent</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s">&quot;parent&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">String</span><span class="o">.</span><span class="n">to_parent_element</span><span class="p">(</span><span class="s">&quot;abcd&quot;</span><span class="p">,</span> <span class="s">&quot;tns&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
@@ -127,8 +127,8 @@ Unlike the primitive type, Arrays need to be instantiated with
 the proper internal type so they can properly (de)serialize the data. Arrays
 are homogeneous, meaning that the data they hold are all of the same
 type. For mixed typing or more dynamic data, use the Any type.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.model.clazz</span> <span class="kn">import</span> <span class="n">Array</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.model.primitive</span> <span class="kn">import</span> <span class="n">String</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.core.model.clazz</span> <span class="kn">import</span> <span class="n">Array</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.core.model.primitive</span> <span class="kn">import</span> <span class="n">String</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">parent</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s">&quot;parent&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">array_serializer</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
@@ -147,8 +147,8 @@ type. For mixed typing or more dynamic data, use the Any type.</p>
 <h2>Class<a class="headerlink" href="#class" title="Permalink to this headline">¶</a></h2>
 <p>The <tt class="xref py py-class docutils literal"><span class="pre">ClassModel</span></tt> type is used to define and serialize complex,
 nested structures.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.model.primitive</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.model.clazz</span> <span class="kn">import</span> <span class="n">ClassModel</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.core.model.primitive</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.core.model.clazz</span> <span class="kn">import</span> <span class="n">ClassModel</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Permission</span><span class="p">(</span><span class="n">ClassModel</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="n">__namespace__</span> <span class="o">=</span> <span class="s">&quot;permission&quot;</span>
@@ -192,7 +192,7 @@ nested structures.</p>
 base64 encoded strings. Data in Attachment objects can be loaded manually,
 or read from file.  All encoding of the binary data is done just prior to the
 data being sent, and decoding immediately upon receipt of the Attachment.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.model.binary</span> <span class="kn">import</span> <span class="n">Attachment</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.core.model.binary</span> <span class="kn">import</span> <span class="n">Attachment</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Attachment</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s">&#39;my binary data&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">parent</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s">&#39;parent&#39;</span><span class="p">)</span>
@@ -202,7 +202,7 @@ data being sent, and decoding immediately upon receipt of the Attachment.</p>
 <span class="go">&lt;ns0:retval xmlns:ns0=&quot;tns&quot;&gt;bXkgYmluYXJ5IGRhdGE=</span>
 <span class="go">&lt;/ns0:retval&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">Attachment</span><span class="o">.</span><span class="n">from_xml</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
-<span class="go">&lt;soaplib.model.binary.Attachment object at 0x5c6d90&gt;</span>
+<span class="go">&lt;soaplib.core.model.binary.Attachment object at 0x5c6d90&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">Attachment</span><span class="o">.</span><span class="n">from_xml</span><span class="p">(</span><span class="n">element</span><span class="p">)</span><span class="o">.</span><span class="n">data</span>
 <span class="go">my binary data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span> <span class="o">=</span> <span class="n">Attachment</span><span class="p">(</span><span class="n">fileName</span><span class="o">=</span><span class="s">&#39;test.data&#39;</span><span class="p">)</span> <span class="c"># load from file</span>
@@ -213,7 +213,7 @@ data being sent, and decoding immediately upon receipt of the Attachment.</p>
 <h2>Any<a class="headerlink" href="#any" title="Permalink to this headline">¶</a></h2>
 <p>The <tt class="xref py py-class docutils literal"><span class="pre">Any</span></tt> type is a serializer used to transmit unstructured XML data.
 Any types are very useful for handling dynamic data, and provide a very
-Pythonic way for passing data using soaplib. The Any serializer does not
+Pythonic way for passing data using soaplib.core. The Any serializer does not
 perform any useful task because the data passed in and returned are Element
 objects. The Any type&#8217;s main purpose is to declare its presence in the WSDL.</p>
 </div>
@@ -226,9 +226,9 @@ except it serializes to/from dicts with lists instead of raw
 <div class="section" id="custom">
 <h2>Custom<a class="headerlink" href="#custom" title="Permalink to this headline">¶</a></h2>
 <p>Soaplib provides a very simple interface for writing custom type. Just
-inherit from soaplib.model.base.Base and override the <tt class="xref py py-meth docutils literal"><span class="pre">from_xml()</span></tt>,
+inherit from soaplib.core.model.base.Base and override the <tt class="xref py py-meth docutils literal"><span class="pre">from_xml()</span></tt>,
 <tt class="xref py py-meth docutils literal"><span class="pre">to_parent_element()</span></tt> and <tt class="xref py py-meth docutils literal"><span class="pre">add_to_schema()</span></tt> classmethods.:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib.model.base</span> <span class="kn">import</span> <span class="n">Base</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib.core.model.base</span> <span class="kn">import</span> <span class="n">Base</span>
 
 <span class="k">class</span> <span class="nc">MySerializer</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
     <span class="nd">@classmethod</span>
@@ -273,7 +273,7 @@ inherit from soaplib.model.base.Base and override the <tt class="xref py py-meth
     </div>
     <div class="footer">
         &copy; Copyright 2010, Aaron Bickell.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

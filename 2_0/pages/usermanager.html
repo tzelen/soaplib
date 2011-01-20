@@ -83,12 +83,12 @@
 <h1>User Manager<a class="headerlink" href="#user-manager" title="Permalink to this headline">¶</a></h1>
 <p>Lets try a more complicated example than just strings and integers!
 The following is an extremely simple example using complex, nested data.:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib</span> <span class="kn">import</span> <span class="n">Application</span>
-<span class="kn">from</span> <span class="nn">soaplib.server</span> <span class="kn">import</span> <span class="n">wsgi</span>
-<span class="kn">from</span> <span class="nn">soaplib.service</span> <span class="kn">import</span> <span class="n">rpc</span>
-<span class="kn">from</span> <span class="nn">soaplib.service</span> <span class="kn">import</span> <span class="n">DefinitionBase</span>
-<span class="kn">from</span> <span class="nn">soaplib.model.primitive</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span>
-<span class="kn">from</span> <span class="nn">soaplib.model.clazz</span> <span class="kn">import</span> <span class="n">ClassModel</span><span class="p">,</span> <span class="n">Array</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib.core</span> <span class="kn">import</span> <span class="n">Application</span>
+<span class="kn">from</span> <span class="nn">soaplib.core.server</span> <span class="kn">import</span> <span class="n">wsgi</span>
+<span class="kn">from</span> <span class="nn">soaplib.core.service</span> <span class="kn">import</span> <span class="n">rpc</span>
+<span class="kn">from</span> <span class="nn">soaplib.core.service</span> <span class="kn">import</span> <span class="n">DefinitionBase</span>
+<span class="kn">from</span> <span class="nn">soaplib.core.model.primitive</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span>
+<span class="kn">from</span> <span class="nn">soaplib.core.model.clazz</span> <span class="kn">import</span> <span class="n">ClassModel</span><span class="p">,</span> <span class="n">Array</span>
 
 <span class="n">user_database</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="n">userid_seq</span> <span class="o">=</span> <span class="mi">1</span>
@@ -187,7 +187,7 @@ extended will produce complex serializable types that can be used in a soap serv
     </div>
     <div class="footer">
         &copy; Copyright 2010, Aaron Bickell.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

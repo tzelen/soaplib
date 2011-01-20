@@ -94,10 +94,10 @@
 <div class="section" id="declaring-a-soaplib-service">
 <h2>Declaring a Soaplib Service<a class="headerlink" href="#declaring-a-soaplib-service" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">soaplib</span>
-<span class="kn">from</span> <span class="nn">soaplib.service</span> <span class="kn">import</span> <span class="n">rpc</span><span class="p">,</span> <span class="n">DefinitionBase</span>
-<span class="kn">from</span> <span class="nn">soaplib.model.primitive</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span>
-<span class="kn">from</span> <span class="nn">soaplib.server</span> <span class="kn">import</span> <span class="n">wsgi</span>
-<span class="kn">from</span> <span class="nn">soaplib.model.clazz</span> <span class="kn">import</span> <span class="n">Array</span>
+<span class="kn">from</span> <span class="nn">soaplib.core.service</span> <span class="kn">import</span> <span class="n">rpc</span><span class="p">,</span> <span class="n">DefinitionBase</span>
+<span class="kn">from</span> <span class="nn">soaplib.core.model.primitive</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span>
+<span class="kn">from</span> <span class="nn">soaplib.core.server</span> <span class="kn">import</span> <span class="n">wsgi</span>
+<span class="kn">from</span> <span class="nn">soaplib.core.model.clazz</span> <span class="kn">import</span> <span class="n">Array</span>
 
 
 <span class="k">class</span> <span class="nc">HelloWorldService</span><span class="p">(</span><span class="n">DefinitionBase</span><span class="p">):</span>
@@ -111,7 +111,7 @@
 <span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="kn">from</span> <span class="nn">wsgiref.simple_server</span> <span class="kn">import</span> <span class="n">make_server</span>
-        <span class="n">soap_application</span> <span class="o">=</span> <span class="n">soaplib</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span><span class="n">HelloWorldService</span><span class="p">],</span> <span class="s">&#39;tns&#39;</span><span class="p">)</span>
+        <span class="n">soap_application</span> <span class="o">=</span> <span class="n">soaplib</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span><span class="n">HelloWorldService</span><span class="p">],</span> <span class="s">&#39;tns&#39;</span><span class="p">)</span>
         <span class="n">wsgi_application</span> <span class="o">=</span> <span class="n">wsgi</span><span class="o">.</span><span class="n">Application</span><span class="p">(</span><span class="n">soap_application</span><span class="p">)</span>
         <span class="n">server</span> <span class="o">=</span> <span class="n">make_server</span><span class="p">(</span><span class="s">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">7789</span><span class="p">,</span> <span class="n">wsgi_application</span><span class="p">)</span>
         <span class="n">server</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
@@ -120,17 +120,17 @@
 </pre></div>
 </div>
 <p>Dissecting this example: DefinitionBase is the base class for all soap services.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib.service</span> <span class="kn">import</span> <span class="n">DefinitionBase</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib.core.service</span> <span class="kn">import</span> <span class="n">DefinitionBase</span>
 </pre></div>
 </div>
 <p>The rpc decorator exposes methods as soap method and declares the
 data types it accepts and returns.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib.service</span> <span class="kn">import</span> <span class="n">rpc</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib.core.service</span> <span class="kn">import</span> <span class="n">rpc</span>
 </pre></div>
 </div>
 <p>Import the model for this method (more on models later):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib.model.primitive</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span>
-<span class="kn">from</span> <span class="nn">soaplib.model.clazz</span> <span class="kn">import</span> <span class="n">Array</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib.core.model.primitive</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span>
+<span class="kn">from</span> <span class="nn">soaplib.core.model.clazz</span> <span class="kn">import</span> <span class="n">Array</span>
 </pre></div>
 </div>
 <p>Extending DefinitionBase is an easy way to create a soap service that can
@@ -160,7 +160,7 @@ simple wsgi web server; any WSGI-compliant server <em>should</em> work.:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="kn">from</span> <span class="nn">wsgiref.simple_server</span> <span class="kn">import</span> <span class="n">make_server</span>
-        <span class="n">soap_application</span> <span class="o">=</span> <span class="n">soaplib</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span><span class="n">HelloWorldService</span><span class="p">],</span> <span class="s">&#39;tns&#39;</span><span class="p">)</span>
+        <span class="n">soap_application</span> <span class="o">=</span> <span class="n">soaplib</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span><span class="n">HelloWorldService</span><span class="p">],</span> <span class="s">&#39;tns&#39;</span><span class="p">)</span>
         <span class="n">wsgi_application</span> <span class="o">=</span> <span class="n">wsgi</span><span class="o">.</span><span class="n">Application</span><span class="p">(</span><span class="n">soap_application</span><span class="p">)</span>
         <span class="n">server</span> <span class="o">=</span> <span class="n">make_server</span><span class="p">(</span><span class="s">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">7789</span><span class="p">,</span> <span class="n">wsgi_application</span><span class="p">)</span>
         <span class="n">server</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
@@ -215,7 +215,7 @@ visit the project&#8217;s page <a class="reference external" href="https://fedor
     </div>
     <div class="footer">
         &copy; Copyright 2010, Aaron Bickell.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

@@ -50,7 +50,7 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">WSDL API</a><ul>
-<li><a class="reference internal" href="#module-soaplib.wsdl">WSDL</a></li>
+<li><a class="reference internal" href="#module-soaplib.core.wsdl">WSDL</a></li>
 </ul>
 </li>
 </ul>
@@ -90,27 +90,27 @@
   <div class="section" id="wsdl-api">
 <h1>WSDL API<a class="headerlink" href="#wsdl-api" title="Permalink to this headline">¶</a></h1>
 <p>The wsdl module provides an interface into dynamic WSDL generation.</p>
-<div class="section" id="module-soaplib.wsdl">
-<span id="wsdl"></span><h2>WSDL<a class="headerlink" href="#module-soaplib.wsdl" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-soaplib.core.wsdl">
+<span id="wsdl"></span><h2>WSDL<a class="headerlink" href="#module-soaplib.core.wsdl" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="soaplib.wsdl.WSDL">
-<em class="property">class </em><tt class="descclassname">soaplib.wsdl.</tt><tt class="descname">WSDL</tt><big>(</big><em>soap_application</em>, <em>ns_tns</em>, <em>url</em>, <em>with_partner_link=False</em><big>)</big><a class="headerlink" href="#soaplib.wsdl.WSDL" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.wsdl.WSDL">
+<em class="property">class </em><tt class="descclassname">soaplib.core.wsdl.</tt><tt class="descname">WSDL</tt><big>(</big><em>soap_application</em>, <em>ns_tns</em>, <em>url</em>, <em>with_partner_link=False</em><big>)</big><a class="headerlink" href="#soaplib.core.wsdl.WSDL" title="Permalink to this definition">¶</a></dt>
 <dd><p>A standalone wsdl</p>
 <dl class="method">
-<dt id="soaplib.wsdl.WSDL.build_messages">
-<tt class="descname">build_messages</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.wsdl.WSDL.build_messages" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.wsdl.WSDL.build_messages">
+<tt class="descname">build_messages</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.core.wsdl.WSDL.build_messages" title="Permalink to this definition">¶</a></dt>
 <dd><p>Builds the wsdl:message elements</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="soaplib.wsdl.WSDL.build_wsdl">
-<tt class="descname">build_wsdl</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.wsdl.WSDL.build_wsdl" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.wsdl.WSDL.build_wsdl">
+<tt class="descname">build_wsdl</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.core.wsdl.WSDL.build_wsdl" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct the elements for the wsdl.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="soaplib.wsdl.WSDL.to_string">
-<tt class="descname">to_string</tt><big>(</big><em>pretty_print=False</em>, <em>xml_declaration=True</em>, <em>encoding='UTF-8'</em><big>)</big><a class="headerlink" href="#soaplib.wsdl.WSDL.to_string" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.wsdl.WSDL.to_string">
+<tt class="descname">to_string</tt><big>(</big><em>pretty_print=False</em>, <em>xml_declaration=True</em>, <em>encoding='UTF-8'</em><big>)</big><a class="headerlink" href="#soaplib.core.wsdl.WSDL.to_string" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a string reprensation of the  wsdl as fornatted xml.</p>
 </dd></dl>
 
@@ -145,7 +145,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2010, Aaron Bickell.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

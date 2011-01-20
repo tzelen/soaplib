@@ -1,0 +1,312 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Application &mdash; soaplib v2.0.0beta documentation</title>
+    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="soaplib v2.0.0beta documentation" href="../index.html" />
+    <link rel="prev" title="Service" href="service.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="service.html" title="Service"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Application</a></li>
+<li><a class="reference internal" href="#validatingapplication">ValidatingApplication</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="service.html"
+                        title="previous chapter">Service</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/pages/application.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="application">
+<h1>Application<a class="headerlink" href="#application" title="Permalink to this headline">¶</a></h1>
+<p>The Application object in is used to build and serve the soap service.</p>
+<dl class="class">
+<dt id="soaplib.core._base.Application">
+<em class="property">class </em><tt class="descclassname">soaplib.core._base.</tt><tt class="descname">Application</tt><big>(</big><em>services</em>, <em>tns</em>, <em>name=None</em>, <em>_with_partnerlink=False</em><big>)</big><a class="headerlink" href="#soaplib.core._base.Application" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="class">
+<dt id="soaplib.core._base.Application.IN_WRAPPER">
+<em class="property">class </em><tt class="descname">IN_WRAPPER</tt><a class="headerlink" href="#soaplib.core._base.Application.IN_WRAPPER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="soaplib.core._base.Application.NO_WRAPPER">
+<em class="property">class </em><tt class="descclassname">Application.</tt><tt class="descname">NO_WRAPPER</tt><a class="headerlink" href="#soaplib.core._base.Application.NO_WRAPPER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="soaplib.core._base.Application.OUT_WRAPPER">
+<em class="property">class </em><tt class="descclassname">Application.</tt><tt class="descname">OUT_WRAPPER</tt><a class="headerlink" href="#soaplib.core._base.Application.OUT_WRAPPER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="soaplib.core._base.Application.build_schema">
+<tt class="descclassname">Application.</tt><tt class="descname">build_schema</tt><big>(</big><em>types=None</em><big>)</big><a class="headerlink" href="#soaplib.core._base.Application.build_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unify the &lt;schema&gt; nodes required for this app.</p>
+<p>This is a protected method.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.core._base.Application.decompose_incoming_envelope">
+<tt class="descclassname">Application.</tt><tt class="descname">decompose_incoming_envelope</tt><big>(</big><em>ctx</em>, <em>envelope_xml</em>, <em>xmlids=None</em><big>)</big><a class="headerlink" href="#soaplib.core._base.Application.decompose_incoming_envelope" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="soaplib.core._base.Application.deserialize_soap">
+<tt class="descclassname">Application.</tt><tt class="descname">deserialize_soap</tt><big>(</big><em>ctx</em>, <em>wrapper</em>, <em>envelope_xml</em>, <em>xmlids=None</em><big>)</big><a class="headerlink" href="#soaplib.core._base.Application.deserialize_soap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a MethodContext instance and a string containing ONE soap
+message.
+Returns the corresponding native python object</p>
+<p>Not meant to be overridden.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.core._base.Application.get_class">
+<tt class="descclassname">Application.</tt><tt class="descname">get_class</tt><big>(</big><em>key</em><big>)</big><a class="headerlink" href="#soaplib.core._base.Application.get_class" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="soaplib.core._base.Application.get_class_instance">
+<tt class="descclassname">Application.</tt><tt class="descname">get_class_instance</tt><big>(</big><em>key</em><big>)</big><a class="headerlink" href="#soaplib.core._base.Application.get_class_instance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="soaplib.core._base.Application.get_name">
+<tt class="descclassname">Application.</tt><tt class="descname">get_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.core._base.Application.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns service name that is seen in the name attribute of the
+definitions tag.</p>
+<p>Not meant to be overridden.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.core._base.Application.get_namespace_prefix">
+<tt class="descclassname">Application.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>ns</em><big>)</big><a class="headerlink" href="#soaplib.core._base.Application.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the namespace prefix for the given namespace. Creates a new
+one automatically if it doesn&#8217;t exist.</p>
+<p>Not meant to be overridden.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.core._base.Application.get_schema">
+<tt class="descclassname">Application.</tt><tt class="descname">get_schema</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.core._base.Application.get_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simple accessor method that caches application&#8217;s xml schema, once
+generated.</p>
+<p>Not meant to be overridden.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.core._base.Application.get_service">
+<tt class="descclassname">Application.</tt><tt class="descname">get_service</tt><big>(</big><em>service</em>, <em>http_req_env=None</em><big>)</big><a class="headerlink" href="#soaplib.core._base.Application.get_service" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function that maps service classes to service instances.
+Overriding this function is useful in case e.g. you need to pass
+additional parameters to service constructors.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.core._base.Application.get_service_class">
+<tt class="descclassname">Application.</tt><tt class="descname">get_service_class</tt><big>(</big><em>method_name</em><big>)</big><a class="headerlink" href="#soaplib.core._base.Application.get_service_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>This call maps method names to the services that will handle them.</p>
+<p>Override this function to alter the method mappings. Just try not to get
+too crazy with regular expressions :)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.core._base.Application.get_tns">
+<tt class="descclassname">Application.</tt><tt class="descname">get_tns</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.core._base.Application.get_tns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns default namespace that is seen in the targetNamespace 
+attribute of the definitions tag.</p>
+<p>Not meant to be overridden.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.core._base.Application.get_wsdl">
+<tt class="descclassname">Application.</tt><tt class="descname">get_wsdl</tt><big>(</big><em>url</em><big>)</big><a class="headerlink" href="#soaplib.core._base.Application.get_wsdl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simple accessor method that caches the wsdl of the application, once
+generated.</p>
+<p>Not meant to be overridden.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="soaplib.core._base.Application.name">
+<tt class="descclassname">Application.</tt><tt class="descname">name</tt><a class="headerlink" href="#soaplib.core._base.Application.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns service name that is seen in the name attribute of the
+definitions tag.</p>
+<p>Not meant to be overridden.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.core._base.Application.on_exception_object">
+<tt class="descclassname">Application.</tt><tt class="descname">on_exception_object</tt><big>(</big><em>exc</em><big>)</big><a class="headerlink" href="#soaplib.core._base.Application.on_exception_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the app throws an exception. (might be inside or outside
+the service call.</p>
+<p>&#64;param the wsgi environment
+&#64;param the fault object</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.core._base.Application.on_exception_xml">
+<tt class="descclassname">Application.</tt><tt class="descname">on_exception_xml</tt><big>(</big><em>fault_xml</em><big>)</big><a class="headerlink" href="#soaplib.core._base.Application.on_exception_xml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the app throws an exception. (might be inside or outside
+the service call.</p>
+<p>&#64;param the wsgi environment
+&#64;param the xml element containing the xml serialization of the fault</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.core._base.Application.parse_xml_string">
+<tt class="descclassname">Application.</tt><tt class="descname">parse_xml_string</tt><big>(</big><em>xml_string</em>, <em>charset=None</em><big>)</big><a class="headerlink" href="#soaplib.core._base.Application.parse_xml_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="soaplib.core._base.Application.process_request">
+<tt class="descclassname">Application.</tt><tt class="descname">process_request</tt><big>(</big><em>ctx</em>, <em>req_obj</em><big>)</big><a class="headerlink" href="#soaplib.core._base.Application.process_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a MethodContext instance and the native request object.
+Returns the response to the request as a native python object.</p>
+<p>Not meant to be overridden.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.core._base.Application.serialize_soap">
+<tt class="descclassname">Application.</tt><tt class="descname">serialize_soap</tt><big>(</big><em>ctx</em>, <em>wrapper</em>, <em>out_object</em><big>)</big><a class="headerlink" href="#soaplib.core._base.Application.serialize_soap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a MethodContext instance and the object to be serialied.
+Returns the corresponding xml structure as an lxml.etree._Element
+instance.</p>
+<p>Not meant to be overridden.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.core._base.Application.set_namespace_prefix">
+<tt class="descclassname">Application.</tt><tt class="descname">set_namespace_prefix</tt><big>(</big><em>ns</em>, <em>pref</em><big>)</big><a class="headerlink" href="#soaplib.core._base.Application.set_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forces a namespace prefix on a namespace by either creating it or
+moving the existing namespace to a new prefix.</p>
+<p>Not meant to be overridden.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="soaplib.core._base.Application.tns">
+<tt class="descclassname">Application.</tt><tt class="descname">tns</tt><a class="headerlink" href="#soaplib.core._base.Application.tns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns default namespace that is seen in the targetNamespace 
+attribute of the definitions tag.</p>
+<p>Not meant to be overridden.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="soaplib.core._base.Application.validate">
+<tt class="descclassname">Application.</tt><tt class="descname">validate</tt><big>(</big><em>payload</em><big>)</big><a class="headerlink" href="#soaplib.core._base.Application.validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to be overriden to perform any sort of custom input
+validation.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="validatingapplication">
+<h1>ValidatingApplication<a class="headerlink" href="#validatingapplication" title="Permalink to this headline">¶</a></h1>
+<p>The ValidatingApplication validates XML messages and types against an
+auto-generated schema.</p>
+<dl class="docutils">
+<dt>..autoclass:: soaplib.core._base.ValidatingApplication</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">members:</th><td class="field-body"></td>
+</tr>
+<tr class="field"><th class="field-name">undoc-members:</th><td class="field-body"></td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">inherited-members:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="service.html" title="Service"
+             >previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Aaron Bickell.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

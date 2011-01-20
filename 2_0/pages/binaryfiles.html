@@ -85,7 +85,7 @@
 string. Soaplib uses the &#8216;Attachment&#8217; serializer to handle all encoding and
 decoding of the binary data, and provieds some useful methods for dealing with
 both in-memory and on-disk binary data.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.model.binary</span> <span class="kn">import</span> <span class="n">Attachment</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.core.model.binary</span> <span class="kn">import</span> <span class="n">Attachment</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span> <span class="k">as</span> <span class="n">et</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Attachment</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s">&quot;this is my binary data&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">et</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">Attachment</span><span class="o">.</span><span class="n">to_parent_element</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
@@ -95,7 +95,7 @@ both in-memory and on-disk binary data.</p>
 </pre></div>
 </div>
 <p>If you want to return file with binary data, simply:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.model.binary</span> <span class="kn">import</span> <span class="n">Attachment</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">soaplib.core.model.binary</span> <span class="kn">import</span> <span class="n">Attachment</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span> <span class="k">as</span> <span class="n">et</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Attachment</span><span class="p">(</span><span class="n">fileName</span><span class="o">=</span><span class="s">&quot;mydata&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">et</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">Attachment</span><span class="o">.</span><span class="n">to_parent_element</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
@@ -105,11 +105,11 @@ both in-memory and on-disk binary data.</p>
 </pre></div>
 </div>
 <p>An example service for archiving documents:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib.service</span> <span class="kn">import</span> <span class="n">rpc</span><span class="p">,</span> <span class="n">DefinitionBase</span>
-<span class="kn">from</span> <span class="nn">soaplib.model.primitive</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span>
-<span class="kn">from</span> <span class="nn">soaplib.model.clazz</span> <span class="kn">import</span> <span class="n">Array</span>
-<span class="kn">from</span> <span class="nn">soaplib.model.binary</span> <span class="kn">import</span> <span class="n">Attachment</span>
-<span class="kn">from</span> <span class="nn">soaplib.server</span> <span class="kn">import</span> <span class="n">wsgi</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib.core.service</span> <span class="kn">import</span> <span class="n">rpc</span><span class="p">,</span> <span class="n">DefinitionBase</span>
+<span class="kn">from</span> <span class="nn">soaplib.core.model.primitive</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span>
+<span class="kn">from</span> <span class="nn">soaplib.core.model.clazz</span> <span class="kn">import</span> <span class="n">Array</span>
+<span class="kn">from</span> <span class="nn">soaplib.core.model.binary</span> <span class="kn">import</span> <span class="n">Attachment</span>
+<span class="kn">from</span> <span class="nn">soaplib.core.server</span> <span class="kn">import</span> <span class="n">wsgi</span>
 
 <span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">mkstemp</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -151,7 +151,7 @@ both in-memory and on-disk binary data.</p>
 
 <span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">wsgiref.simple_server</span> <span class="kn">import</span> <span class="n">make_server</span>
-    <span class="n">soap_app</span> <span class="o">=</span> <span class="n">soaplib</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span><span class="n">DocumentArchiver</span><span class="p">],</span> <span class="s">&#39;tns&#39;</span><span class="p">)</span>
+    <span class="n">soap_app</span> <span class="o">=</span> <span class="n">soaplib</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span><span class="n">DocumentArchiver</span><span class="p">],</span> <span class="s">&#39;tns&#39;</span><span class="p">)</span>
     <span class="n">wsgi_app</span> <span class="o">=</span> <span class="n">wsgi</span><span class="o">.</span><span class="n">Application</span><span class="p">(</span><span class="n">soap_app</span><span class="p">)</span>
     <span class="n">server</span> <span class="o">=</span> <span class="n">make_server</span><span class="p">(</span><span class="s">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">7789</span><span class="p">,</span> <span class="n">wsgi_app</span><span class="p">)</span>
     <span class="n">server</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
@@ -185,7 +185,7 @@ both in-memory and on-disk binary data.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2010, Aaron Bickell.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

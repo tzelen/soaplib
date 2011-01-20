@@ -87,57 +87,57 @@ service hooks are used to gather performance information on both the method
 execution as well as the duration of the entire call, including serialization
 and deserialization. The available hooks are:</p>
 <blockquote>
-<ul>
+<div><ul>
 <li><p class="first">on_call</p>
 <blockquote>
-<p>This is the first thing called in the service</p>
-</blockquote>
+<div><p>This is the first thing called in the service</p>
+</div></blockquote>
 </li>
 <li><p class="first">on_wsdl</p>
 <blockquote>
-<p>Called before the wsdl is requested</p>
-</blockquote>
+<div><p>Called before the wsdl is requested</p>
+</div></blockquote>
 </li>
 <li><p class="first">on_wsdl_exception</p>
 <blockquote>
-<p>Called after an exception was thrown when generating the wsdl (shouldn&#8217;t happen very much)</p>
-</blockquote>
+<div><p>Called after an exception was thrown when generating the wsdl (shouldn&#8217;t happen very much)</p>
+</div></blockquote>
 </li>
 <li><p class="first">on_method_call</p>
 <blockquote>
-<p>Called right before the service method is executed</p>
-</blockquote>
+<div><p>Called right before the service method is executed</p>
+</div></blockquote>
 </li>
 <li><p class="first">on_method_return</p>
 <blockquote>
-<p>Called right after the service method is executed</p>
-</blockquote>
+<div><p>Called right after the service method is executed</p>
+</div></blockquote>
 </li>
 <li><p class="first">on_method_exception_object</p>
 <blockquote>
-<p>Called when an exception occurred in a service method before the exception is serialized.</p>
-</blockquote>
+<div><p>Called when an exception occurred in a service method before the exception is serialized.</p>
+</div></blockquote>
 </li>
 <li><p class="first">on_method_exception_xml</p>
 <blockquote>
-<p>Called after an exception occurred in either the service method or in serialization</p>
-</blockquote>
+<div><p>Called after an exception occurred in either the service method or in serialization</p>
+</div></blockquote>
 </li>
 <li><p class="first">on_return</p>
 <blockquote>
-<p>This is the very last thing called before the wsgi app exits</p>
-</blockquote>
+<div><p>This is the very last thing called before the wsgi app exits</p>
+</div></blockquote>
 </li>
 </ul>
-</blockquote>
+</div></blockquote>
 <p>These method can be used to easily apply cross-cutting functionality accross all
 methods in the service to do things like database transaction management,
 logging and measuring performance. This example also employs the threadlocal
-request (soaplib.wsgi_soap.request) object to hold the data points for this
+request (soaplib.core.wsgi_soap.request) object to hold the data points for this
 request.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib.service</span> <span class="kn">import</span> <span class="n">rpc</span><span class="p">,</span> <span class="n">DefinitionBase</span>
-<span class="kn">from</span> <span class="nn">soaplib.model.primitive</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span>
-<span class="kn">from</span> <span class="nn">soaplib.model.clazz</span> <span class="kn">import</span> <span class="n">Array</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib.core.service</span> <span class="kn">import</span> <span class="n">rpc</span><span class="p">,</span> <span class="n">DefinitionBase</span>
+<span class="kn">from</span> <span class="nn">soaplib.core.model.primitive</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span>
+<span class="kn">from</span> <span class="nn">soaplib.core.model.clazz</span> <span class="kn">import</span> <span class="n">Array</span>
 
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
 
@@ -215,7 +215,7 @@ all methods in a service.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2010, Aaron Bickell.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

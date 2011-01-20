@@ -23,8 +23,8 @@
     <script type="text/javascript" src="../static/underscore.js"></script>
     <script type="text/javascript" src="../static/doctools.js"></script>
     <link rel="top" title="soaplib v2.0.0beta documentation" href="../index.html" />
-    <link rel="next" title="Client" href="client.html" />
-    <link rel="prev" title="Model API" href="model_api.html" /> 
+    <link rel="next" title="Service" href="service.html" />
+    <link rel="prev" title="WSDL API" href="wsdl.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,10 +37,10 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="client.html" title="Client"
+          <a href="service.html" title="Service"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="model_api.html" title="Model API"
+          <a href="wsdl.html" title="WSDL API"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
       </ul>
@@ -50,19 +50,18 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Server</a><ul>
-<li><a class="reference internal" href="#module-soaplib.server._base">Base Server</a></li>
-<li><a class="reference internal" href="#module-soaplib.server.wsgi">WSGI Server</a></li>
-<li><a class="reference internal" href="#zeromq-server">zeromq Server</a></li>
+<li><a class="reference internal" href="#module-soaplib.core.server._base">Base Server</a></li>
+<li><a class="reference internal" href="#module-soaplib.core.server.wsgi">WSGI Server</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="model_api.html"
-                        title="previous chapter">Model API</a></p>
+  <p class="topless"><a href="wsdl.html"
+                        title="previous chapter">WSDL API</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="client.html"
-                        title="next chapter">Client</a></p>
+  <p class="topless"><a href="service.html"
+                        title="next chapter">Service</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../sources/pages/server.txt"
@@ -92,156 +91,156 @@
   <div class="section" id="server">
 <h1>Server<a class="headerlink" href="#server" title="Permalink to this headline">¶</a></h1>
 <p>The client module provides a http and 0mq client for consuming webservices.</p>
-<div class="section" id="module-soaplib.server._base">
-<span id="base-server"></span><h2>Base Server<a class="headerlink" href="#module-soaplib.server._base" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-soaplib.core.server._base">
+<span id="base-server"></span><h2>Base Server<a class="headerlink" href="#module-soaplib.core.server._base" title="Permalink to this headline">¶</a></h2>
 <p>A soap server that uses http as transport, and wsgi as bridge api</p>
 <dl class="class">
-<dt id="soaplib.server._base.Base">
-<em class="property">class </em><tt class="descclassname">soaplib.server._base.</tt><tt class="descname">Base</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.server._base.Base" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server._base.Base">
+<em class="property">class </em><tt class="descclassname">soaplib.core.server._base.</tt><tt class="descname">Base</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.core.server._base.Base" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <dl class="method">
-<dt id="soaplib.server._base.Base.get_in_object">
-<tt class="descname">get_in_object</tt><big>(</big><em>ctx</em>, <em>in_string</em>, <em>in_string_charset=None</em><big>)</big><a class="headerlink" href="#soaplib.server._base.Base.get_in_object" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server._base.Base.get_in_object">
+<tt class="descname">get_in_object</tt><big>(</big><em>ctx</em>, <em>in_string</em>, <em>in_string_charset=None</em><big>)</big><a class="headerlink" href="#soaplib.core.server._base.Base.get_in_object" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="soaplib.server._base.Base.get_out_object">
-<tt class="descname">get_out_object</tt><big>(</big><em>ctx</em>, <em>in_object</em><big>)</big><a class="headerlink" href="#soaplib.server._base.Base.get_out_object" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server._base.Base.get_out_object">
+<tt class="descname">get_out_object</tt><big>(</big><em>ctx</em>, <em>in_object</em><big>)</big><a class="headerlink" href="#soaplib.core.server._base.Base.get_out_object" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="soaplib.server._base.Base.get_out_string">
-<tt class="descname">get_out_string</tt><big>(</big><em>ctx</em>, <em>out_object</em><big>)</big><a class="headerlink" href="#soaplib.server._base.Base.get_out_string" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server._base.Base.get_out_string">
+<tt class="descname">get_out_string</tt><big>(</big><em>ctx</em>, <em>out_object</em><big>)</big><a class="headerlink" href="#soaplib.core.server._base.Base.get_out_string" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="exception">
-<dt id="soaplib.server._base.ValidationError">
-<em class="property">exception </em><tt class="descclassname">soaplib.server._base.</tt><tt class="descname">ValidationError</tt><big>(</big><em>faultcode='Server'</em>, <em>faultstring=''</em>, <em>faultactor=''</em>, <em>detail=None</em><big>)</big><a class="headerlink" href="#soaplib.server._base.ValidationError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="serializer_api.html#soaplib.model.exception.Fault" title="soaplib.model.exception.Fault"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.exception.Fault</span></tt></a></p>
+<dt id="soaplib.core.server._base.ValidationError">
+<em class="property">exception </em><tt class="descclassname">soaplib.core.server._base.</tt><tt class="descname">ValidationError</tt><big>(</big><em>faultcode='Server'</em>, <em>faultstring=''</em>, <em>faultactor=''</em>, <em>detail=None</em><big>)</big><a class="headerlink" href="#soaplib.core.server._base.ValidationError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="serializer_api.html#soaplib.core.model.exception.Fault" title="soaplib.core.model.exception.Fault"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.core.model.exception.Fault</span></tt></a></p>
 <dl class="class">
-<dt id="soaplib.server._base.ValidationError.Annotations">
-<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.server._base.ValidationError.Annotations" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server._base.ValidationError.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.core.server._base.ValidationError.Annotations" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 </dd></dl>
 
 <dl class="class">
-<dt id="soaplib.server._base.ValidationError.Attributes">
-<em class="property">class </em><tt class="descclassname">ValidationError.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.server._base.ValidationError.Attributes" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server._base.ValidationError.Attributes">
+<em class="property">class </em><tt class="descclassname">ValidationError.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.core.server._base.ValidationError.Attributes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 </dd></dl>
 
 <dl class="class">
-<dt id="soaplib.server._base.ValidationError.Empty">
-<em class="property">class </em><tt class="descclassname">ValidationError.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.server._base.ValidationError.Empty" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server._base.ValidationError.Empty">
+<em class="property">class </em><tt class="descclassname">ValidationError.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.core.server._base.ValidationError.Empty" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 </dd></dl>
 
 <dl class="method">
-<dt id="soaplib.server._base.ValidationError.add_to_parent_element">
-<tt class="descclassname">ValidationError.</tt><tt class="descname">add_to_parent_element</tt><big>(</big><em>tns</em>, <em>parent</em><big>)</big><a class="headerlink" href="#soaplib.server._base.ValidationError.add_to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server._base.ValidationError.add_to_parent_element">
+<tt class="descclassname">ValidationError.</tt><tt class="descname">add_to_parent_element</tt><big>(</big><em>tns</em>, <em>parent</em><big>)</big><a class="headerlink" href="#soaplib.core.server._base.ValidationError.add_to_parent_element" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="classmethod">
-<dt id="soaplib.server._base.ValidationError.add_to_schema">
-<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_dict</em><big>)</big><a class="headerlink" href="#soaplib.server._base.ValidationError.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server._base.ValidationError.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_dict</em><big>)</big><a class="headerlink" href="#soaplib.core.server._base.ValidationError.add_to_schema" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="soaplib.server._base.ValidationError.args">
-<tt class="descclassname">ValidationError.</tt><tt class="descname">args</tt><a class="headerlink" href="#soaplib.server._base.ValidationError.args" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server._base.ValidationError.args">
+<tt class="descclassname">ValidationError.</tt><tt class="descname">args</tt><a class="headerlink" href="#soaplib.core.server._base.ValidationError.args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="classmethod">
-<dt id="soaplib.server._base.ValidationError.customize">
-<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.server._base.ValidationError.customize" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server._base.ValidationError.customize">
+<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.core.server._base.ValidationError.customize" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function duplicates and customizes the class it belongs to. The
 original class remains unchanged. This is an ugly hack. If you know
 better, let us know.</p>
 </dd></dl>
 
 <dl class="classmethod">
-<dt id="soaplib.server._base.ValidationError.from_xml">
-<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.server._base.ValidationError.from_xml" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server._base.ValidationError.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.core.server._base.ValidationError.from_xml" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="classmethod">
-<dt id="soaplib.server._base.ValidationError.get_namespace">
-<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.server._base.ValidationError.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server._base.ValidationError.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.core.server._base.ValidationError.get_namespace" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="classmethod">
-<dt id="soaplib.server._base.ValidationError.get_namespace_prefix">
-<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.server._base.ValidationError.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server._base.ValidationError.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.core.server._base.ValidationError.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="classmethod">
-<dt id="soaplib.server._base.ValidationError.get_type_name">
-<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.server._base.ValidationError.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server._base.ValidationError.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.core.server._base.ValidationError.get_type_name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="classmethod">
-<dt id="soaplib.server._base.ValidationError.get_type_name_ns">
-<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.server._base.ValidationError.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server._base.ValidationError.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.core.server._base.ValidationError.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
-<dt id="soaplib.server._base.ValidationError.is_default">
-<em class="property">static </em><tt class="descclassname">ValidationError.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.server._base.ValidationError.is_default" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server._base.ValidationError.is_default">
+<em class="property">static </em><tt class="descclassname">ValidationError.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.core.server._base.ValidationError.is_default" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="soaplib.server._base.ValidationError.message">
-<tt class="descclassname">ValidationError.</tt><tt class="descname">message</tt><a class="headerlink" href="#soaplib.server._base.ValidationError.message" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server._base.ValidationError.message">
+<tt class="descclassname">ValidationError.</tt><tt class="descname">message</tt><a class="headerlink" href="#soaplib.core.server._base.ValidationError.message" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
-<dt id="soaplib.server._base.ValidationError.resolve_namespace">
-<em class="property">static </em><tt class="descclassname">ValidationError.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.server._base.ValidationError.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server._base.ValidationError.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">ValidationError.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.core.server._base.ValidationError.resolve_namespace" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="classmethod">
-<dt id="soaplib.server._base.ValidationError.to_parent_element">
-<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>name=None</em><big>)</big><a class="headerlink" href="#soaplib.server._base.ValidationError.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server._base.ValidationError.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>name=None</em><big>)</big><a class="headerlink" href="#soaplib.core.server._base.ValidationError.to_parent_element" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 </div>
-<div class="section" id="module-soaplib.server.wsgi">
-<span id="wsgi-server"></span><h2>WSGI Server<a class="headerlink" href="#module-soaplib.server.wsgi" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-soaplib.core.server.wsgi">
+<span id="wsgi-server"></span><h2>WSGI Server<a class="headerlink" href="#module-soaplib.core.server.wsgi" title="Permalink to this headline">¶</a></h2>
 <p>A soap server that uses http as transport, and wsgi as bridge api</p>
 <dl class="class">
-<dt id="soaplib.server.wsgi.Application">
-<em class="property">class </em><tt class="descclassname">soaplib.server.wsgi.</tt><tt class="descname">Application</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.server.wsgi.Application" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#soaplib.server._base.Base" title="soaplib.server._base.Base"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.server._base.Base</span></tt></a></p>
+<dt id="soaplib.core.server.wsgi.Application">
+<em class="property">class </em><tt class="descclassname">soaplib.core.server.wsgi.</tt><tt class="descname">Application</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.core.server.wsgi.Application" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#soaplib.core.server._base.Base" title="soaplib.core.server._base.Base"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.core.server._base.Base</span></tt></a></p>
 <dl class="method">
-<dt id="soaplib.server.wsgi.Application.get_in_object">
-<tt class="descname">get_in_object</tt><big>(</big><em>ctx</em>, <em>in_string</em>, <em>in_string_charset=None</em><big>)</big><a class="headerlink" href="#soaplib.server.wsgi.Application.get_in_object" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.Application.get_in_object">
+<tt class="descname">get_in_object</tt><big>(</big><em>ctx</em>, <em>in_string</em>, <em>in_string_charset=None</em><big>)</big><a class="headerlink" href="#soaplib.core.server.wsgi.Application.get_in_object" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="soaplib.server.wsgi.Application.get_out_object">
-<tt class="descname">get_out_object</tt><big>(</big><em>ctx</em>, <em>in_object</em><big>)</big><a class="headerlink" href="#soaplib.server.wsgi.Application.get_out_object" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.Application.get_out_object">
+<tt class="descname">get_out_object</tt><big>(</big><em>ctx</em>, <em>in_object</em><big>)</big><a class="headerlink" href="#soaplib.core.server.wsgi.Application.get_out_object" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="soaplib.server.wsgi.Application.get_out_string">
-<tt class="descname">get_out_string</tt><big>(</big><em>ctx</em>, <em>out_object</em><big>)</big><a class="headerlink" href="#soaplib.server.wsgi.Application.get_out_string" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.Application.get_out_string">
+<tt class="descname">get_out_string</tt><big>(</big><em>ctx</em>, <em>out_object</em><big>)</big><a class="headerlink" href="#soaplib.core.server.wsgi.Application.get_out_string" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="soaplib.server.wsgi.Application.on_wsdl">
-<tt class="descname">on_wsdl</tt><big>(</big><em>environ</em>, <em>wsdl</em><big>)</big><a class="headerlink" href="#soaplib.server.wsgi.Application.on_wsdl" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.Application.on_wsdl">
+<tt class="descname">on_wsdl</tt><big>(</big><em>environ</em>, <em>wsdl</em><big>)</big><a class="headerlink" href="#soaplib.core.server.wsgi.Application.on_wsdl" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is called when a wsdl is requested.</p>
 <p>&#64;param the wsgi environment
 &#64;param the wsdl string</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="soaplib.server.wsgi.Application.on_wsdl_exception">
-<tt class="descname">on_wsdl_exception</tt><big>(</big><em>environ</em>, <em>exc</em><big>)</big><a class="headerlink" href="#soaplib.server.wsgi.Application.on_wsdl_exception" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.Application.on_wsdl_exception">
+<tt class="descname">on_wsdl_exception</tt><big>(</big><em>environ</em>, <em>exc</em><big>)</big><a class="headerlink" href="#soaplib.core.server.wsgi.Application.on_wsdl_exception" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called when an exception occurs durring wsdl generation.</p>
 <p>&#64;param the wsgi environment
 &#64;param exc the exception
@@ -249,15 +248,15 @@ better, let us know.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="soaplib.server.wsgi.Application.on_wsgi_call">
-<tt class="descname">on_wsgi_call</tt><big>(</big><em>environ</em><big>)</big><a class="headerlink" href="#soaplib.server.wsgi.Application.on_wsgi_call" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.Application.on_wsgi_call">
+<tt class="descname">on_wsgi_call</tt><big>(</big><em>environ</em><big>)</big><a class="headerlink" href="#soaplib.core.server.wsgi.Application.on_wsgi_call" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is the first method called when this WSGI app is invoked.</p>
 <p>&#64;param the wsgi environment</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="soaplib.server.wsgi.Application.on_wsgi_return">
-<tt class="descname">on_wsgi_return</tt><big>(</big><em>environ</em>, <em>http_headers</em>, <em>return_str</em><big>)</big><a class="headerlink" href="#soaplib.server.wsgi.Application.on_wsgi_return" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.Application.on_wsgi_return">
+<tt class="descname">on_wsgi_return</tt><big>(</big><em>environ</em>, <em>http_headers</em>, <em>return_str</em><big>)</big><a class="headerlink" href="#soaplib.core.server.wsgi.Application.on_wsgi_return" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called before the application returns.</p>
 <p>&#64;param the wsgi environment
 &#64;param http response headers as dict
@@ -267,100 +266,97 @@ better, let us know.</p>
 </dd></dl>
 
 <dl class="exception">
-<dt id="soaplib.server.wsgi.ValidationError">
-<em class="property">exception </em><tt class="descclassname">soaplib.server.wsgi.</tt><tt class="descname">ValidationError</tt><big>(</big><em>faultcode='Server'</em>, <em>faultstring=''</em>, <em>faultactor=''</em>, <em>detail=None</em><big>)</big><a class="headerlink" href="#soaplib.server.wsgi.ValidationError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="serializer_api.html#soaplib.model.exception.Fault" title="soaplib.model.exception.Fault"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.model.exception.Fault</span></tt></a></p>
+<dt id="soaplib.core.server.wsgi.ValidationError">
+<em class="property">exception </em><tt class="descclassname">soaplib.core.server.wsgi.</tt><tt class="descname">ValidationError</tt><big>(</big><em>faultcode='Server'</em>, <em>faultstring=''</em>, <em>faultactor=''</em>, <em>detail=None</em><big>)</big><a class="headerlink" href="#soaplib.core.server.wsgi.ValidationError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="serializer_api.html#soaplib.core.model.exception.Fault" title="soaplib.core.model.exception.Fault"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.core.model.exception.Fault</span></tt></a></p>
 <dl class="class">
-<dt id="soaplib.server.wsgi.ValidationError.Annotations">
-<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.server.wsgi.ValidationError.Annotations" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.ValidationError.Annotations">
+<em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.core.server.wsgi.ValidationError.Annotations" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 </dd></dl>
 
 <dl class="class">
-<dt id="soaplib.server.wsgi.ValidationError.Attributes">
-<em class="property">class </em><tt class="descclassname">ValidationError.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.server.wsgi.ValidationError.Attributes" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.ValidationError.Attributes">
+<em class="property">class </em><tt class="descclassname">ValidationError.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#soaplib.core.server.wsgi.ValidationError.Attributes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 </dd></dl>
 
 <dl class="class">
-<dt id="soaplib.server.wsgi.ValidationError.Empty">
-<em class="property">class </em><tt class="descclassname">ValidationError.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.server.wsgi.ValidationError.Empty" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.ValidationError.Empty">
+<em class="property">class </em><tt class="descclassname">ValidationError.</tt><tt class="descname">Empty</tt><a class="headerlink" href="#soaplib.core.server.wsgi.ValidationError.Empty" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 </dd></dl>
 
 <dl class="method">
-<dt id="soaplib.server.wsgi.ValidationError.add_to_parent_element">
-<tt class="descclassname">ValidationError.</tt><tt class="descname">add_to_parent_element</tt><big>(</big><em>tns</em>, <em>parent</em><big>)</big><a class="headerlink" href="#soaplib.server.wsgi.ValidationError.add_to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.ValidationError.add_to_parent_element">
+<tt class="descclassname">ValidationError.</tt><tt class="descname">add_to_parent_element</tt><big>(</big><em>tns</em>, <em>parent</em><big>)</big><a class="headerlink" href="#soaplib.core.server.wsgi.ValidationError.add_to_parent_element" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="classmethod">
-<dt id="soaplib.server.wsgi.ValidationError.add_to_schema">
-<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_dict</em><big>)</big><a class="headerlink" href="#soaplib.server.wsgi.ValidationError.add_to_schema" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.ValidationError.add_to_schema">
+<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">add_to_schema</tt><big>(</big><em>schema_dict</em><big>)</big><a class="headerlink" href="#soaplib.core.server.wsgi.ValidationError.add_to_schema" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="soaplib.server.wsgi.ValidationError.args">
-<tt class="descclassname">ValidationError.</tt><tt class="descname">args</tt><a class="headerlink" href="#soaplib.server.wsgi.ValidationError.args" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.ValidationError.args">
+<tt class="descclassname">ValidationError.</tt><tt class="descname">args</tt><a class="headerlink" href="#soaplib.core.server.wsgi.ValidationError.args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="classmethod">
-<dt id="soaplib.server.wsgi.ValidationError.customize">
-<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.server.wsgi.ValidationError.customize" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.ValidationError.customize">
+<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">customize</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#soaplib.core.server.wsgi.ValidationError.customize" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function duplicates and customizes the class it belongs to. The
 original class remains unchanged. This is an ugly hack. If you know
 better, let us know.</p>
 </dd></dl>
 
 <dl class="classmethod">
-<dt id="soaplib.server.wsgi.ValidationError.from_xml">
-<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.server.wsgi.ValidationError.from_xml" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.ValidationError.from_xml">
+<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">from_xml</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#soaplib.core.server.wsgi.ValidationError.from_xml" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="classmethod">
-<dt id="soaplib.server.wsgi.ValidationError.get_namespace">
-<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.server.wsgi.ValidationError.get_namespace" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.ValidationError.get_namespace">
+<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">get_namespace</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.core.server.wsgi.ValidationError.get_namespace" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="classmethod">
-<dt id="soaplib.server.wsgi.ValidationError.get_namespace_prefix">
-<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.server.wsgi.ValidationError.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.ValidationError.get_namespace_prefix">
+<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">get_namespace_prefix</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.core.server.wsgi.ValidationError.get_namespace_prefix" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="classmethod">
-<dt id="soaplib.server.wsgi.ValidationError.get_type_name">
-<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.server.wsgi.ValidationError.get_type_name" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.ValidationError.get_type_name">
+<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">get_type_name</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.core.server.wsgi.ValidationError.get_type_name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="classmethod">
-<dt id="soaplib.server.wsgi.ValidationError.get_type_name_ns">
-<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.server.wsgi.ValidationError.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.ValidationError.get_type_name_ns">
+<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">get_type_name_ns</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.core.server.wsgi.ValidationError.get_type_name_ns" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
-<dt id="soaplib.server.wsgi.ValidationError.is_default">
-<em class="property">static </em><tt class="descclassname">ValidationError.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.server.wsgi.ValidationError.is_default" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.ValidationError.is_default">
+<em class="property">static </em><tt class="descclassname">ValidationError.</tt><tt class="descname">is_default</tt><big>(</big><big>)</big><a class="headerlink" href="#soaplib.core.server.wsgi.ValidationError.is_default" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="soaplib.server.wsgi.ValidationError.message">
-<tt class="descclassname">ValidationError.</tt><tt class="descname">message</tt><a class="headerlink" href="#soaplib.server.wsgi.ValidationError.message" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.ValidationError.message">
+<tt class="descclassname">ValidationError.</tt><tt class="descname">message</tt><a class="headerlink" href="#soaplib.core.server.wsgi.ValidationError.message" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
-<dt id="soaplib.server.wsgi.ValidationError.resolve_namespace">
-<em class="property">static </em><tt class="descclassname">ValidationError.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.server.wsgi.ValidationError.resolve_namespace" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.ValidationError.resolve_namespace">
+<em class="property">static </em><tt class="descclassname">ValidationError.</tt><tt class="descname">resolve_namespace</tt><big>(</big><em>default_ns</em><big>)</big><a class="headerlink" href="#soaplib.core.server.wsgi.ValidationError.resolve_namespace" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="classmethod">
-<dt id="soaplib.server.wsgi.ValidationError.to_parent_element">
-<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>name=None</em><big>)</big><a class="headerlink" href="#soaplib.server.wsgi.ValidationError.to_parent_element" title="Permalink to this definition">¶</a></dt>
+<dt id="soaplib.core.server.wsgi.ValidationError.to_parent_element">
+<em class="property">classmethod </em><tt class="descclassname">ValidationError.</tt><tt class="descname">to_parent_element</tt><big>(</big><em>value</em>, <em>tns</em>, <em>parent_elt</em>, <em>name=None</em><big>)</big><a class="headerlink" href="#soaplib.core.server.wsgi.ValidationError.to_parent_element" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="zeromq-server">
-<h2>zeromq Server<a class="headerlink" href="#zeromq-server" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -380,17 +376,17 @@ better, let us know.</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="client.html" title="Client"
+          <a href="service.html" title="Service"
              >next</a> |</li>
         <li class="right" >
-          <a href="model_api.html" title="Model API"
+          <a href="wsdl.html" title="WSDL API"
              >previous</a> |</li>
         <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2010, Aaron Bickell.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>
