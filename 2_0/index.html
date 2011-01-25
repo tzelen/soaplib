@@ -51,13 +51,16 @@
 <li><a class="reference internal" href="#history">History</a><ul>
 </ul>
 </li>
+<li><a class="reference internal" href="#faq">FAQ</a><ul>
+</ul>
+</li>
 <li><a class="reference internal" href="#examples">Examples</a><ul>
 </ul>
 </li>
 <li><a class="reference internal" href="#model-api">Model API</a><ul>
 </ul>
 </li>
-<li><a class="reference internal" href="#wsdl-reprensation">WSDL Reprensation</a><ul>
+<li><a class="reference internal" href="#wsdl-representation">WSDL Representation</a><ul>
 </ul>
 </li>
 <li><a class="reference internal" href="#server">Server</a><ul>
@@ -103,12 +106,13 @@
             
   <div class="section" id="about">
 <h1>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h1>
-<p>Soaplib is an easy to use python library for publishing soap web services using
+<p>Soaplib is an easy to use Python library for publishing SOAP web services using
 WSDL 1.1 standard, and answering SOAP 1.1 requests. With a very small amount of
 code, soaplib allows you to write a useful web service and deploy it as a WSGI
-application.</p>
-<p>The official soaplib discussion forum/mailing list
-is <a class="reference external" href="http://mail.python.org/mailman/listinfo/soap/">here</a></p>
+application. (Non-WSGI scenarios are also supported.)</p>
+<p>Public discussion about soaplib can be found on the <a class="reference external" href="http://mail.python.org/mailman/listinfo/soap/">Python general SOAP mailing
+list</a>.</p>
+<p>The source code is <a class="reference external" href="https://github.com/soaplib/soaplib">here</a>.</p>
 <p>The legacy versions of soaplib are also available in this repository.</p>
 <p>See <a class="reference external" href="https://github.com/soaplib/soaplib/tree/0_8">here</a> for the soaplib-0.8 branch.</p>
 <p>See <a class="reference external" href="https://github.com/soaplib/soaplib/tree/1_0">here</a> for the soaplib-1.0 branch.</p>
@@ -116,8 +120,8 @@ is <a class="reference external" href="http://mail.python.org/mailman/listinfo/s
 <div class="section" id="installing">
 <h1>Installing<a class="headerlink" href="#installing" title="Permalink to this headline">¶</a></h1>
 <p>To install soaplib, you can use git to clone from github or install from pypi.</p>
-<p>git clone git://github.com/soaplib/soaplib.git
-cd soaplib</p>
+<p>git clone git://github.com/soaplib/soaplib.git</p>
+<p>cd soaplib</p>
 <p>python setup.py install</p>
 <p># to run the non-interop tests use:</p>
 <p>python setup.py test</p>
@@ -126,10 +130,23 @@ cd soaplib</p>
 </div>
 <div class="section" id="contributing">
 <h1>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h1>
-<p>If you wish to contribute to soaplib&#8217;s development simply create a personal fork
-on github.  When you are ready to push to the repo simply submit a pull request.
-For code changes make sure the existing test pass; if you are adding new
-features please have accompanying test.</p>
+<p>If you wish to contribute to soaplib&#8217;s development, create a personal fork
+on GitHub.  When you are ready to push to the repo, submit a pull request,
+and one of the core committers will review and respond.</p>
+<p>For code changes make sure the existing tests pass; if you are adding new
+features please have accompanying test. Of course, we&#8217;re also interested in
+increasing test coverage, so new tests are especially welcome!</p>
+<p>Please follow the <a class="reference external" href="http://www.python.org/dev/peps/pep-0008/">PEP 8</a>
+style guidelines for both source code and docstrings.</p>
+<p>We could also use help with the docs, which are built from reStructureText
+using Sphinx. It&#8217;s easy to learn, and if you need help getting started,
+contact us on the <a class="reference external" href="http://mail.python.org/mailman/listinfo/soap/">mailing list</a>
+and we&#8217;ll help.</p>
+<p>Regular contributors may be invited to join the soaplib organization on GitHub.
+This provides a way for multiple contributors to commit to the same repository,
+with no need for pull requests. It also provides stable home for the soaplib
+repository, despite any &#8220;changing of the guard&#8221; as team members join and
+leave the project.</p>
 </div>
 <div class="section" id="history">
 <h1>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h1>
@@ -146,6 +163,14 @@ features please have accompanying test.</p>
 <li class="toctree-l2"><a class="reference internal" href="pages/changelog.html#soaplib-0-8">soaplib-0.8</a></li>
 </ul>
 </li>
+</ul>
+</div>
+</div>
+<div class="section" id="faq">
+<h1>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pages/faq.html">Soaplib FAQ</a></li>
 </ul>
 </div>
 </div>
@@ -181,6 +206,9 @@ features please have accompanying test.</p>
 </div>
 <div class="section" id="model-api">
 <h1>Model API<a class="headerlink" href="#model-api" title="Permalink to this headline">¶</a></h1>
+<p>The soaplib.model API provides an elegant way of declaring within Python classes
+the XML Schema (W3C) elements which make up a WSDL. This can also be used to
+produce generic XSD for non-SOAP applications.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pages/model_api.html">Model API</a><ul>
@@ -196,8 +224,8 @@ features please have accompanying test.</p>
 </ul>
 </div>
 </div>
-<div class="section" id="wsdl-reprensation">
-<h1>WSDL Reprensation<a class="headerlink" href="#wsdl-reprensation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="wsdl-representation">
+<h1>WSDL Representation<a class="headerlink" href="#wsdl-representation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pages/wsdl.html">WSDL API</a><ul>
