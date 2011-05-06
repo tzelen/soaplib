@@ -54,7 +54,7 @@
 <li><a class="reference internal" href="#faq">FAQ</a><ul>
 </ul>
 </li>
-<li><a class="reference internal" href="#examples">Examples</a><ul>
+<li><a class="reference internal" href="#quick-start-examples">Quick Start Examples</a><ul>
 </ul>
 </li>
 <li><a class="reference internal" href="#model-api">Model API</a><ul>
@@ -70,6 +70,12 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#application">Application</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#multiple-service-classes">Multiple Service Classes</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#utilities">Utilities</a><ul>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 </li>
@@ -113,20 +119,25 @@ application. (Non-WSGI scenarios are also supported.)</p>
 <p>Public discussion about soaplib can be found on the <a class="reference external" href="http://mail.python.org/mailman/listinfo/soap/">Python general SOAP mailing
 list</a>.</p>
 <p>The source code is <a class="reference external" href="https://github.com/soaplib/soaplib">here</a>.</p>
-<p>The legacy versions of soaplib are also available in this repository.</p>
-<p>See <a class="reference external" href="https://github.com/soaplib/soaplib/tree/0_8">here</a> for the soaplib-0.8 branch.</p>
-<p>See <a class="reference external" href="https://github.com/soaplib/soaplib/tree/1_0">here</a> for the soaplib-1.0 branch.</p>
+<p>The legacy versions of soaplib are also available in this repository:</p>
+<ul class="simple">
+<li>soaplib-0.8 branch: <a class="reference external" href="https://github.com/soaplib/soaplib/tree/0_8">https://github.com/soaplib/soaplib/tree/0_8</a></li>
+<li>soaplib-1.0 branch: <a class="reference external" href="https://github.com/soaplib/soaplib/tree/1_0">https://github.com/soaplib/soaplib/tree/1_0</a></li>
+</ul>
 </div>
 <div class="section" id="installing">
 <h1>Installing<a class="headerlink" href="#installing" title="Permalink to this headline">¶</a></h1>
-<p>To install soaplib, you can use git to clone from github or install from pypi.</p>
-<p>git clone git://github.com/soaplib/soaplib.git</p>
-<p>cd soaplib</p>
-<p>python setup.py install</p>
-<p># to run the non-interop tests use:</p>
-<p>python setup.py test</p>
-<p># if you want to make any changes to the soaplib code, use:</p>
-<p>python setup.py develop</p>
+<p>To install soaplib, you can use git to clone from github or install from pypi:</p>
+<div class="highlight-python"><pre>git clone git://github.com/soaplib/soaplib.git
+cd soaplib
+python setup.py install
+
+# to run the non-interop tests use:
+python setup.py test
+
+# if you want to make any changes to the soaplib code, use:
+python setup.py develop</pre>
+</div>
 </div>
 <div class="section" id="contributing">
 <h1>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h1>
@@ -136,11 +147,11 @@ and one of the core committers will review and respond.</p>
 <p>For code changes make sure the existing tests pass; if you are adding new
 features please have accompanying test. Of course, we&#8217;re also interested in
 increasing test coverage, so new tests are especially welcome!</p>
-<p>Please follow the <a class="reference external" href="http://www.python.org/dev/peps/pep-0008/">PEP 8</a>
+<p>Please follow the <cite>PEP 8 &lt;http://www.python.org/dev/peps/pep-0008/&gt;</cite>
 style guidelines for both source code and docstrings.</p>
 <p>We could also use help with the docs, which are built from reStructureText
 using Sphinx. It&#8217;s easy to learn, and if you need help getting started,
-contact us on the <a class="reference external" href="http://mail.python.org/mailman/listinfo/soap/">mailing list</a>
+contact us on the <cite>mailing list &lt;http://mail.python.org/mailman/listinfo/soap/&gt;</cite>
 and we&#8217;ll help.</p>
 <p>Regular contributors may be invited to join the soaplib organization on GitHub.
 This provides a way for multiple contributors to commit to the same repository,
@@ -170,12 +181,17 @@ leave the project.</p>
 <h1>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pages/faq.html">Soaplib FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages/faq.html">Soaplib FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages/faq.html#does-soaplib-support-the-1-2-soap-spec">Does soaplib support the 1.2 SOAP spec?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/faq.html#how-do-i-implement-a-prefined-wsdl">How do I implement a prefined WSDL?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/faq.html#what-is-the-status-of-the-soaplib-client">What is the status of the soaplib client?</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
-<div class="section" id="examples">
-<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="quick-start-examples">
+<h1>Quick Start Examples<a class="headerlink" href="#quick-start-examples" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pages/helloworld.html">Hello World</a><ul>
@@ -201,6 +217,11 @@ leave the project.</p>
 <li class="toctree-l2"><a class="reference internal" href="pages/apache_axis.html#how-to-run-the-test">How to run the test</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="pages/customize.html">Tuning method arguments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages/customize.html#primitives">Primitives</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages/faults.html">Faults</a></li>
 </ul>
 </div>
 </div>
@@ -218,7 +239,7 @@ produce generic XSD for non-SOAP applications.</p>
 <li class="toctree-l2"><a class="reference internal" href="pages/model_api.html#module-soaplib.core.model.enum">Enum</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pages/model_api.html#module-soaplib.core.model.exception">Exception</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pages/model_api.html#module-soaplib.core.model.primitive">Primitive</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pages/model_api.html#module-soaplib.core.model.table">Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/model_api.html#table">Table</a></li>
 </ul>
 </li>
 </ul>
@@ -240,8 +261,8 @@ produce generic XSD for non-SOAP applications.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pages/server.html">Server</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pages/server.html#module-soaplib.core.server._base">Base Server</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pages/server.html#module-soaplib.core.server.wsgi">WSGI Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/server.html#base-server">Base Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/server.html#wsgi-server">WSGI Server</a></li>
 </ul>
 </li>
 </ul>
@@ -261,6 +282,28 @@ produce generic XSD for non-SOAP applications.</p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pages/application.html">Application</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pages/application.html#validatingapplication">ValidatingApplication</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="multiple-service-classes">
+<h1>Multiple Service Classes<a class="headerlink" href="#multiple-service-classes" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pages/multiple_services.html">Multiple Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages/multiple_services.html#default-service-and-porttype-behaviour">Default Service and PortType behaviour</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages/multiple_services.html#custom-service-and-porttype-bindings">Custom Service and PortType bindings</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="utilities">
+<h1>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pages/utilities.html">Model Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages/utilities.html#xsdgenerator">XSDGenerator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/utilities.html#classmodelconverter">ClassModelConverter</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="indices-and-tables">

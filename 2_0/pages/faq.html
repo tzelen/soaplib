@@ -47,6 +47,16 @@
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Soaplib FAQ</a><ul>
+<li><a class="reference internal" href="#does-soaplib-support-the-1-2-soap-spec">Does soaplib support the 1.2 SOAP spec?</a></li>
+<li><a class="reference internal" href="#how-do-i-implement-a-prefined-wsdl">How do I implement a prefined WSDL?</a></li>
+<li><a class="reference internal" href="#what-is-the-status-of-the-soaplib-client">What is the status of the soaplib client?</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="changelog.html"
                         title="previous chapter">Change Log</a></p>
@@ -82,17 +92,22 @@
   <div class="section" id="soaplib-faq">
 <h1>Soaplib FAQ<a class="headerlink" href="#soaplib-faq" title="Permalink to this headline">¶</a></h1>
 <p>Frequently asked questions about soaplib and related libraries.</p>
-<p>Does soaplib support the 1.2 SOAP spec?</p>
+<div class="section" id="does-soaplib-support-the-1-2-soap-spec">
+<h2>Does soaplib support the 1.2 SOAP spec?<a class="headerlink" href="#does-soaplib-support-the-1-2-soap-spec" title="Permalink to this headline">¶</a></h2>
 <p>Not yet. If this would be useful to you, please feel free to
 contribute patches toward this goal.</p>
-<p>How do I implement a prefined WSDL?</p>
+</div>
+<div class="section" id="how-do-i-implement-a-prefined-wsdl">
+<h2>How do I implement a prefined WSDL?<a class="headerlink" href="#how-do-i-implement-a-prefined-wsdl" title="Permalink to this headline">¶</a></h2>
 <p>This is not a strength of soaplib, which is more oriented toward
 designing new services declaratively in Python. It does not have
 any functionality to introspect an existing WSDL and produce
 the necessary Python classes.</p>
 <p>However, this is an important use case and we&#8217;d like to add that
 support in the future.</p>
-<p>What is the status of the soaplib client?</p>
+</div>
+<div class="section" id="what-is-the-status-of-the-soaplib-client">
+<h2>What is the status of the soaplib client?<a class="headerlink" href="#what-is-the-status-of-the-soaplib-client" title="Permalink to this headline">¶</a></h2>
 <p>The soaplib client was originally dropped prior to the release
 of soaplib 1.0, in favor of the more mature suds.</p>
 <p>During the work leading up to 2.0, work started on a new soaplib
@@ -102,6 +117,7 @@ release (not passing tests), and the soaplib maintainers did not
 want to hold up the 2.0 release. So the client was split into
 a separate project called soaplib.client, where some community
 members have continued work on it.</p>
+</div>
 </div>
 
 

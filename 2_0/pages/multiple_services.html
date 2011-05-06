@@ -1,0 +1,208 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Multiple Services &mdash; soaplib v2.0.0beta documentation</title>
+    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="soaplib v2.0.0beta documentation" href="../index.html" />
+    <link rel="next" title="Model Utilities" href="utilities.html" />
+    <link rel="prev" title="Application" href="application.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="utilities.html" title="Model Utilities"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="application.html" title="Application"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Multiple Services</a></li>
+<li><a class="reference internal" href="#default-service-and-porttype-behaviour">Default Service and PortType behaviour</a></li>
+<li><a class="reference internal" href="#custom-service-and-porttype-bindings">Custom Service and PortType bindings</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="application.html"
+                        title="previous chapter">Application</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="utilities.html"
+                        title="next chapter">Model Utilities</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/pages/multiple_services.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="multiple-services">
+<h1>Multiple Services<a class="headerlink" href="#multiple-services" title="Permalink to this headline">¶</a></h1>
+<p>Soaplib supports supplying multiple service classes
+(<a class="reference internal" href="service.html#soaplib.core.service.DefinitionBase" title="soaplib.core.service.DefinitionBase"><tt class="xref py py-obj docutils literal"><span class="pre">DefinitionBase</span></tt></a>) to a single soap Application.
+This allows you to group functionality and deploy the services as needed.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">wsgiref.simple_server</span> <span class="kn">import</span> <span class="n">make_server</span>
+<span class="kn">from</span> <span class="nn">soaplib.core</span> <span class="kn">import</span> <span class="n">Application</span>
+<span class="kn">from</span> <span class="nn">soaplib.core.server</span> <span class="kn">import</span> <span class="n">wsgi</span>
+
+<span class="c"># UserManager and ComputerManager are both instances of DefinitionBase</span>
+<span class="kn">from</span> <span class="nn">mysoapservices.user</span> <span class="kn">import</span> <span class="n">UserManager</span>
+<span class="kn">from</span> <span class="nn">mysoapservices.it</span> <span class="kn">import</span> <span class="n">ComputerManager</span>
+
+
+<span class="k">def</span> <span class="nf">create_soap_app</span><span class="p">():</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">Application</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">UserManager</span><span class="p">,</span> <span class="n">ComputerManager</span><span class="p">],</span>
+        <span class="s">&quot;managementServices&quot;</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">app</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">soap_app</span> <span class="o">=</span> <span class="n">create_soap_app</span><span class="p">()</span>
+    <span class="n">wsgi_app</span> <span class="o">=</span> <span class="n">wsgi</span><span class="o">.</span><span class="n">Application</span><span class="p">(</span><span class="n">soap_app</span><span class="p">)</span>
+
+    <span class="n">server</span> <span class="o">=</span> <span class="n">make_server</span><span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">7789</span><span class="p">,</span> <span class="n">wsgi_app</span><span class="p">)</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">server_forever</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="default-service-and-porttype-behaviour">
+<h1>Default Service and PortType behaviour<a class="headerlink" href="#default-service-and-porttype-behaviour" title="Permalink to this headline">¶</a></h1>
+<p>The WSDL bindings for portType and Service that results from the last example
+are as follows.</p>
+<div class="highlight-python"><pre>&lt;wsdl:portType name="Application"&gt;
+    &lt;wsdl:operation name="add_computer" parameterOrder="add_computer"&gt;
+        &lt;wsdl:input name="add_computer" message="tns:add_computer"/&gt;
+        &lt;wsdl:output name="add_computerResponse" message="tns:add_computerResponse"/&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="add_user" parameterOrder="add_user"&gt;
+        &lt;wsdl:input name="add_user" message="tns:add_user"/&gt;
+        &lt;wsdl:output name="add_userResponse" message="tns:add_userResponse"/&gt;
+    &lt;/wsdl:operation&gt;
+    ....
+    ....
+&lt;/wsdl:portType&gt;
+
+
+&lt;wsdl:service name="Application"&gt;
+    ....
+&lt;/wsdl:service&gt;</pre>
+</div>
+<p>This is likely far from what one would expect..i.e services and/or portTypes
+being used to group services and functionality.  Soaplib does support
+multiple service and portType bindings however it was added well into 2.0
+development cycle.  So, the decision was made to maintain the default behaviour
+in order to prevent breaking backward compatibility outright.  However, in
+future release this may change based on user feedback.</p>
+</div>
+<div class="section" id="custom-service-and-porttype-bindings">
+<h1>Custom Service and PortType bindings<a class="headerlink" href="#custom-service-and-porttype-bindings" title="Permalink to this headline">¶</a></h1>
+<p>The Service binding can be overridden by explicitly setting the
+<tt class="xref py py-attr docutils literal"><span class="pre">__service_interface__</span></tt> attribute in
+<tt class="xref py py-obj docutils literal"><span class="pre">Service</span></tt> class.</p>
+<p>Additionally, defining explicit portType bindings is accomplished by setting the
+<tt class="xref py py-attr docutils literal"><span class="pre">__port_types__</span></tt> attribute and supplying
+the <tt class="docutils literal"><span class="pre">_port_type</span></tt> parameter to the &#64;:func:<cite>~soaplib.core.service.soap</cite> method decorator.</p>
+<p>For example modifying the UserManager service class as follows</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">UserManager</span><span class="p">(</span><span class="n">DefinitionBase</span><span class="p">):</span>
+    <span class="n">__service_interface__</span> <span class="o">=</span> <span class="s">&quot;UserService&quot;</span>
+    <span class="n">__port_types__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;user_services&quot;</span><span class="p">]</span>
+
+    <span class="nd">@soap</span><span class="p">(</span><span class="n">User</span><span class="p">,</span><span class="n">_returns</span><span class="o">=</span><span class="n">Integer</span><span class="p">,</span> <span class="n">_port_type</span><span class="o">=</span><span class="s">&quot;user_services&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">add_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">user</span><span class="p">):</span>
+        <span class="k">global</span> <span class="n">user_database</span>
+        <span class="k">global</span> <span class="n">userid_seq</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">userid</span> <span class="o">=</span> <span class="n">userid_seq</span>
+        <span class="n">userid_seq</span> <span class="o">=</span> <span class="n">userid_seq</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">user_database</span><span class="p">[</span><span class="n">user</span><span class="o">.</span><span class="n">userid</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span>
+        <span class="k">return</span> <span class="n">user</span><span class="o">.</span><span class="n">userid</span>
+</pre></div>
+</div>
+<p>When this class is passed to a soaplib <tt class="xref py py-obj docutils literal"><span class="pre">Application</span></tt>,
+the generated WSDL will now include bindings for a Service named &#8220;UserService&#8221;
+as well as portType bindings for &#8220;user_services&#8221;.</p>
+<p>For a more complete example please see the &#8220;service_portType_binding.py&#8221; example
+included with soaplib.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="utilities.html" title="Model Utilities"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="application.html" title="Application"
+             >previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Aaron Bickell.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,174 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Model Utilities &mdash; soaplib v2.0.0beta documentation</title>
+    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="soaplib v2.0.0beta documentation" href="../index.html" />
+    <link rel="prev" title="Multiple Services" href="multiple_services.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="multiple_services.html" title="Multiple Services"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Model Utilities</a><ul>
+<li><a class="reference internal" href="#xsdgenerator">XSDGenerator</a></li>
+<li><a class="reference internal" href="#classmodelconverter">ClassModelConverter</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="multiple_services.html"
+                        title="previous chapter">Multiple Services</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/pages/utilities.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="model-utilities">
+<h1>Model Utilities<a class="headerlink" href="#model-utilities" title="Permalink to this headline">¶</a></h1>
+<p>Soaplib comes with a some utilities that can be usefull for working with
+soaplib Models and their schema directly.</p>
+<div class="section" id="xsdgenerator">
+<h2>XSDGenerator<a class="headerlink" href="#xsdgenerator" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="xref py py-class docutils literal"><span class="pre">XSDGenerator</span></tt> allows direct XSD generation from a
+<tt class="xref py py-class docutils literal"><span class="pre">soaplib.core.clazz.ClassModel</span></tt>.  The basic use is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">SimpleModel</span><span class="p">(</span><span class="n">ClassModel</span><span class="p">):</span>
+    <span class="n">__namespace__</span> <span class="o">=</span> <span class="s">&quot;SimpleModel&quot;</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">String</span>
+
+<span class="n">xsd_gen</span> <span class="o">=</span> <span class="n">XSDGenerator</span><span class="p">()</span>
+<span class="n">simple_xsd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xsd_gen</span><span class="o">.</span><span class="n">get_model_xsd</span><span class="p">(</span><span class="n">SimpleModel</span><span class="p">,</span><span class="n">pretty_print</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">simple_xsd</span>
+</pre></div>
+</div>
+<p>Which returns:</p>
+<div class="highlight-python"><pre>&lt;?xml version='1.0' encoding='utf-8'?&gt;
+&lt;xs:schema xmlns:s3="SimpleModel" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:s2="binding_application" targetNamespace="SimpleModel" elementFormDefault="qualified"&gt;
+  &lt;xs:import namespace="http://www.w3.org/2001/XMLSchema" schemaLocation="xs.xsd"/&gt;
+  &lt;xs:complexType name="SimpleModel"&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name="text" type="xs:string" minOccurs="0" nillable="true"/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element name="SimpleModel" type="s3:SimpleModel"/&gt;
+&lt;/xs:schema&gt;</pre>
+</div>
+</div>
+<div class="section" id="classmodelconverter">
+<h2>ClassModelConverter<a class="headerlink" href="#classmodelconverter" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="xref py py-class docutils literal"><span class="pre">soaplib.core.util.ClassModelConverter</span></tt> is a utility that provides methods
+for exporting a <tt class="xref py py-class docutils literal"><span class="pre">soaplib.core.util.ClassModel</span></tt> instance as an etree.Element,
+xml string or, xml_file.  Basic use is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+<span class="kn">from</span> <span class="nn">soaplib.core.model.clazz</span> <span class="kn">import</span> <span class="n">ClassModel</span>
+<span class="kn">from</span> <span class="nn">soaplib.core.model.primitive</span> <span class="kn">import</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">DateTime</span>
+<span class="kn">from</span> <span class="nn">soaplib.core.util.model_utils</span> <span class="kn">import</span> <span class="n">ClassModelConverter</span>
+
+<span class="k">class</span> <span class="nc">SimpleModel</span><span class="p">(</span><span class="n">ClassModel</span><span class="p">):</span>
+
+    <span class="n">__type_name__</span> <span class="o">=</span> <span class="s">&quot;simplemodel&quot;</span>
+    <span class="n">simple_text</span> <span class="o">=</span> <span class="n">String</span>
+    <span class="n">simple_num</span> <span class="o">=</span> <span class="n">Integer</span>
+    <span class="n">simple_date</span> <span class="o">=</span> <span class="n">DateTime</span>
+
+<span class="n">simple</span> <span class="o">=</span> <span class="n">SimpleModel</span><span class="p">()</span>
+<span class="n">simple</span><span class="o">.</span><span class="n">simple_text</span> <span class="o">=</span> <span class="s">&quot;Text&quot;</span>
+<span class="n">simple</span><span class="o">.</span><span class="n">simple_num</span> <span class="o">=</span> <span class="mi">1234</span>
+<span class="n">simple</span><span class="o">.</span><span class="n">simple_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2001</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+
+<span class="n">converter</span> <span class="o">=</span> <span class="n">ClassModelConverter</span><span class="p">(</span><span class="n">simple</span><span class="p">,</span> <span class="s">&quot;tns&quot;</span><span class="p">)</span>
+
+<span class="n">et</span> <span class="o">=</span> <span class="n">converter</span><span class="o">.</span><span class="n">to_etree</span><span class="p">()</span>
+<span class="n">xml_string</span> <span class="o">=</span> <span class="n">converter</span><span class="o">.</span><span class="n">to_xml</span><span class="p">()</span>
+<span class="n">xml_file</span> <span class="o">=</span> <span class="n">converter</span><span class="o">.</span><span class="n">to_file</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="multiple_services.html" title="Multiple Services"
+             >previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Aaron Bickell.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

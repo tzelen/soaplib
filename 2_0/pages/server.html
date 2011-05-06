@@ -50,8 +50,8 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Server</a><ul>
-<li><a class="reference internal" href="#module-soaplib.core.server._base">Base Server</a></li>
-<li><a class="reference internal" href="#module-soaplib.core.server.wsgi">WSGI Server</a></li>
+<li><a class="reference internal" href="#base-server">Base Server</a></li>
+<li><a class="reference internal" href="#wsgi-server">WSGI Server</a></li>
 </ul>
 </li>
 </ul>
@@ -90,10 +90,10 @@
             
   <div class="section" id="server">
 <h1>Server<a class="headerlink" href="#server" title="Permalink to this headline">¶</a></h1>
-<p>The client module provides a http and 0mq client for consuming webservices.</p>
-<div class="section" id="module-soaplib.core.server._base">
-<span id="base-server"></span><h2>Base Server<a class="headerlink" href="#module-soaplib.core.server._base" title="Permalink to this headline">¶</a></h2>
-<p>A soap server that uses http as transport, and wsgi as bridge api</p>
+<div class="section" id="base-server">
+<h2>Base Server<a class="headerlink" href="#base-server" title="Permalink to this headline">¶</a></h2>
+<p>The base server provides a generic interface for soap servers.</p>
+<span class="target" id="module-soaplib.core.server._base"></span><p>A soap server that uses http as transport, and wsgi as bridge api</p>
 <dl class="class">
 <dt id="soaplib.core.server._base.Base">
 <em class="property">class </em><tt class="descclassname">soaplib.core.server._base.</tt><tt class="descname">Base</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.core.server._base.Base" title="Permalink to this definition">¶</a></dt>
@@ -118,7 +118,7 @@
 <dl class="exception">
 <dt id="soaplib.core.server._base.ValidationError">
 <em class="property">exception </em><tt class="descclassname">soaplib.core.server._base.</tt><tt class="descname">ValidationError</tt><big>(</big><em>faultcode='Server'</em>, <em>faultstring=''</em>, <em>faultactor=''</em>, <em>detail=None</em><big>)</big><a class="headerlink" href="#soaplib.core.server._base.ValidationError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="serializer_api.html#soaplib.core.model.exception.Fault" title="soaplib.core.model.exception.Fault"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.core.model.exception.Fault</span></tt></a></p>
+<dd><p>Bases: <a class="reference internal" href="model_api.html#soaplib.core.model.exception.Fault" title="soaplib.core.model.exception.Fault"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.core.model.exception.Fault</span></tt></a></p>
 <dl class="class">
 <dt id="soaplib.core.server._base.ValidationError.Annotations">
 <em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.core.server._base.ValidationError.Annotations" title="Permalink to this definition">¶</a></dt>
@@ -208,9 +208,10 @@ better, let us know.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-soaplib.core.server.wsgi">
-<span id="wsgi-server"></span><h2>WSGI Server<a class="headerlink" href="#module-soaplib.core.server.wsgi" title="Permalink to this headline">¶</a></h2>
-<p>A soap server that uses http as transport, and wsgi as bridge api</p>
+<div class="section" id="wsgi-server">
+<h2>WSGI Server<a class="headerlink" href="#wsgi-server" title="Permalink to this headline">¶</a></h2>
+<p>The wsgi module provides a wsgi compliant interface for soap services.</p>
+<span class="target" id="module-soaplib.core.server.wsgi"></span><p>A soap server that uses http as transport, and wsgi as bridge api</p>
 <dl class="class">
 <dt id="soaplib.core.server.wsgi.Application">
 <em class="property">class </em><tt class="descclassname">soaplib.core.server.wsgi.</tt><tt class="descname">Application</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#soaplib.core.server.wsgi.Application" title="Permalink to this definition">¶</a></dt>
@@ -268,7 +269,7 @@ better, let us know.</p>
 <dl class="exception">
 <dt id="soaplib.core.server.wsgi.ValidationError">
 <em class="property">exception </em><tt class="descclassname">soaplib.core.server.wsgi.</tt><tt class="descname">ValidationError</tt><big>(</big><em>faultcode='Server'</em>, <em>faultstring=''</em>, <em>faultactor=''</em>, <em>detail=None</em><big>)</big><a class="headerlink" href="#soaplib.core.server.wsgi.ValidationError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="serializer_api.html#soaplib.core.model.exception.Fault" title="soaplib.core.model.exception.Fault"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.core.model.exception.Fault</span></tt></a></p>
+<dd><p>Bases: <a class="reference internal" href="model_api.html#soaplib.core.model.exception.Fault" title="soaplib.core.model.exception.Fault"><tt class="xref py py-class docutils literal"><span class="pre">soaplib.core.model.exception.Fault</span></tt></a></p>
 <dl class="class">
 <dt id="soaplib.core.server.wsgi.ValidationError.Annotations">
 <em class="property">class </em><tt class="descname">Annotations</tt><a class="headerlink" href="#soaplib.core.server.wsgi.ValidationError.Annotations" title="Permalink to this definition">¶</a></dt>

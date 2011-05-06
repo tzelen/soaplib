@@ -1,0 +1,132 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Faults &mdash; soaplib v2.0.0beta documentation</title>
+    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="soaplib v2.0.0beta documentation" href="../index.html" />
+    <link rel="next" title="Model API" href="model_api.html" />
+    <link rel="prev" title="Tuning method arguments" href="customize.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="model_api.html" title="Model API"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="customize.html" title="Tuning method arguments"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="customize.html"
+                        title="previous chapter">Tuning method arguments</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="model_api.html"
+                        title="next chapter">Model API</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/pages/faults.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="faults">
+<h1>Faults<a class="headerlink" href="#faults" title="Permalink to this headline">¶</a></h1>
+<p>In a SOAP WSDL, errors are represented as Faults. These can be defined on a per-method basis in soaplib, using the <a class="reference internal" href="model_api.html#soaplib.core.model.exception.Fault" title="soaplib.core.model.exception.Fault"><tt class="xref py py-class docutils literal"><span class="pre">Fault</span></tt></a> class.</p>
+<p>Since this class is a subclass of <tt class="xref py py-class docutils literal"><span class="pre">Exception</span></tt>, <a class="reference internal" href="model_api.html#soaplib.core.model.exception.Fault" title="soaplib.core.model.exception.Fault"><tt class="xref py py-class docutils literal"><span class="pre">Fault</span></tt></a> can be raised just like any standard fault.</p>
+<p>The valid faults for a given method are defined in the <tt class="docutils literal"><span class="pre">_faults</span></tt> keyword argument of its definition:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soaplib.core.model</span> <span class="kn">import</span> <span class="n">exception</span>
+<span class="kn">from</span> <span class="nn">soaplib.core</span> <span class="kn">import</span> <span class="n">service</span>
+
+<span class="k">class</span> <span class="nc">MyFault</span><span class="p">(</span><span class="n">exception</span><span class="o">.</span><span class="n">Fault</span><span class="p">):</span>
+    <span class="n">__namespace__</span> <span class="o">=</span> <span class="s">&#39;faults&#39;</span>
+
+<span class="k">class</span> <span class="nc">MyService</span><span class="p">(</span><span class="n">service</span><span class="o">.</span><span class="n">DefinitionBase</span><span class="p">):</span>
+
+    <span class="nd">@soap</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="n">_faults</span><span class="o">=</span><span class="p">(</span><span class="n">MyFault</span><span class="p">,))</span>
+    <span class="k">def</span> <span class="nf">MyMethod</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">!=</span> <span class="s">&#39;foobar&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">MyFault</span><span class="p">(</span><span class="s">&#39;Invalid name: </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="model_api.html" title="Model API"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="customize.html" title="Tuning method arguments"
+             >previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Aaron Bickell.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

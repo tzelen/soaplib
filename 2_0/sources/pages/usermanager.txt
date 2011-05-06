@@ -5,21 +5,21 @@ User Manager
 Lets try a more complicated example than just strings and integers!
 The following is an extremely simple example using complex, nested data.::
 
-	from soaplib import Application
-	from soaplib.server import wsgi
-	from soaplib.service import rpc
-	from soaplib.service import DefinitionBase
-	from soaplib.model.primitive import String, Integer
-	from soaplib.model.clazz import ClassSerializer, Array
+	from soaplib.core import Application
+	from soaplib.core.server import wsgi
+	from soaplib.core.service import soap
+	from soaplib.core.service import DefinitionBase
+	from soaplib.core.model.primitive import String, Integer
+	from soaplib.core.model.clazz import ClassModel, Array
 
 	user_database = {}
 	userid_seq = 1
 
-	class Permission(ClassSerializer):
+	class Permission(ClassModel):
 		application = String
 		feature = String
 
-	class User(ClassSerializer):
+	class User(ClassModel):
 		userid = Integer
 		username = String
 		firstname = String
@@ -27,7 +27,7 @@ The following is an extremely simple example using complex, nested data.::
 		permissions = Array(Permission)
 
 	class UserManager(DefinitionBase):
-		@rpc(User,_returns=Integer)
+		@soap(User,_returns=Integer)
 		def add_user(self,user):
 			global user_database
 			global userid_seq
@@ -36,22 +36,22 @@ The following is an extremely simple example using complex, nested data.::
 			user_database[user.userid] = user
 			return user.userid
 
-		@rpc(Integer,_returns=User)
+		@soap(Integer,_returns=User)
 		def get_user(self,userid):
 			global user_database
 			return user_database[userid]
 
-		@rpc(User)
+		@soap(User)
 		def modify_user(self,user):
 			global user_database
 			user_database[user.userid] = user
 
-		@rpc(Integer)
+		@soap(Integer)
 		def delete_user(self,userid):
 			global user_database
 			del user_database[userid]
 
-		@rpc(_returns=Array(User))
+		@soap(_returns=Array(User))
 		def list_users(self):
 			global user_database
 			return [v for k,v in user_database.items()]
@@ -66,11 +66,11 @@ The following is an extremely simple example using complex, nested data.::
 
 Jumping into what's new.::
 
-	class Permission(ClassSerializer):
+	class Permission(ClassModel):
 		application = String
 		feature = String
 
-	class User(ClassSerializer):
+	class User(ClassModel):
 		userid = Integer
 		username = String
 		firstname = String
@@ -78,5 +78,5 @@ Jumping into what's new.::
 		permissions = Array(Permission)
 
 The `Permission` and `User` structures in the example are standard python
-objects that extend `ClassSerializer`.  Soaplib uses `ClassSerializer` as a general type that when
+objects that extend :class:`~soaplib.core.clazz.ClassModel`.  Soaplib uses :class:`~soaplib.core.clazz.ClassModel` as a general type that when
 extended will produce complex serializable types that can be used in a soap service.

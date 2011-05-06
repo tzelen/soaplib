@@ -1,0 +1,159 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tuning method arguments &mdash; soaplib v2.0.0beta documentation</title>
+    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="soaplib v2.0.0beta documentation" href="../index.html" />
+    <link rel="next" title="Faults" href="faults.html" />
+    <link rel="prev" title="Axis Interoperability" href="apache_axis.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="faults.html" title="Faults"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="apache_axis.html" title="Axis Interoperability"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tuning method arguments</a><ul>
+<li><a class="reference internal" href="#primitives">Primitives</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="apache_axis.html"
+                        title="previous chapter">Axis Interoperability</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="faults.html"
+                        title="next chapter">Faults</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/pages/customize.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tuning-method-arguments">
+<h1>Tuning method arguments<a class="headerlink" href="#tuning-method-arguments" title="Permalink to this headline">¶</a></h1>
+<p>In Python, arguments of a function may be optional or mandatory.
+SOAP allows for repeated arguments as well; this is done using the
+<a class="reference internal" href="model_api.html#soaplib.core.model.base.Base.customize" title="soaplib.core.model.base.Base.customize"><tt class="xref py py-meth docutils literal"><span class="pre">customize()</span></tt></a> method of Soap objects.</p>
+<p>Arguments of a SOAP method have various cardinality-related attributes:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">min_occurs</span></tt>: The minimal number of occurences of this parameter; set to 0 for an optional field</li>
+<li><tt class="docutils literal"><span class="pre">max_occurs</span></tt>: The maximal number of occurences of this parameter; if more than 1, the argument will be passed as a list instead.</li>
+<li><tt class="docutils literal"><span class="pre">nillable</span></tt>: True or False, whether a value of &#8216;Null&#8217; (an empty XML element) could be passed for this arguments; this translates to a Python value of <tt class="xref docutils literal"><span class="pre">None</span></tt>.</li>
+</ul>
+<p>Here is an example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MyService</span><span class="p">(</span><span class="n">DefinitionBase</span><span class="p">):</span>
+
+  <span class="nd">@soap</span><span class="p">(</span>
+      <span class="n">String</span><span class="o">.</span><span class="n">customize</span><span class="p">(</span><span class="n">min_occurs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_occurs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nillable</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+      <span class="n">String</span><span class="o">.</span><span class="n">customize</span><span class="p">(</span><span class="n">min_occurs</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_occurs</span><span class="o">=</span><span class="s">&quot;unbounded&quot;</span><span class="p">,</span> <span class="n">nillable</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+      <span class="n">String</span><span class="o">.</span><span class="n">customize</span><span class="p">(</span><span class="n">min_occurs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">max_occurs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">nillable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+  <span class="p">)</span>
+  <span class="k">def</span> <span class="nf">my_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mandatory_string</span><span class="p">,</span> <span class="n">list_of_strings</span><span class="p">,</span> <span class="n">a_few_strings</span><span class="p">):</span>
+      <span class="k">pass</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>The first argument must be present, and cannot be <tt class="xref docutils literal"><span class="pre">None</span></tt>; it might still be an empty string.</li>
+<li>The second argument will be a list of strings, where some values might be <tt class="xref docutils literal"><span class="pre">None</span></tt> (for instance <tt class="docutils literal"><span class="pre">['foo',</span> <span class="pre">None,</span> <span class="pre">'bar',</span> <span class="pre">None,</span> <span class="pre">None,</span> <span class="pre">'baz']</span></tt></li>
+<li>The third argument is a list of strings, containing between 4 and 10 items. It cannot contain the <tt class="xref docutils literal"><span class="pre">None</span></tt> value: <tt class="docutils literal"><span class="pre">['foo',</span> <span class="pre">'bar',</span> <span class="pre">'baz',</span> <span class="pre">'foo',</span> <span class="pre">'',</span> <span class="pre">'foo']</span></tt></li>
+</ul>
+<div class="section" id="primitives">
+<h2>Primitives<a class="headerlink" href="#primitives" title="Permalink to this headline">¶</a></h2>
+<p>For the <tt class="xref py py-mod docutils literal"><span class="pre">primitive</span></tt> types, there is no need to call the <a class="reference internal" href="model_api.html#soaplib.core.model.base.Base.customize" title="soaplib.core.model.base.Base.customize"><tt class="xref py py-meth docutils literal"><span class="pre">customize()</span></tt></a> method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># These are equivalent</span>
+<span class="n">String</span><span class="p">(</span><span class="n">min_occurs</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_occurs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nillable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">String</span><span class="o">.</span><span class="n">customize</span><span class="p">(</span><span class="n">min_occurs</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_occurs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nillable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The use of <a class="reference internal" href="model_api.html#soaplib.core.model.base.Base.customize" title="soaplib.core.model.base.Base.customize"><tt class="xref py py-meth docutils literal"><span class="pre">customize()</span></tt></a> is mandatory on custom classes (inheriting from <a class="reference internal" href="model_api.html#soaplib.core.model.clazz.ClassModel" title="soaplib.core.model.clazz.ClassModel"><tt class="xref py py-class docutils literal"><span class="pre">ClassModel</span></tt></a>).</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="faults.html" title="Faults"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="apache_axis.html" title="Axis Interoperability"
+             >previous</a> |</li>
+        <li><a href="../index.html">soaplib v2.0.0beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Aaron Bickell.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

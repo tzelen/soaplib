@@ -88,42 +88,42 @@ execution as well as the duration of the entire call, including serialization
 and deserialization. The available hooks are:</p>
 <blockquote>
 <div><ul>
-<li><p class="first">on_call</p>
+<li><p class="first"><tt class="xref py py-meth docutils literal"><span class="pre">on_call()</span></tt></p>
 <blockquote>
 <div><p>This is the first thing called in the service</p>
 </div></blockquote>
 </li>
-<li><p class="first">on_wsdl</p>
+<li><p class="first"><tt class="xref py py-meth docutils literal"><span class="pre">soaplib.core.service.DefinitionBase.on_wsdl()</span></tt></p>
 <blockquote>
 <div><p>Called before the wsdl is requested</p>
 </div></blockquote>
 </li>
-<li><p class="first">on_wsdl_exception</p>
+<li><p class="first"><tt class="xref py py-meth docutils literal"><span class="pre">on_wsdl_exception()</span></tt></p>
 <blockquote>
 <div><p>Called after an exception was thrown when generating the wsdl (shouldn&#8217;t happen very much)</p>
 </div></blockquote>
 </li>
-<li><p class="first">on_method_call</p>
+<li><p class="first"><a class="reference internal" href="service.html#soaplib.core.service.DefinitionBase.on_method_call" title="soaplib.core.service.DefinitionBase.on_method_call"><tt class="xref py py-meth docutils literal"><span class="pre">on_method_call()</span></tt></a></p>
 <blockquote>
 <div><p>Called right before the service method is executed</p>
 </div></blockquote>
 </li>
-<li><p class="first">on_method_return</p>
+<li><p class="first"><tt class="xref py py-meth docutils literal"><span class="pre">on_method_return()</span></tt></p>
 <blockquote>
 <div><p>Called right after the service method is executed</p>
 </div></blockquote>
 </li>
-<li><p class="first">on_method_exception_object</p>
+<li><p class="first"><a class="reference internal" href="service.html#soaplib.core.service.DefinitionBase.on_method_exception_object" title="soaplib.core.service.DefinitionBase.on_method_exception_object"><tt class="xref py py-meth docutils literal"><span class="pre">on_method_exception_object()</span></tt></a></p>
 <blockquote>
 <div><p>Called when an exception occurred in a service method before the exception is serialized.</p>
 </div></blockquote>
 </li>
-<li><p class="first">on_method_exception_xml</p>
+<li><p class="first"><a class="reference internal" href="service.html#soaplib.core.service.DefinitionBase.on_method_exception_xml" title="soaplib.core.service.DefinitionBase.on_method_exception_xml"><tt class="xref py py-meth docutils literal"><span class="pre">on_method_exception_xml()</span></tt></a></p>
 <blockquote>
 <div><p>Called after an exception occurred in either the service method or in serialization</p>
 </div></blockquote>
 </li>
-<li><p class="first">on_return</p>
+<li><p class="first"><tt class="xref py py-meth docutils literal"><span class="pre">on_return()</span></tt></p>
 <blockquote>
 <div><p>This is the very last thing called before the wsgi app exits</p>
 </div></blockquote>
@@ -175,7 +175,7 @@ request.</p>
 </pre></div>
 </div>
 <p>Running this produces:</p>
-<p>Method took [0.000195980072021] - total execution time[0.00652194023132]
+<div class="highlight-python"><pre>Method took [0.000195980072021] - total execution time[0.00652194023132]
 Method took [0.000250101089478] - total execution time[0.00567507743835]
 Method took [0.000144004821777] - total execution time[0.00521206855774]
 Method took [0.000141859054565] - total execution time[0.00512409210205]
@@ -183,7 +183,8 @@ Method took [0.00377607345581] - total execution time[0.00511980056763]
 Method took [0.00118803977966] - total execution time[0.00673604011536]
 Method took [0.000146150588989] - total execution time[0.00157499313354]
 Method took [0.0231170654297] - total execution time[0.0245010852814]
-Method took [0.000166893005371] - total execution time[0.01802110672]</p>
+Method took [0.000166893005371] - total execution time[0.01802110672]</pre>
+</div>
 <p>These may be helpful in finding bottlenecks in process, but this technique can
 also be used to commit/rollback transactions or do setup/teardown operations for
 all methods in a service.</p>

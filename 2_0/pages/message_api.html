@@ -97,7 +97,7 @@ the type.</p>
 <p>Messages can be combined with the MethodDescriptor object to represent both
 input and output messages of a SOAP method call. The method descriptor does not
 do much more than simply hold the method name, input and output messages, but it
-can be used with the SimpleSoapClient? to make remote SOAP service calls. The
+can be used with the SimpleSoapClient to make remote SOAP service calls. The
 Axis stock quote Client example can be written:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">in_message</span> <span class="o">=</span> <span class="n">Message</span><span class="p">(</span><span class="s">&#39;getPrice&#39;</span><span class="p">,[(</span><span class="s">&#39;symbol&#39;</span><span class="p">,</span><span class="n">String</span><span class="p">)],</span><span class="n">ns</span><span class="o">=</span><span class="s">&#39;http://quickstart.samples/xsd&#39;</span><span class="p">)</span>
 <span class="n">out_message</span> <span class="o">=</span> <span class="n">Message</span><span class="p">(</span><span class="s">&#39;getPriceResponse&#39;</span><span class="p">,[(</span><span class="s">&#39;return&#39;</span><span class="p">,</span><span class="n">Float</span><span class="p">)],</span><span class="n">ns</span><span class="o">=</span><span class="s">&#39;http://quickstart.samples/xsd&#39;</span><span class="p">)</span>
@@ -107,7 +107,7 @@ Axis stock quote Client example can be written:</p>
 <span class="k">print</span> <span class="n">client</span><span class="p">(</span><span class="s">&#39;IBM&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Message names can also be specified in the ElementTree? QName syntax (ex
+<p>Message names can also be specified in the ElementTree QName syntax (ex
 &#8220;{<a class="reference external" href="http://quickstart.samples/xsd">http://quickstart.samples/xsd</a>}getPrice&#8221;), and an optional &#8216;typ&#8217; keyword can be
 specified for the message, which is used durring wsdl generation.</p>
 </div>
