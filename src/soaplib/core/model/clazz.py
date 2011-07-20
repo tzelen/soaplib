@@ -57,6 +57,8 @@ class XMLAttributeRef(XMLAttribute):
         if self._use:
             element.set('use', self._use)
 
+class AutoRef(Base):
+    pass
 
 class ClassModelMeta(type(Base)):
     """This is the metaclass that populates ClassModel instances with
@@ -236,6 +238,9 @@ class ClassModelBase(Base):
             if member is None:
                 continue
 
+            if member == AutoRef:
+                member = cls
+
             if isinstance(member, XMLAttribute):
                 value = element.get(key)
             else:
@@ -313,7 +318,10 @@ class ClassModelBase(Base):
                 member = etree.SubElement(sequence, '{%s}element' %
                                                                 namespaces.ns_xsd)
                 member.set('name', k)
-                member.set('type', v.get_type_name_ns(schema_entries.app))
+                if v == AutoRef:
+                    member.set('type', cls.get_type_name_ns(schema_entries.app))
+                else:
+                    member.set('type', v.get_type_name_ns(schema_entries.app))
 
                 if v.Attributes.min_occurs != 1: # 1 is the xml schema default
                     member.set('minOccurs', str(v.Attributes.min_occurs))
