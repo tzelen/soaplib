@@ -127,6 +127,11 @@ class ClassModelBase(Base):
     def __init__(self, **kwargs):
         super(ClassModelBase,self).__init__()
 
+        # look after self-refering attributes
+        for k, v in self.__class__.__dict__.iteritems():
+            if not k.startswith('_') and v == "self":
+                self.__class__._type_info[k] = self.__class__
+
         self.__reset_members(self.__class__, kwargs)
 
     def __reset_members(self, cls, kwargs):
