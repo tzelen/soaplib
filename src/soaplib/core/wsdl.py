@@ -97,12 +97,12 @@ class WSDL():
         self.application.messages = set()
 
         for s in self.application.services:
-           s = self.application.get_service(s,None)
-           s.add_messages_for_methods(
-               self.application,
-               self.root,
-               self.application.messages
-           )
+            s = self.application.get_service(s,None)
+            s.add_messages_for_methods(
+                self.application,
+                self.root,
+                self.application.messages
+            )
 
 
     def _build_plink(self, service_name):
