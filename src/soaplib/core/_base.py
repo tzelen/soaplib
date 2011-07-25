@@ -701,7 +701,8 @@ class Application(object):
                 inst = self.get_service(s)
 
                 for method in inst.public_methods:
-                    method_name = "{%s}%s" % (self.get_tns(), method.name)
+                    method_name = "{%s}%s" % (self.get_tns(), 
+                                              method.in_message.get_type_name())
 
                     if method_name in self.call_routes:
                         o = self.call_routes[method_name]
