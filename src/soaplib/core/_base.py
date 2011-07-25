@@ -124,6 +124,10 @@ class _SchemaEntries(object):
                 if r_pref and is_valid_import(r_pref):
                     self.imports[pref_tns].add(self.app.nsmap[r_pref])
 
+            elif seq.tag == '{%s}simpleContent' % namespaces.ns_xsd:
+                # FIXME check for extention base
+                pass
+
             else:
                 raise Exception("i guess you need to hack some more")
 
