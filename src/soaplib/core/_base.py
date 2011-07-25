@@ -555,7 +555,8 @@ class Application(object):
 
             # transform the results into an element
             result_message_class.to_parent_element(
-                                  result_message, self.get_tns(), out_body_xml)
+                                  result_message, self.get_tns(), 
+                                  out_body_xml, notns=True)
 
             if logger.level == logging.DEBUG:
                 logger.debug('\033[91m'+ "Response" + '\033[0m')

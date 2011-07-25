@@ -175,7 +175,7 @@ class ClassModelBase(Base):
         return cls()
 
     @classmethod
-    def get_members(cls, inst, parent):
+    def get_members(cls, inst, parent, notns=False):
         parent_cls = getattr(cls, '__extends__', None)
         if parent_cls :
             parent_cls.get_members(inst, parent)
@@ -193,7 +193,10 @@ class ClassModelBase(Base):
             if mo == 'unbounded' or mo > 1:
                 if subvalue != None:
                     for sv in subvalue:
-                        v.to_parent_element(sv, cls.get_namespace(), parent, k)
+                        if notns:
+                            v.to_parent_element(sv, '', parent, k)
+                        else:
+                            v.to_parent_element(sv, cls.get_namespace(), parent, k)
 
             elif v.Attributes.min_occurs == 0 and subvalue is None :
                 # if a null value is passed to an element with min_occurs = 0
@@ -204,11 +207,14 @@ class ClassModelBase(Base):
             # Don't include empty values for non-nillable optional attributes.
             elif subvalue is not None or v.Attributes.nillable or v.Attributes.min_occurs > 0:
                 #TODO: move this ns tag to the parent element...........
-                v.to_parent_element(subvalue, cls.get_namespace(), parent, k)
+                if notns:
+                    v.to_parent_element(subvalue, '', parent, k)
+                else:
+                    v.to_parent_element(subvalue, cls.get_namespace(), parent, k)
 
     @classmethod
     @nillable_value
-    def to_parent_element(cls, value, tns, parent_elt, name=None):
+    def to_parent_element(cls, value, tns, parent_elt, name=None, notns=False):
         if name is None:
             name = cls.get_type_name()
 
@@ -216,7 +222,7 @@ class ClassModelBase(Base):
 
         inst = cls.get_serialization_instance(value)
 
-        cls.get_members(inst, element)
+        cls.get_members(inst, element, notns)
 
     @classmethod
     @nillable_element
