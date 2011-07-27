@@ -234,6 +234,15 @@ class ClassModelBase(Base):
     def from_xml(cls, element):
         inst = cls.get_deserialization_instance()
 
+        for attr in element.keys():
+            member = cls._type_info.get(attr, None)
+            if isinstance(member, XMLAttribute):
+                # support for xs:integer, xs:long
+                if member._typ == "xs:integer" or member._typ == "xs:long":
+                    setattr(inst, attr, int(element.get(attr)))
+                else:
+                    setattr(inst, attr, element.get(attr))
+
         for c in element:
             if isinstance(c, etree._Comment):
                 continue
@@ -252,17 +261,15 @@ class ClassModelBase(Base):
             if member == AutoRef:
                 member = cls
 
-            if isinstance(member, XMLAttribute):
-                value = element.get(key)
+            assert(not isinstance(member, XMLAttribute))
+            mo = member.Attributes.max_occurs
+            if mo == 'unbounded' or mo > 1:
+                value = getattr(inst, key, None)
+                if value is None:
+                    value = []
+                value.append(member.from_xml(c))
             else:
-                mo = member.Attributes.max_occurs
-                if mo == 'unbounded' or mo > 1:
-                    value = getattr(inst, key, None)
-                    if value is None:
-                        value = []
-                    value.append(member.from_xml(c))
-                else:
-                    value = member.from_xml(c)
+                value = member.from_xml(c)
 
             setattr(inst, key, value)
 
